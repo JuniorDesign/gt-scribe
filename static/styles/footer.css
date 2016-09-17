@@ -1,0 +1,14 @@
+footer {
+  border-top: .05rem solid #e5e5e5;
+  color: #777;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+}
+
+@media screen and (min-width: 48em) {
+  footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

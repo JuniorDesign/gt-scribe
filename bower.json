@@ -1,0 +1,20 @@
+{
+  "name": "GTScribe",
+  "homepage": "https://github.com/JuniorDesign/gt-scribe",
+  "authors": [
+    "Bradford Ware <bware8@gatech.edu>"
+  ],
+  "description": "Notetaking and requesting app for GaTech",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.4"
+  }
+}

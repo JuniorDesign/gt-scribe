@@ -1,9 +1,55 @@
-<html>
-<head>
-	<title> Hello world </title>
-</head>
-<body>
-	<h1>Hello GT-Scribe!</h1>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Note taking and requesting app for GaTech">
+    <meta name="author" content="GTScribe">
+    
+    <!-- Title -->
+    <title>GTScribe</title>
+    
+    <!-- Stylesheets -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/styles/header.css" rel="stylesheet">
+    <link href="/styles/index.css" rel="stylesheet">
+    <link href="/styles/footer.css" rel="stylesheet">
 
+     <!-- JavaScript: jQuery, Tether, Bootstrap, then GTScribe -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  </head>
+  <body class="container">
+	  <header class="clearfix">
+      <h3 class="text-muted">GTScribe</h3>
+	  </header>
+	  <div class="jumbotron text-center">
+	    <h1 class="display-3">Notetaking made simple.</h1>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login as ...
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="admin">Admin</a>
+          <a class="dropdown-item" href="requester">Note Requester</a>
+          <a class="dropdown-item" href="taker">Note Taker</a>
+        </div>
+      </div>
+	  </div>
+	  <div class="row options">
+	    <div class="col-md-6">
+	      <h4>Request Notes</h4>
+	      <p>Sign up to receive courses you are enrolled in this semester.</p>
+	    </div>
+      <div class="col-md-6">
+        <h4>Take Notes</h4>
+        <p>Sign up to be a paid notetaker for other students.</p>
+      </div>
+	  </div>
+	  <footer>
+	    <p>&copy; GTScribe 2016</p>
+	  </footer>
+  </body>
+</html>
