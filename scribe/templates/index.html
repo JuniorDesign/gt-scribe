@@ -11,19 +11,19 @@
     <title>GTScribe</title>
     
     <!-- Stylesheets -->
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/styles/header.css" rel="stylesheet">
-    <link href="/styles/index.css" rel="stylesheet">
-    <link href="/styles/footer.css" rel="stylesheet">
+    <link href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/styles/header.css" rel="stylesheet">
+    <link href="/static/styles/index.css" rel="stylesheet">
+    <link href="/static/styles/footer.css" rel="stylesheet">
 
      <!-- JavaScript: jQuery, Tether, Bootstrap, then GTScribe -->
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/tether/dist/js/tether.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/static/bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   </head>
   <body class="container">
 	  <header class="clearfix">
-        <img src="gtscribe-logo.png">
+        <img src="/static/images/gtscribe-logo.png">
 	  </header>
 	  <div class="jumbotron text-center">
 	    <h1 class="display-3">Notetaking made simple.</h1>
@@ -38,10 +38,10 @@
         </div> -->
 
         <select onchange="location = this.value;">
-          <option value="blank">Select one</option>
-          <option value="taker.html">Notetaker</option>
-          <option value="requester.html">Note-Requester</option>
-          <option value="admin.html">Admin</option>
+          <option value="blank">Select one</option> <!--these are NOT .html, it's a routing thing, so just put the name of it-->
+          <option value="taker">Notetaker</option>
+          <option value="requester">Note-Requester</option>
+          <option value="admin">Admin</option>
         </select>
         <!-- <button type="button">Go</button> -->
       </div>
