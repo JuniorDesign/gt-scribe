@@ -4,10 +4,17 @@ import argparse
 from scribe import db
 from scribe.model.base import BaseModel
 from scribe.model.user import User
+#if you create a new model, import it here
 
+
+
+#run this command everytime you create a new model
+#python3 manage.py create_db
 def create_db():
     db.create_all()
 
+#run this command everytime you create a new model
+#python3 manage.py drop_db
 def drop_db():
     db.drop_all()
 
@@ -23,12 +30,12 @@ def main():
 
     if args.command == 'create_db':
         create_db()
+        print("Database has been created!")
 
-        print("DB created!")
-    elif args.command == 'delete_db':
+    elif args.command == 'drop_db':
         drop_db()
-
-        print("DB deleted!")
+        print("Database has been dropped and deleted!")
+        
     else:
         raise Exception('Invalid command')
 

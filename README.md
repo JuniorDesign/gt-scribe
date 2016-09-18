@@ -46,7 +46,8 @@ The content here is still changing.
 
 ##Requirements (not case sensitive):
 
-- flask
-- flask_restful
-- flask-SQLAlchemy
+- flask (pip)
+- flask_restful (pip)
+- flask-SQLAlchemy (pip)
+- http://sqlitebrowser.org/ (used to view the current state of db)
 
