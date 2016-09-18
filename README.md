@@ -44,9 +44,9 @@ The content here is still changing.
 - Implement CAS for official login
 - tbd
 
-##Requirements (not case sensitive)
+##Requirements (not case sensitive):
 
--flask
--flask_restful
--flask-SQLAlchemy (maybe change because its deprecated)
+- flask
+- flask_restful
+- flask-SQLAlchemy
 

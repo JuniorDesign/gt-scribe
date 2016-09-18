@@ -2,7 +2,8 @@
 
 import argparse
 from scribe import db
-#from stocks.models.models import *
+from scribe.model.base import BaseModel
+from scribe.model.user import User
 
 def create_db():
     db.create_all()
