@@ -1,34 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Note taking and requesting app for GaTech">
-    <meta name="author" content="GTScribe">
-    
-    <!-- Title -->
-    <title>Admin | GTScribe</title>
-    
-    <!-- Stylesheets -->
-    <link href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/styles/header.css" rel="stylesheet">
-    <link href="/static/styles/footer.css" rel="stylesheet">
+{% extends "layout.html" %}
+{% block title %}Admin{% endblock %}
+{% block head %}
+  {{ super() }}
+  <!--link href="/static/styles/index.css" rel="stylesheet"-->
+{% endblock %}
 
-     <!-- JavaScript: jQuery, Tether, Bootstrap, then GTScribe -->
-    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/static/bower_components/tether/dist/js/tether.min.js"></script>
-    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  </head>
-  <body class="container">
-	  <header class="clearfix">
-      <div class="row">
-        <img src="images/gtscribe-logo.png">
-        <div class="col-xs-6">
-          <h3>Hello, Admin!</h3>
-        </div>
-      </div>
-	  </header>
+{% block username %}Admin{% endblock %}
+{% block bodyHeader %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
 	  <main>
       What would you like to do? 
           <select>
@@ -37,10 +19,5 @@
           <option value="match">View Matches</option>
           <option value="view students">View Student List</option>
         </select>
-
     </main>
-	  <footer>
-	    <p>&copy; GTScribe 2016</p>
-	  </footer>
-  </body>
-</html>
+{% endblock %}
