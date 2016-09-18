@@ -23,28 +23,36 @@
   </head>
   <body class="container">
 	  <header class="clearfix">
-      <h3 class="text-muted">GTScribe</h3>
+        <img src="gtscribe-logo.png">
 	  </header>
 	  <div class="jumbotron text-center">
 	    <h1 class="display-3">Notetaking made simple.</h1>
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!-- <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
           Login as ...
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <!-- </button> -->
+<!--         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="admin">Admin</a>
           <a class="dropdown-item" href="requester">Note Requester</a>
           <a class="dropdown-item" href="taker">Note Taker</a>
-        </div>
+        </div> -->
+
+        <select onchange="location = this.value;">
+          <option value="blank">Select one</option>
+          <option value="taker.html">Notetaker</option>
+          <option value="requester.html">Note-Requester</option>
+          <option value="admin.html">Admin</option>
+        </select>
+        <!-- <button type="button">Go</button> -->
       </div>
 	  </div>
 	  <div class="row options">
 	    <div class="col-md-6">
-	      <h4>Request Notes</h4>
+	      <h4><u>Note-Requestor</u></h4>
 	      <p>Sign up to receive courses you are enrolled in this semester.</p>
 	    </div>
       <div class="col-md-6">
-        <h4>Take Notes</h4>
+        <h4><u>Notetaker</u></h4>
         <p>Sign up to be a paid notetaker for other students.</p>
       </div>
 	  </div>
