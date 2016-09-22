@@ -12,6 +12,10 @@ api = Api(app)
 def index():
 	return render_template('index.html')
 
+@app.route('/register-user')
+def register_user():
+	return render_template('registerUser.html')
+
 @app.route('/admin')
 def admin():
 	return render_template('admin.html')

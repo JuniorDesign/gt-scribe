@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link href="/static/styles/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block bodyHeader %}
+    <img src="/static/images/gtscribe-logo.png">
+{% endblock %}
+
+{% block content %}
+     <div class="jumbotron text-center">
+          <h2 class="display-3">Register as a New User</h1>
+          <form role="form" name="registerUser" action="">
+               First name: <input type="text" name="FirstName" required><br />
+               Last name: <input type="text" name="LastName" required><br />
+               <input type="submit" value="Submit">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    I am a...
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" value="admin">Admin</a>
+                    <a class="dropdown-item" value="requester">Note Requester</a>
+                    <a class="dropdown-item" value="taker">Note Taker</a>
+                    </div>
+               </div>
+               <button type="submit" >Register Account</button>
+          </form>
+     </div>
+{% endblock %}
