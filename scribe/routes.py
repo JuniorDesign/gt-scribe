@@ -31,5 +31,6 @@ def taker():
 #example set up from my last project
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
 api.add_resource(scribe_api.GetPassword, '/api/hacked')
+api.add_resource(scribe_api.UserRegistration, '/api/register')
 #api.add_resource(restapi.ReservationResource, '/api/reservation/<string:reservation_id>') #includes update_reservation
 #api.add_resource(restapi.UpdateReservationConfirmResource, '/api/reservation/<string:reservation_id>/availability')

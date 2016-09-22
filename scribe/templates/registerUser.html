@@ -12,7 +12,8 @@
 {% block content %}
      <div class="jumbotron text-center">
           <h2 class="display-3">Register as a New User</h1>
-          <form role="form" name="registerUser" action="">
+          <form role="form" name="registerUser" action=""> <!--need to make JSON of this data here, in the action, so it goes when you hit submit-->
+               <!--we have an endpoint at api/register that handles stuff, we want to send that json there as a post?-->
                First name: <input type="text" name="FirstName" required><br />
                Last name: <input type="text" name="LastName" required><br />
                <input type="submit" value="Submit">
