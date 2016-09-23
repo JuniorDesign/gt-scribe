@@ -8,7 +8,7 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
 1. Download the project and navigate to the top level folder.
 2. Ensure you have Python here [https://www.python.org/downloads/]
-3. Ensure you have Flask `pip install Flask` and flask_restful, `pip install flask_restful` (and anything else it asks you to install.)
+3. Ensure you have Flask `pip install Flask` and flask_restful, `pip install flask_restful`, `pip install flask-SQLAlchemy` (and anything else it asks you to install.)
 4. run `python serve.py`
 5. If it prompts you about accepting any incoming connections, be sure to allow it.
 6. In your browser, navigate to `localhost:5000` to see the index.html page.
