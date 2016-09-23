@@ -28,9 +28,19 @@ def requester():
 def taker():
 	return render_template('taker.html')
 
+
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/loggedin')
+def loggedin():
+	return render_template('loggedin.html')
+
+@app.route('/notLoggedin')
+def notLoggedin():
+	return render_template('notLoggedin.html')
+
 
 #example set up from my last project
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
