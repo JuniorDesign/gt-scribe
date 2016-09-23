@@ -1,33 +1,36 @@
-# Notetaking App for GaTech Disability Services
+# GT Scribe, the Notetaker Registration App for the Georgia Tech Disability Services
 
 Application written for Fall 2016 Junior Design part 2.
 
 Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
+**This application requires Python3 to run locally. You cannot use Python 2.**
+
 ## How to turn run this locally:
 
 1. Download the project and navigate to the top level folder.
-2. Ensure you have Python here [https://www.python.org/downloads/]
-3. Ensure you have Flask `pip install Flask` and flask_restful, `pip install flask_restful`, `pip install flask-SQLAlchemy` (and anything else it asks you to install.)
-4. run `python serve.py`
+2. Ensure you have Python3 [here](https://www.python.org/downloads/) It can be downloaded directly from the website.
+3. Ensure you have Flask; you can use Pip3 to install it. `p3ip install Flask` and flask_restful, `pip3 install flask_restful`, `pip3 install flask-SQLAlchemy` (and anything else it asks you to install.)
+4. Run `python3 serve.py`
 5. If it prompts you about accepting any incoming connections, be sure to allow it.
-6. In your browser, navigate to `localhost:5000` to see the index.html page.
+6. In your browser, navigate to `localhost:5000` to see the rendered index page.
+7. For working with the database, we recommend you download DB Browser for SQLite, which can be found [here](http://sqlitebrowser.org/). In the SQLite Browser, open the database (`temp.db`, inside the `data` folder) to view and directly edit its contents. Be sure to select "Write Changes" to save changes.
 
-**If you are using Python 3, you will instead use `pip3` instead of `pip` and `python3` instead of `python`.
-
-The content here is still changing.
+**This readme is dynamic and frequently undergoes changes.**
 
 ## Sprint 1:
 
 - Set up initial local server (Flask)
-- Set up SQL server
-- Create mock login system (just a single button that says 'login')
-- Landing page (that has the login button)
+- Set up SQLite database
+- Landing page with "login" and "register user" options
+- Create register user page
+- Create user login page (or functionality on the landing page)
+- Role picker for testing purposes (notetaker, admin, note requester)
+- Connect the register page to post data to the db
+- Connect the login page to cross reference data from the db
 - Create admin portal
 - Create notetaker portal
 - Create noterequester portal
-- Registration page for users who haven't signed up formally yet?
-- Role picker for testing purposes (notetaker, admin, note requester)
 - Investigate CAS
 
 
@@ -36,18 +39,12 @@ The content here is still changing.
 
 - Feedback page
 - Matching of notetakers and requesters
-- How to query courses for a specific user
+- Create schema for GaTech courses
+- Define the relationships of students and their courses
+- tbd
 
 
 ## Sprint 3:
 
-- Implement CAS for official login
+- Implement CAS for official login(?)
 - tbd
-
-##Requirements (not case sensitive):
-
-- flask (pip)
-- flask_restful (pip)
-- flask-SQLAlchemy (pip)
-- http://sqlitebrowser.org/ (used to view the current state of db)
-
