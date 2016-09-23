@@ -16,10 +16,13 @@
     <link href="/static/styles/header.css" rel="stylesheet">
     <link href="/static/styles/footer.css" rel="stylesheet">
 
-     <!-- JavaScript: jQuery, Tether, Bootstrap, then GTScribe -->
+    <!-- JavaScript: jQuery, Tether, Bootstrap, then GTScribe -->
+    <!-- JavaScript best practice says load these at the bottom of a file, as to not slow down the page in case something gets stuck. -->
     <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/static/bower_components/tether/dist/js/tether.min.js"></script>
     <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+     
     {% endblock %}
 </head>
 

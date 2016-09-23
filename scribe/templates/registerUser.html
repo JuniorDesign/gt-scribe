@@ -10,24 +10,75 @@
 {% endblock %}
 
 {% block content %}
+
      <div class="jumbotron text-center">
           <h2 class="display-3">Register as a New User</h1>
-          <form role="form" name="registerUser" action=""> <!--need to make JSON of this data here, in the action, so it goes when you hit submit-->
-               <!--we have an endpoint at api/register that handles stuff, we want to send that json there as a post?-->
-               First name: <input type="text" name="FirstName" required><br />
-               Last name: <input type="text" name="LastName" required><br />
-               <input type="submit" value="Submit">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    I am a...
+          <form role="form" id="registerUserForm" name="registerUser" >
+               First name: <input type="text" name="FirstName" id="firstNameInput" required><br />
+               Last name: <input type="text" name="LastName" id="lastNameInput" required><br />
+               GaTech Username: <input type="text" name="Username" id="usernameInput" required><br />
+               Password: <input type="password" name="Password" id="passwordInput" required><br />
+               <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
+                         I am a...
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" value="admin">Admin</a>
-                    <a class="dropdown-item" value="requester">Note Requester</a>
-                    <a class="dropdown-item" value="taker">Note Taker</a>
+                         <a class="dropdown-item" value="admin">Admin</a>
+                         <a class="dropdown-item" value="requester">Note Requester</a>
+                         <a class="dropdown-item" value="taker">Note Taker</a>
                     </div>
                </div>
-               <button type="submit" >Register Account</button>
+               <button type="submit">Register Account</button>
           </form>
      </div>
+
+
+     <script> /* Move this code to its own script file once settled */
+
+          var type="";
+
+          /**
+          * Grabs the value off of the dropdown type menu and stores it in the variable.
+          * This is a jQuery eventlistener added to each drop-down item.
+          */
+          $(".dropdown-item").click(function(e){
+               type = e.target.attributes["value"].value;
+               $("#dropdownMenuButton").text(this.innerHTML);
+          });
+
+          /**
+          * Grabs the variables from the form via query selectors on the id names.
+          * Creates a JSON file with them that corresponds to the expected keys
+          * in our api.py file. Creates an ajax POST request to the endpoint we
+          * described in routes.py, which we assigned the UserRegistration resource to,
+          * which is again defined in api.py.
+          * We then wait for a response from the endpoint.
+          */
+          $("#registerUserForm").submit(function(){
+               console.log("submit was clicked");
+               var username = $("#usernameInput").val();
+               var firstName= $("#firstNameInput").val();
+               var lastName = $("#lastNameInput").val();
+               var password = $("#passwordInput").val();
+               var body = {
+                    "username": username,
+                    "password": password,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "type": type
+               }
+               $.ajax({
+                    contentType: "application/json",
+                    url: "/api/register",
+                    method: "POST",
+                    data: JSON.stringify(body),
+                    async: true
+               }).done(function() {
+                 console.log("connection finished!");
+                 //and redirect to another page
+               });
+               return false;
+          });
+
+     </script>
 {% endblock %}
