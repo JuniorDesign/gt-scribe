@@ -28,6 +28,10 @@ def requester():
 def taker():
 	return render_template('taker.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 #example set up from my last project
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
 api.add_resource(scribe_api.GetPassword, '/api/hacked')
