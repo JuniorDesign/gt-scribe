@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 {% block title %}Index{% endblock %}
 {% block head %}
-  {{ super() }}
-  <link href="/static/styles/index.css" rel="stylesheet">
+     {{ super() }}
+     <link href="/static/styles/index.css" rel="stylesheet">
 {% endblock %}
 
 {% block bodyHeader %}
-    <img src="/static/images/gtscribe-logo.png">
+          <img src="/static/images/gtscribe-logo.png">
 {% endblock %}
 
 {% block content %}
 
      <div class="jumbotron text-center">
-          <h2 class="display-3">Login to GT Scribe</h1>
+          <h2 class="display-3">Login to GT Scribe</h2>
           <form role="form" id="loginForm" name="loginUser" >
                GaTech Username: <input type="text" name="Username" id="usernameInput" required><br />
                Password: <input type="password" name="Password" id="passwordInput" required><br />
@@ -21,46 +21,5 @@
      </div>
 
 
-     <script> /* Move this code to its own script file once settled */
-
-
-          /**
-          * Grabs the value off of the dropdown type menu and stores it in the variable.
-          * This is a jQuery eventlistener added to each drop-down item.
-          */
-          $(".dropdown-item").click(function(e){
-               type = e.target.attributes["value"].value;
-               $("#dropdownMenuButton").text(this.innerHTML);
-          });
-
-          /**
-          * Grabs the variables from the form via query selectors on the id names.
-          * Creates a JSON file with them that corresponds to the expected keys
-          * in our api.py file. Creates an ajax POST request to the endpoint we
-          * described in routes.py, which we assigned the UserRegistration resource to,
-          * which is again defined in api.py.
-          * We then wait for a response from the endpoint.
-          */
-          $("#loginForm").submit(function(){
-               console.log("Login was clicked");
-               var username = $("#usernameInput").val();
-               var password = $("#passwordInput").val();
-               var body = {
-                    "username": username,
-                    "password": password,
-               }
-               $.ajax({
-                    contentType: "application/json",
-                    url: "/api/login",
-                    method: "POST",
-                    data: JSON.stringify(body),
-                    async: true
-               }).done(function() {
-                 console.log("Connection finished!");
-                 //and redirect to another page
-               });
-               return false;
-          });
-
-     </script>
+     <script src="/static/scripts/login.js"></script>
 {% endblock %}

@@ -71,6 +71,9 @@ class UserLogin(Resource):
 
 		userRepository = UserRepository()
 		if userRepository.check_username_and_password(username, password): #true if correct, false if bad credentials
-			return {"message": "User has been logged in successfully."}
+			return {
+				"message": "User has been logged in successfully.",
+				"username": username
+				}
 		return {"error": "This username and password combination is not valid."}, 401
 
