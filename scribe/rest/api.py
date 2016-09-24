@@ -45,18 +45,32 @@ class UserRegistration(Resource):
 		else: #this is how you set a response json and a response status code
 			return {"error": "Account type is missing"}, 400
 
-		#once we have a working db here, first check if the user exists or not
-		#currently assuming all users are brand new
 		userRepository = UserRepository()
+		if userRepository.user_exists(username):
+			return{"error": "An account with this username already exists"}, 400
+
 		newUser = User(username, password, firstName, lastName, accountType, approved)
 		userRepository.add_or_update(newUser)
 		userRepository.save_changes()
 		print("user has been added to the db!")
 
 		return {"message": "Post to database was successful. New user registered."}
-		#if not userRepository.user_exists(user['email']):
-          #	new_user = User(uid, user['first_name'], user['last_name'], user['email'])
-           #     user_repository.add_or_update(new_user)
-		#	user_repository.save_changes()
 
+
+class UserLogin(Resource):
+	def __init__(self):
+		self.reqparse = RequestParser()
+		self.reqparse.add_argument('username', type=str, required= True, help="GaTech Username is required to login", location='json')
+		self.reqparse.add_argument('password', type=str, required= True, help="Password is required to login", location='json')
+		super(UserLogin, self).__init__()
+
+	def post(self):
+		args = self.reqparse.parse_args()
+		username = args['username']
+		password = args['password']
+
+		userRepository = UserRepository()
+		if userRepository.check_username_and_password(username, password): #true if correct, false if bad credentials
+			return {"message": "User has been logged in successfully."}
+		return {"error": "This username and password combination is not valid."}, 401
 

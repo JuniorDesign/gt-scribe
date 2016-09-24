@@ -42,7 +42,7 @@
           * We then wait for a response from the endpoint.
           */
           $("#loginForm").submit(function(){
-               console.log("submit was clicked");
+               console.log("Login was clicked");
                var username = $("#usernameInput").val();
                var password = $("#passwordInput").val();
                var body = {
@@ -51,12 +51,12 @@
                }
                $.ajax({
                     contentType: "application/json",
-                    url: "/api/register",
+                    url: "/api/login",
                     method: "POST",
                     data: JSON.stringify(body),
                     async: true
                }).done(function() {
-                 console.log("connection finished!");
+                 console.log("Connection finished!");
                  //and redirect to another page
                });
                return false;

@@ -8,15 +8,17 @@ from scribe.model.base import BaseModel
 class User(BaseModel):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(50), nullable=False)
+    username = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(200), nullable=False)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     type = db.Column(db.Enum("ADMIN", "REQUESTER", "TAKER"), nullable=False)
     approved = db.Column(db.Boolean)
+    __table_args__ = (db.UniqueConstraint("username", "id", name = "unique_username_id"),)
 
-    def __init__(self, user_name, password, first_name, last_name, type, approved):
-        self.user_name = user_name
+
+    def __init__(self, username, password, first_name, last_name, type, approved):
+        self.username = username
         self.password = password
         self.first_name = first_name
         self.last_name = last_name
