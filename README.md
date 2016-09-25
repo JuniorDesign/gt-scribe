@@ -14,7 +14,7 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 4. Run `python3 serve.py`
 5. If it prompts you about accepting any incoming connections, be sure to allow it.
 6. In your Internet browser, navigate to `localhost:5000` to see the rendered index page.
-7. For working with the database, we recommend you download DB Browser for SQLite, which can be found [here](http://sqlitebrowser.org/). In the SQLite Browser, open the database (`temp.db`, inside the `data` folder) to view and directly edit its contents. Be sure to select "Write Changes" to save changes.
+7. For working with the database, we recommend you download DB Browser for SQLite, which can be found [here](http://sqlitebrowser.org/). In the SQLite Browser, open the database (`temp.db`, inside the `data` folder) to view and directly edit its contents. Be sure to select "Write Changes" to save changes. If the script does not work, try manually making the `data` folder first, then running the script
 
 **This readme is dynamic and frequently undergoes changes.**
 
