@@ -7,7 +7,6 @@ from scribe.model.user import User
 #if you create a new model, import it here
 
 
-
 #run this command everytime you create a new model
 #python3 manage.py create_db
 def create_db():

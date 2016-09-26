@@ -6,22 +6,13 @@
 {% endblock %}
 
 {% block bodyHeader %}
-    <img src="/static/images/gtscribe-logo.png">
+    <a href="/" ><img src="/static/images/gtscribe-logo.png"></a>
 {% endblock %}
 
 {% block content %}
     <div class="jumbotron text-center">
       <h1 class="display-3">Notetaking made simple.</h1>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Login as ...
-        </button>
-         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="admin">Admin</a>
-          <a class="dropdown-item" href="requester">Note Requester</a>
-          <a class="dropdown-item" href="taker">Note Taker</a>
-        </div>
-      </div>
+      <a href="login"><button type="button" class="btn btn-primary">Login</button></a>
     </div>
     <div class="row options">
       <div class="col-md-6">

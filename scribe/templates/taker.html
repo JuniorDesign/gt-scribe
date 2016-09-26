@@ -7,18 +7,17 @@
 
 {% block username %}Notetaker{% endblock %}
 {% block bodyHeader %}
-    {{ super() }}
+  {{ super() }}
     
 {% endblock %}
 {% block content %}
-	  <main>Please select which classes you would like to take notes for from the list below.
-        <form action="">
-        <input type="checkbox" name="class" value="CS 2200">CS 2200<br>
-        <input type="checkbox" name="class" value="MATH 3012">MATH 3012<br>
-        <input type="checkbox" name="class" value="CS 3750">CS 3750<br>
-        <input type="checkbox" name="class" value="CS 4460">CS 4460<br>
-        </form>
-        <button type="button">Submit</button>
-
-    </main>
+  <main>Please select which classes you would like to take notes for from the list below.
+    <form action="">
+      <input type="checkbox" name="class" value="CS 2200">CS 2200<br>
+      <input type="checkbox" name="class" value="MATH 3012">MATH 3012<br>
+      <input type="checkbox" name="class" value="CS 3750">CS 3750<br>
+      <input type="checkbox" name="class" value="CS 4460">CS 4460<br>
+    </form>
+    <button type="button">Submit</button>
+  </main>
 {% endblock %}

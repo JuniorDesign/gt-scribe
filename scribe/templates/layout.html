@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     {% block head %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,40 +17,29 @@
     <link href="/static/styles/footer.css" rel="stylesheet">
 
     <!-- JavaScript: jQuery, Tether, Bootstrap, then GTScribe -->
-    <!-- JavaScript best practice says load these at the bottom of a file, as to not slow down the page in case something gets stuck. -->
     <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/static/bower_components/tether/dist/js/tether.min.js"></script>
     <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-     
     {% endblock %}
-</head>
-
-
-<body class="container">
-    
+  </head>
+  <body class="container">
     <header class="clearfix">
-        {% block bodyHeader %}
-        <div class="row">
-            <div class="col-xs-6">
-                <img src="/static/images/gtscribe-logo.png" />
-            </div>
-            <div class="col-xs-6">
-                <h3>Hello, {% block username %}User{% endblock %}!</h3>
-            </div>
+      {% block bodyHeader %}
+      <div class="row">
+        <div class="col-xs-6">
+          <img src="/static/images/gtscribe-logo.png" />
         </div>
-        {% endblock %}
+        <div class="col-xs-6">
+          <h3>Hello, {% block username %}User{% endblock %}!</h3>
+        </div>
+      </div>
+      {% endblock %}
     </header>
-
-
-    
-
     {% block content %}{% endblock %}
-
     <footer>
-        {% block footer %}
-        <p>&copy; GTScribe 2016</p>
-        {% endblock %}
+      {% block footer %}
+      <p>&copy; GTScribe 2016</p>
+      {% endblock %}
     </footer>
-</body>
+  </body>
 </html>

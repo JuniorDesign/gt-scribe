@@ -14,7 +14,7 @@ def index():
 
 @app.route('/register-user')
 def register_user():
-	return render_template('registerUser.html')
+	return render_template('register.html')
 
 @app.route('/admin')
 def admin():
