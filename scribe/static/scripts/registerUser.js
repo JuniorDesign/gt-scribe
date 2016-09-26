@@ -5,9 +5,10 @@ var selectedType=""; //for registration
 * Grabs the value off of the dropdown type menu and stores it in the variable.
 * This is a jQuery eventlistener added to each drop-down item.
 */
-$(".dropdown-item").click(function(e){
+$(".register-type-btn").click(function(e){
+     console.log(e.target.attributes["value"].value); //this works because it seeks a 'value' attribute on the thing we click
      selectedType = e.target.attributes["value"].value;
-     $("#dropdownMenuButton").text(this.innerHTML);
+     //$("#dropdownMenuButton").text(this.innerHTML);
      });
 
 /**

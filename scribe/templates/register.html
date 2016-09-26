@@ -15,7 +15,7 @@
 <div class="jumbotron text-center">
   <h2 class="display-3">Register</h1>
   <div class="container">
-    <form role="form" id="loginForm" name="loginUser">
+    <form role="form" id="registerUserForm" name="registerUser">
       <div class="form-group row">
         <label for="firstNameInput" class="col-sm-3 col-form-label">First Name</label>
         <div class="col-sm-9">
@@ -44,14 +44,14 @@
         <label for="passwordInput" class="col-sm-3 col-form-label">I am a Note ...</label>
         <div class="col-sm-9">
           <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-secondary register-type-btn">
-              <input type="radio" name="radio-admin" id="admin">Admin
+            <label class="btn btn-secondary register-type-btn" value="admin">
+              <input type="radio" name="radio-admin" id="admin" value="admin">Admin
             </label>
-            <label class="btn btn-secondary register-type-btn active">
-              <input type="radio" name="radio-requester" id="requester">Requester
+            <label class="btn btn-secondary register-type-btn" value="taker">
+              <input type="radio" name="radio-taker" id="taker" value="taker">Taker
             </label>
-            <label class="btn btn-secondary register-type-btn">
-              <input type="radio" name="radio-taker" id="taker">Taker
+            <label class="btn btn-secondary register-type-btn" value="requester">
+              <input type="radio" name="radio-requester" id="requester" value="requester">Requester
             </label>
           </div>
         </div>
