@@ -10,22 +10,19 @@
 {% endblock %}
 
 {% block content %}
-    <div class="jumbotron text-center">
-      <h1 class="display-3">Notetaking made simple.</h1>
-      <a href="login"><button type="button" class="btn btn-primary">Login</button></a>
+  <div class="jumbotron text-center">
+    <h1 class="display-3">Notetaking made simple.</h1>
+    <a href="register-user"><button type="button" class="btn btn-success index-btn">Register</button></a>
+    <a href="login"><button type="button" class="btn btn-primary index-btn">Login</button></a>
+  </div>
+  <div class="row options">
+    <div class="col-md-6">
+      <h4><u>Note-Requestor</u></h4>
+      <p>Sign up to receive courses you are enrolled in this semester.</p>
     </div>
-    <div class="row options">
-      <div class="col-md-6">
-        <h4><u>Note-Requestor</u></h4>
-        <p>Sign up to receive courses you are enrolled in this semester.</p>
-      </div>
-      <div class="col-md-6">
-        <h4><u>Notetaker</u></h4>
-        <p>Sign up to be a paid notetaker for other students.</p>
-      </div>
-      <div class="col-md-6">
-        <h4><u>Register As A New User</u></h4>
-        <p><a href="register-user">Click here!</a></p>
-      </div>
+    <div class="col-md-6">
+      <h4><u>Notetaker</u></h4>
+      <p>Sign up to be a paid notetaker for other students.</p>
     </div>
+  </div>
 {% endblock %}
