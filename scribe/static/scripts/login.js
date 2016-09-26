@@ -15,7 +15,8 @@ $("#loginForm").submit(function(){
           console.log("Connection successful!");
                if(data.message != undefined){
                     console.log(data.message);
-                    console.log("Welcome user: "+data.username);
+                    console.log("Welcome user: "+ data.username);
+                    console.log("User account type: " + data.accountType);
                }
           //and redirect to another page
 

@@ -27,7 +27,7 @@ class UserRegistration(Resource):
 		self.reqparse.add_argument('type', type=str, required= True, help="Type is required to register", location='json')
 		super(UserRegistration, self).__init__()
 
-	def post(self): 
+	def post(self):
 		args = self.reqparse.parse_args()
 		#Taking the information from the registration form and assinging it to Python variables
 		username = args['username']
@@ -71,9 +71,10 @@ class UserLogin(Resource):
 
 		userRepository = UserRepository()
 		if userRepository.check_username_and_password(username, password): #true if correct, false if bad credentials
+			accountType = userRepository.get_account_type(username)
 			return {
 				"message": "User has been logged in successfully.",
-				"username": username
+				"username": username,
+				"accountType": accountType
 				}
 		return {"error": "This username and password combination is not valid."}, 401
-
