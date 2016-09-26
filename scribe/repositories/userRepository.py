@@ -12,7 +12,7 @@ class UserRepository(BaseRepository):
     	# Returns true if the user exists, false otherwise
     	def user_exists(self, username):
     		users = super(UserRepository, self).get(username = username)
-    		return len(users) > 0 
+    		return len(users) > 0
 
     	# Checks if the username and password match in the database
     	# Used for login
@@ -24,3 +24,13 @@ class UserRepository(BaseRepository):
     			if users[0].password == password:
     				return True
     		return False
+
+    	def get_account_type(self, username):
+    		users = super(UserRepository, self).get(username = username) #returns ALL users with this username (should be just 1)
+    		# If no user exists, will return empty (length of 0)
+    		if len(users) > 0:
+    			print("Type is " + users[0].type)
+    			if users[0].type != None:
+    				print("Entered the condition " + users[0].type)
+    				return users[0].type
+    		return None
