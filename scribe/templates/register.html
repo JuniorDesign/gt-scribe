@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link href="/static/styles/index.css" rel="stylesheet">
+  <link href="/static/styles/register.css" rel="stylesheet">
+{% endblock %}
+
+{% block bodyHeader %}
+  <a href="/" ><img src="/static/images/gtscribe-logo.png"></a>
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <h2 class="display-3">Register</h1>
+  <div class="container">
+    <form role="form" id="loginForm" name="loginUser">
+      <div class="form-group row">
+        <label for="firstNameInput" class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="FirstName" id="firstNameInput" placeholder="Jane" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastNameInput" class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="LastName" id="lastNameInput" placeholder="Doe" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="usernameInput" class="col-sm-3 col-form-label">GT Username</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="Username" id="usernameInput" placeholder="jdoe3" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="passwordInput" class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="password" name="Password" id="passwordInput" placeholder="gtrulez" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="passwordInput" class="col-sm-3 col-form-label">I am a Note ...</label>
+        <div class="col-sm-9">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-secondary register-type-btn">
+              <input type="radio" name="radio-admin" id="admin">Admin
+            </label>
+            <label class="btn btn-secondary register-type-btn active">
+              <input type="radio" name="radio-requester" id="requester">Requester
+            </label>
+            <label class="btn btn-secondary register-type-btn">
+              <input type="radio" name="radio-taker" id="taker">Taker
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/static/scripts/registerUser.js"></script>
+{% endblock %}
