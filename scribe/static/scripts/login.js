@@ -13,11 +13,11 @@ $("#loginForm").submit(function(){
           async: true
      }).done(function(data) {
           console.log("Connection successful!");
-               if(data.message != undefined){
-                    console.log(data.message);
-                    console.log("Welcome user: "+ data.username);
-                    console.log("User account type: " + data.accountType);
-               }
+          if(data.message != undefined){
+               console.log(data.message);
+               console.log("Welcome user: "+ data.username);
+               console.log("User account type: " + data.accountType);
+          }
           //and redirect to another page
 
      }).fail(function(data){ //error messages come in as a diff format than success messages
