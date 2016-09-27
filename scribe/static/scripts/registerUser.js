@@ -42,6 +42,7 @@ $("#registerUserForm").submit(function(){
           if(data.message != undefined){
                console.log(data.message);
           }
+          window.location.href = "register-user/success";
           //and redirect to another page here
 
      }).fail(function(data){ //error messages come in as a diff format than success messages

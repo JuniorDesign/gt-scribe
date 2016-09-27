@@ -17,8 +17,9 @@ $("#loginForm").submit(function(){
                console.log(data.message);
                console.log("Welcome user: "+ data.username);
                console.log("User account type: " + data.accountType);
+               window.location.href = data.accountType.toLowerCase();
           }
-          //and redirect to another page
+          //if you get back out here before the location change, something went wrong.
 
      }).fail(function(data){ //error messages come in as a diff format than success messages
           console.log("Connection failed!");

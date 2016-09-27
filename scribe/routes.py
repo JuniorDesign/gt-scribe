@@ -28,18 +28,13 @@ def requester():
 def taker():
 	return render_template('taker.html')
 
-
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-@app.route('/loggedin')
+@app.route('/register-user/success')
 def loggedin():
-	return render_template('loggedin.html')
-
-@app.route('/notLoggedin')
-def notLoggedin():
-	return render_template('notLoggedin.html')
+	return render_template('register-success.html')
 
 
 #example set up from my last project

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Account Created!{% endblock %}
+{% block head %}
+    {{ super() }}
+	<link href="/static/styles/index.css" rel="stylesheet">
+	<link href="/static/styles/register.css" rel="stylesheet">
+{% endblock %}
+
+{% block bodyHeader %}
+	<a href="/" ><img src="/static/images/gtscribe-logo.png"></a>
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+	<h2 class="display-3">Thanks for registering!</h2>
+	<div class="container">
+        <p>Now that your account is ready, please login.</p><br />
+        <a href="login"><button type="button" class="btn btn-primary index-btn">Login</button></a>
+	</div>
+</div>
+
+<script src="/static/scripts/registerUser.js"></script>
+{% endblock %}
