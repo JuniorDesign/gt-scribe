@@ -42,18 +42,10 @@
       </div>
       <div class="form-group row">
         <label for="passwordInput" class="col-sm-3 col-form-label">I am a Note ...</label>
-        <div class="col-sm-9">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-secondary register-type-btn" value="admin">
-              <input type="radio" name="radio-admin" id="admin" value="admin">Admin
-            </label>
-            <label class="btn btn-secondary register-type-btn" value="taker">
-              <input type="radio" name="radio-taker" id="taker" value="taker">Taker
-            </label>
-            <label class="btn btn-secondary register-type-btn" value="requester">
-              <input type="radio" name="radio-requester" id="requester" value="requester">Requester
-            </label>
-          </div>
+        <div class="col-sm-9 col-form-label radio-acct-type">
+          <input type="radio" name="radio-choice" class="acct-type" value="admin" required>Admin</input>
+          <input type="radio" name="radio-choice" class="acct-type" value="taker" required>Taker</input>
+          <input type="radio" name="radio-choice" class="acct-type" value="requester" required>Requester</input> 
         </div>
       </div>
       <div class="row">

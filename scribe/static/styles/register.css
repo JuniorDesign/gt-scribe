@@ -1,3 +1,9 @@
 .jumbotron .register-type-btn {
   font-size: 1.2rem;
 }
+.radio-acct-type { 
+	text-align: left;
+}
+.radio-acct-type > input {
+	margin: 0 5px 0 5px;
+}
