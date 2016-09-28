@@ -26,6 +26,7 @@ $("#loginForm").submit(function(){
           var response = JSON.parse(data.responseText);
           if(response.error != undefined){
                console.log(response.error);
+               window.alert(response.error); //temporary feedback to user until we create a UI for this
           }
      });
 
