@@ -12,7 +12,7 @@ api = Api(app)
 def index():
 	return render_template('index.html')
 
-@app.route('/register-user')
+@app.route('/register')
 def register_user():
 	return render_template('register.html')
 
