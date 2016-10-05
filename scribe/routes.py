@@ -1,32 +1,32 @@
 #handles the routing for our application running on the local server (see serve.py in the root-level directory)
 
-from scribe import db
+from scribe import app, db
+from scribe.repositories.userRepository import UserRepository
 from scribe.rest import api as scribe_api
-from scribe import app
-from flask import render_template
+
+from flask import g, redirect, render_template, session, url_for
 from flask_restful import Api
 
 api = Api(app)
 
+@app.before_request
+def before_request():
+    g.user = None
+    if 'username' in session:
+        g.user = {
+            'name': session.get('username'),
+            'type': UserRepository().get_account_type(session.get('username')).lower()
+        }
+
 @app.route('/')
 def index():
-	return render_template('index.html')
+    if g.user:
+        return render_template(g.user['type'] + '.html')
+    return render_template('index.html')
 
 @app.route('/register')
 def register_user():
-	return render_template('register.html')
-
-@app.route('/admin')
-def admin():
-	return render_template('admin.html')
-
-@app.route('/requester')
-def requester():
-	return render_template('requester.html')
-
-@app.route('/taker')
-def taker():
-	return render_template('taker.html')
+    return render_template('register.html')
 
 @app.route('/login')
 def login():
@@ -34,7 +34,13 @@ def login():
 
 @app.route('/register/success')
 def loggedin():
-	return render_template('register-success.html')
+    return render_template('register-success.html')
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
 
 
 #example set up from my last project
@@ -42,3 +48,4 @@ api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making th
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
 #'/api/reservation/<string:reservation_id>') #example of using string params
+

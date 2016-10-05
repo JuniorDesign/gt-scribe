@@ -1,4 +1,5 @@
 from scribe import db
+from flask import session
 from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 from scribe.model.user import User
@@ -72,6 +73,7 @@ class UserLogin(Resource):
 		userRepository = UserRepository()
 		if userRepository.check_username_and_password(username, password): #true if correct, false if bad credentials
 			accountType = userRepository.get_account_type(username)
+			session['username'] = username
 			return {
 				"message": "User has been logged in successfully.",
 				"username": username,
