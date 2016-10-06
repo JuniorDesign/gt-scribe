@@ -17,7 +17,7 @@ $("#loginForm").submit(function(){
                console.log(data.message);
                console.log("Welcome user: "+ data.username);
                console.log("User account type: " + data.accountType);
-               window.location.href = data.accountType.toLowerCase();
+               window.location.href = "/";
           }
           //if you get back out here before the location change, something went wrong.
 
