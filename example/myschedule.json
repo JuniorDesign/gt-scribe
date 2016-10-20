@@ -1,0 +1,458 @@
+[
+   [
+      {
+         "long_course_title":null,
+         "course_attributes":[
+
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"M",
+               "begin_time":"1505",
+               "end_time":"1555",
+               "building_description":"U A Whitaker Biomedical Engr",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"A",
+               "meeting_type":"CLAS",
+               "room":"1103",
+               "building_code":"165"
+            }
+         ],
+         "class_grading_type_desc":"Letter Grade",
+         "class_grading_type_code":"L",
+         "term_code":"201608",
+         "class_credit_hours":null,
+         "class_registration_start_date":null,
+         "course_title":"Tech Comm Approaches",
+         "description":"Part of a multi-semester sequence that students take in tandem with major-specific classes to develop professional written, visual, oral, and analytic strategies.",
+         "crn":"89346",
+         "instructors":[
+            {
+               "name":"Hutter, Liz",
+               "is_primary":true,
+               "pidm":2970431
+            }
+         ],
+         "section_number":"JID",
+         "catalog_credit_hour_ind":null,
+         "instructional_method_code":null,
+         "course_number":"3431",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":1,
+         "subject_code":"LMC",
+         "waitlist_avail":10,
+         "seats_avail":0,
+         "class_status_code":"A",
+         "seats_capacity":50,
+         "campus_code":"A",
+         "catalog_credit_hour_high":null,
+         "meeting_type_code":"A",
+         "waitlist_capacity":10
+      },
+      {
+         "long_course_title":null,
+         "course_attributes":[
+            {
+               "description":"International Relations (IP)",
+               "course_attribute_code":"INRL"
+            },
+            {
+               "description":"Social Science Requirement",
+               "course_attribute_code":"SS"
+            }
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"MWF",
+               "begin_time":"1105",
+               "end_time":"1155",
+               "building_description":"Clough Undergraduate Commons",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"A",
+               "meeting_type":"CLAS",
+               "room":"423",
+               "building_code":"166"
+            }
+         ],
+         "class_grading_type_desc":null,
+         "class_grading_type_code":null,
+         "term_code":"201608",
+         "class_credit_hours":null,
+         "class_registration_start_date":null,
+         "course_title":"20th Century Europe",
+         "description":"Global war and the Bolshevik Revolution, rise and fall of Mussolini and Hitler, Stalinism, the Holocaust, Cold War, decolonization, and the movement toward European integration.",
+         "crn":"89279",
+         "instructors":[
+            {
+               "name":"Krige, Gerhard",
+               "is_primary":true,
+               "pidm":1483287
+            }
+         ],
+         "section_number":"A",
+         "catalog_credit_hour_ind":null,
+         "instructional_method_code":null,
+         "course_number":"2037",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":3,
+         "subject_code":"HTS",
+         "waitlist_avail":0,
+         "seats_avail":3,
+         "class_status_code":"A",
+         "seats_capacity":40,
+         "campus_code":"A",
+         "catalog_credit_hour_high":null,
+         "meeting_type_code":"A",
+         "waitlist_capacity":0
+      },
+      {
+         "long_course_title":null,
+         "course_attributes":[
+
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"M",
+               "begin_time":"1205",
+               "end_time":"1455",
+               "building_description":"Clough Undergraduate Commons",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"E",
+               "meeting_type":"CLAS",
+               "room":"473",
+               "building_code":"166"
+            }
+         ],
+         "class_grading_type_desc":null,
+         "class_grading_type_code":null,
+         "term_code":"201608",
+         "class_credit_hours":0,
+         "class_registration_start_date":null,
+         "course_title":"Intro to Organismal Biol",
+         "description":"WAITLISTING AVAILABLE. ",
+         "crn":"80603",
+         "instructors":[
+            {
+               "name":"Harrison, Colin D",
+               "is_primary":true,
+               "pidm":1734357
+            }
+         ],
+         "section_number":"P1",
+         "catalog_credit_hour_ind":"OR",
+         "instructional_method_code":null,
+         "course_number":"1520",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":0,
+         "subject_code":"BIOL",
+         "waitlist_avail":8,
+         "seats_avail":7,
+         "class_status_code":"A",
+         "seats_capacity":20,
+         "campus_code":"A",
+         "catalog_credit_hour_high":4,
+         "meeting_type_code":"E",
+         "waitlist_capacity":8
+      },
+      {
+         "long_course_title":null,
+         "course_attributes":[
+
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"MWF",
+               "begin_time":"0905",
+               "end_time":"0955",
+               "building_description":"Molecular Sciences & Engr",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"A",
+               "meeting_type":"CLAS",
+               "room":"G011",
+               "building_code":"167"
+            },
+            {
+               "end_date":"2016-12-15",
+               "days":"R",
+               "begin_time":"1805",
+               "end_time":"1855",
+               "building_description":"Molecular Sciences & Engr",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"A",
+               "meeting_type":"CLAS",
+               "room":"G011",
+               "building_code":"167"
+            }
+         ],
+         "class_grading_type_desc":null,
+         "class_grading_type_code":null,
+         "term_code":"201608",
+         "class_credit_hours":4,
+         "class_registration_start_date":null,
+         "course_title":"Intro to Organismal Biol",
+         "description":"Exams and recitation held during the Thur evening hour. NO OVERLOADS. WAITLISTING AVAILABLE ON LAB SECTIONS. You must also register for one of the following: BIOL 1520 P1, P2, P3, P4, P6, P7, P8 or P9. ",
+         "crn":"80586",
+         "instructors":[
+            {
+               "name":"Garton, David",
+               "is_primary":true,
+               "pidm":1435146
+            }
+         ],
+         "section_number":"L",
+         "catalog_credit_hour_ind":"OR",
+         "instructional_method_code":null,
+         "course_number":"1520",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":0,
+         "subject_code":"BIOL",
+         "waitlist_avail":0,
+         "seats_avail":34,
+         "class_status_code":"A",
+         "seats_capacity":144,
+         "campus_code":"A",
+         "catalog_credit_hour_high":4,
+         "meeting_type_code":"A",
+         "waitlist_capacity":0
+      },
+      {
+         "long_course_title":null,
+         "course_attributes":[
+            {
+               "description":"Tech Elect CS, Engr, &Sciences",
+               "course_attribute_code":"TCES"
+            }
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"TR",
+               "begin_time":"1205",
+               "end_time":"1325",
+               "building_description":"Clough Undergraduate Commons",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"C",
+               "meeting_type":"CLAS",
+               "room":"144",
+               "building_code":"166"
+            },
+            {
+               "end_date":"2016-12-15",
+               "days":"W",
+               "begin_time":"1805",
+               "end_time":"1925",
+               "building_description":"Mason",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"C",
+               "meeting_type":"CLAS",
+               "room":"1133",
+               "building_code":"111"
+            }
+         ],
+         "class_grading_type_desc":"Letter Grade",
+         "class_grading_type_code":"L",
+         "term_code":"201608",
+         "class_credit_hours":4,
+         "class_registration_start_date":null,
+         "course_title":"Systems and Networks",
+         "description":"See cc.gatech.edu\/regdates ",
+         "crn":"89668",
+         "instructors":[
+            {
+               "name":"Conte, Thomas Martin",
+               "is_primary":true,
+               "pidm":2540646
+            }
+         ],
+         "section_number":"A4",
+         "catalog_credit_hour_ind":"OR",
+         "instructional_method_code":null,
+         "course_number":"2200",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":0,
+         "subject_code":"CS",
+         "waitlist_avail":25,
+         "seats_avail":1,
+         "class_status_code":"A",
+         "seats_capacity":65,
+         "campus_code":"A",
+         "catalog_credit_hour_high":4,
+         "meeting_type_code":"C",
+         "waitlist_capacity":25
+      },
+      {
+         "long_course_title":null,
+         "course_attributes":[
+
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"T",
+               "begin_time":"1205",
+               "end_time":"1325",
+               "building_description":"Coll of Computing",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"F",
+               "meeting_type":"CLAS",
+               "room":"52",
+               "building_code":"050"
+            }
+         ],
+         "class_grading_type_desc":"Pass\/Fail",
+         "class_grading_type_code":"P",
+         "term_code":"201608",
+         "class_credit_hours":null,
+         "class_registration_start_date":null,
+         "course_title":"Computing in MATLAB",
+         "description":"See cc.gatech.edu\/regdates ",
+         "crn":"84912",
+         "instructors":[
+            {
+               "name":"Smith, David Michael",
+               "is_primary":true,
+               "pidm":271412
+            }
+         ],
+         "section_number":"A",
+         "catalog_credit_hour_ind":null,
+         "instructional_method_code":null,
+         "course_number":"1171",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":1,
+         "subject_code":"CS",
+         "waitlist_avail":25,
+         "seats_avail":17,
+         "class_status_code":"A",
+         "seats_capacity":41,
+         "campus_code":"A",
+         "catalog_credit_hour_high":null,
+         "meeting_type_code":"F",
+         "waitlist_capacity":25
+      },
+      {
+         "long_course_title":null,
+         "course_attributes":[
+
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"WF",
+               "begin_time":"1505",
+               "end_time":"1555",
+               "building_description":"U A Whitaker Biomedical Engr",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"A",
+               "meeting_type":"CLAS",
+               "room":"1103",
+               "building_code":"165"
+            }
+         ],
+         "class_grading_type_desc":"Letter Grade",
+         "class_grading_type_code":"L",
+         "term_code":"201608",
+         "class_credit_hours":null,
+         "class_registration_start_date":null,
+         "course_title":"Project Implementation",
+         "description":"See cc.gatech.edu\/regdates ",
+         "crn":"90726",
+         "instructors":[
+            {
+               "name":"Waters, Robert Lee",
+               "is_primary":true,
+               "pidm":435473
+            }
+         ],
+         "section_number":"JID",
+         "catalog_credit_hour_ind":null,
+         "instructional_method_code":null,
+         "course_number":"3312",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":2,
+         "subject_code":"CS",
+         "waitlist_avail":10,
+         "seats_avail":0,
+         "class_status_code":"A",
+         "seats_capacity":50,
+         "campus_code":"A",
+         "catalog_credit_hour_high":null,
+         "meeting_type_code":"A",
+         "waitlist_capacity":10
+      },
+      {
+         "long_course_title":null,
+         "course_attributes":[
+            {
+               "description":"Tech Elect CS, Engr, &Sciences",
+               "course_attribute_code":"TCES"
+            }
+         ],
+         "catalog_is_continuing_edu_unit":"N",
+         "meeting_times":[
+            {
+               "end_date":"2016-12-15",
+               "days":"TR",
+               "begin_time":"0935",
+               "end_time":"1055",
+               "building_description":"Skiles",
+               "begin_date":"2016-08-22",
+               "meeting_type_code":"A",
+               "meeting_type":"CLAS",
+               "room":"202",
+               "building_code":"002"
+            }
+         ],
+         "class_grading_type_desc":"Letter Grade",
+         "class_grading_type_code":"L",
+         "term_code":"201608",
+         "class_credit_hours":null,
+         "class_registration_start_date":null,
+         "course_title":"Probability & Statistics",
+         "description":"MATH, DMTH, CS, BINF major restricted until Apr 8 at noon. ",
+         "crn":"80730",
+         "instructors":[
+            {
+               "name":"Subramanian, Sneha Dey",
+               "is_primary":true,
+               "pidm":3105877
+            }
+         ],
+         "section_number":"J",
+         "catalog_credit_hour_ind":null,
+         "instructional_method_code":null,
+         "course_number":"3215",
+         "class_registration_end_date":null,
+         "part_of_term_code":"1",
+         "catalog_credit_hour_low":3,
+         "subject_code":"MATH",
+         "waitlist_avail":50,
+         "seats_avail":0,
+         "class_status_code":"A",
+         "seats_capacity":63,
+         "campus_code":"A",
+         "catalog_credit_hour_high":null,
+         "meeting_type_code":"A",
+         "waitlist_capacity":50
+      }
+   ],
+   null
+]0
