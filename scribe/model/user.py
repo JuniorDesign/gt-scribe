@@ -18,7 +18,15 @@ class User(BaseModel):
     approved = db.Column(db.Boolean)
     #Relationship A : 1 to many relationship between the user and matches tables
     #using the noterequestor's id, we find the notetakers matched
-    matches = db.relationship('Matches', backref='User', lazy='dynamic')
+
+    #creates a collection of matches where the user in question is the notetaker
+    #ie if you're a notetaker and you have 5 matches, then this will have those 5 match rows w/ this notetaker
+    taker_matches = db.relationship('Matches', foreign_keys="Matches.notetaker_id")
+    
+    #creates a collection of matches where the user in question is the requester
+    #ie if you're a requester and you have 5 notetakers for 5 diff classes, then this will have those 5 match rows w/ those notetakers
+    requester_matches = db.relationship('Matches', foreign_keys="Matches.noterequester_id")
+
     #Relationship B : 1 to many relationship between the user and enrollment tables
     enrollment = db.relationship('Enrollment', backref='User', lazy='dynamic')
     #__table_args__ = (db.UniqueConstraint("username", "id", name = "unique_username_id"),)

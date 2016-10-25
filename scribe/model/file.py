@@ -9,8 +9,7 @@ class File(BaseModel):
     file_id = db.Column(db.String(256), primary_key=True, nullable=False)
     file_name = db.Column(db.String(256), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False)
-    notetaker_id = db.Column(db.String(50), db.ForeignKey('matches.notetaker_id'), nullable=False)
-    course_id = db.Column(db.String(50), db.ForeignKey('matches.course_id'), nullable=False)
+    matches = db.relationship("Matches", secondary = "file_match") #secondary defines how to do the join
 
     def __init__(self, file_id, file_name, timestamp, notetaker_id, course_id):
     	self.file_id = file_id
