@@ -14,6 +14,11 @@ class User(BaseModel):
     last_name = db.Column(db.String(50), nullable=False)
     type = db.Column(db.Enum("ADMIN", "REQUESTER", "TAKER"), nullable=False)
     approved = db.Column(db.Boolean)
+    #Relationship A : 1 to many relationship between the user and matches tables
+    #using the noterequestor's id, we find the notetakers matched
+    #matches = db.relationship('matches', backref='user', lazy='dynamic')
+    #Relationship B : 1 to many relationship between the user and enrollment tables
+    #enrollment = db.relationship('enrollment', backref='user', lazy='dynamic')
     #__table_args__ = (db.UniqueConstraint("username", "id", name = "unique_username_id"),)
 
 
@@ -24,4 +29,5 @@ class User(BaseModel):
         self.last_name = last_name
         self.type = type
         self.approved = approved
+        print("user created")
 

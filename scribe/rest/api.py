@@ -32,11 +32,13 @@ class UserRegistration(Resource):
 		args = self.reqparse.parse_args()
 		#Taking the information from the registration form and assinging it to Python variables
 		username = args['username']
+		print("username is " + str(username))
 		password = args['password']
 		firstName = args['firstName']
 		lastName = args['lastName']
 		approved = True #approve users by default at this point
-
+		print("approved " + str(password) + " " + str(firstName) + " " + str(lastName) + " " + str(approved))
+		
 		if args['type'] == "admin":
 			accountType = "ADMIN"
 		elif args['type'] == "requester":
@@ -47,10 +49,12 @@ class UserRegistration(Resource):
 			return {"error": "Account type is missing"}, 400
 
 		userRepository = UserRepository()
+		print("user repository reached")
 		if userRepository.user_exists(username):
 			return{"error": "An account with this username already exists"}, 400
 
 		newUser = User(username, password, firstName, lastName, accountType, approved)
+		print("new user created")
 		userRepository.add_or_update(newUser)
 		userRepository.save_changes()
 		print("user has been added to the db!")

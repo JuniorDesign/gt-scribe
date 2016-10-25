@@ -41,3 +41,29 @@ class UserRepository(BaseRepository):
         def get_users_by_account_type(self, accountType):
             users = super(UserRepository, self).get(type = accountType)
             return users
+
+        # Helper method to grab users of a specific type and with certain approval
+        def get_users_by_account_type_and_approval(self, isApproved):
+            users = super(UserRepository, self).get(approved = isApproved)
+            return users
+
+        # Grabs the approved note takers
+        def get_approved_note_takers(self):
+            print("Entered the method to get approved note takers")
+            users = get_users_by_account_type_and_approval("TAKER", True)
+            return users
+
+        # Grabs the unapproved note takers
+        def get_unapproved_note_takers(self):
+            users = get_users_by_account_type_and_approval("TAKER", False)
+            return users
+
+        # Grabs the approved note requesters
+        def get_approved_note_requestors(self):
+            users = get_users_by_account_type_and_approval("REQUESTER", True)
+            return users
+
+        # Grabs the unapproved note requesters
+        def get_unapproved_note_requesters(self):
+            users = get_users_by_account_type_and_approval("REQUESTER", False)
+            return users

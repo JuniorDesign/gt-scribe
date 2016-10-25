@@ -42,6 +42,11 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+@app.route('/adminview')
+def admin_view():
+    userRepository = UserRepository()
+    users = userRepository.get_users_by_account_type_and_approval(True)
+    return render_template('admin-view.html', users=users)
 
 #example set up from my last project
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
