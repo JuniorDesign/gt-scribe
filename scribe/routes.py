@@ -45,7 +45,7 @@ def logout():
 @app.route('/adminview')
 def admin_view():
     userRepository = UserRepository()
-    users = userRepository.get_users_by_account_type_and_approval(True)
+    users = userRepository.get_users_by_account_type("TAKER")
     return render_template('admin-view.html', users=users)
 
 #example set up from my last project
