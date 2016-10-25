@@ -3,6 +3,7 @@ from scribe.repositories.baseRepository import BaseRepository
 
 class UserRepository(BaseRepository):
         def __init__(self):
+            print("user repo created")
             super(UserRepository, self).__init__(User)
 
         def add_or_update(self, entity):
@@ -35,7 +36,6 @@ class UserRepository(BaseRepository):
                 return user.type
             return None
 
-
         # Grabs the collection of users based on their account type
         # accountType must be ADMIN, REQUESTER, or TAKER
         def get_users_by_account_type(self, accountType):
@@ -43,8 +43,8 @@ class UserRepository(BaseRepository):
             return users
 
         # Helper method to grab users of a specific type and with certain approval
-        def get_users_by_account_type_and_approval(self, isApproved):
-            users = super(UserRepository, self).get(approved = isApproved)
+        def get_users_by_account_type_and_approval(self, accountType, isApproved):
+            users = super(UserRepository, self).get(type = accountType)
             return users
 
         # Grabs the approved note takers

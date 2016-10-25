@@ -4,11 +4,13 @@
 
 from scribe import db
 from scribe.model.base import BaseModel
+from scribe.model.matches import Matches
+from scribe.model.enrollment import Enrollment
 
 class User(BaseModel):
     __tablename__ = "user"
     #id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), primary_key=True, nullable=False)
+    username = db.Column(db.String(50), db.ForeignKey('user.username'), primary_key=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
@@ -16,13 +18,14 @@ class User(BaseModel):
     approved = db.Column(db.Boolean)
     #Relationship A : 1 to many relationship between the user and matches tables
     #using the noterequestor's id, we find the notetakers matched
-    #matches = db.relationship('matches', backref='user', lazy='dynamic')
+    matches = db.relationship('Matches', backref='User', lazy='dynamic')
     #Relationship B : 1 to many relationship between the user and enrollment tables
-    #enrollment = db.relationship('enrollment', backref='user', lazy='dynamic')
+    enrollment = db.relationship('Enrollment', backref='User', lazy='dynamic')
     #__table_args__ = (db.UniqueConstraint("username", "id", name = "unique_username_id"),)
 
 
     def __init__(self, username, password, first_name, last_name, type, approved):
+        print("user.py")
         self.username = username
         self.password = password
         self.first_name = first_name

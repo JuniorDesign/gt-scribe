@@ -13,6 +13,7 @@ class Course(BaseModel):
     crn = db.Column(db.String(50), nullable=False)
 
     def __init__(self, course_id, subject, course_number, section, crn):
+        print("course.py")
         self.course_id = course_id
         self.subject = subject
         self.course_number = course_number

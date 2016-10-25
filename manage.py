@@ -4,6 +4,10 @@ import argparse
 from scribe import db
 from scribe.model.base import BaseModel
 from scribe.model.user import User
+from scribe.model.course import Course
+from scribe.model.file import File 
+from scribe.model.enrollment import Enrollment
+from scribe.model.matches import Matches
 #if you create a new model, import it here
 
 
