@@ -6,6 +6,9 @@ from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
 from werkzeug.datastructures import FileStorage
 import boto3
+import random
+import string
+
 
 class HelloWorld(Resource):
 	def get(self): #example of api
@@ -84,7 +87,6 @@ class UserLogin(Resource):
 class TakerNotes(Resource):
 
 	def __init__(self):
-		print("HIT FILE API ENDPOINT")
 		self.reqparse = RequestParser()
 		self.reqparse.add_argument('file', location='files', type=FileStorage, required=True)
 		super(TakerNotes, self).__init__()
@@ -93,16 +95,7 @@ class TakerNotes(Resource):
 		args = self.reqparse.parse_args()
 		file = args['file']
 		filename = file.filename
-		print("FILE: ")
-		print(file)
-		print(file.filename)
-		s3 = boto3.client(
-	    	's3',
-	    	aws_access_key_id='',
-	    	aws_secret_access_key=''
-		)
-		print(s3)
 		
-		
-
-
+		s3 = boto3.resource('s3')
+		key = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(20)) + '__' + filename
+		s3.Bucket('gt-scribe').put_object(Key=key, Body=file)		
