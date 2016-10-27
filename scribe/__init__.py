@@ -24,8 +24,8 @@ app.secret_key = 'foobar'
 app.session_interface = JSONSecureCookieSessionInterface()
 
 S3_LOCATION = 'http://gt-scribe.s3.amazonaws.com'
-S3_KEY = 'AKIAIEK73EFOV4S6FFGQ'
-S3_SECRET = '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'
+S3_KEY = 'key'
+S3_SECRET = 'secret_key'
 S3_UPLOAD_DIRECTORY = ''
 S3_BUCKET = 'gt-scribe'
 

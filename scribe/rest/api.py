@@ -98,8 +98,8 @@ class TakerNotes(Resource):
 		print(file.filename)
 		s3 = boto3.client(
 	    	's3',
-	    	aws_access_key_id='AKIAIEK73EFOV4S6FFGQ',
-	    	aws_secret_access_key='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'
+	    	aws_access_key_id='',
+	    	aws_secret_access_key=''
 		)
 		print(s3)
 		
