@@ -13,9 +13,12 @@
 {% block content %}
     <main>
         <h2>Please upload notes below.</h2>
-        <label class="custom-file">
-            <input type="file" id="file" class="custom-file-input">
-            <span class="custom-file-control"></span>
-        </label>
+        <form class="form-group" enctype="multipart/form-data">
+            <legend>Upload Notes</legend>
+            <input class="file-upload" data-icon="false" type="file">
+            <button type="button" class="btn btn-primary upload-btn">Upload</button>
+        </form>
     </main>
+
+<script src="/static/scripts/file-upload.js"></script>
 {% endblock %}

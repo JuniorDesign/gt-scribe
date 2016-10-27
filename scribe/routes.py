@@ -24,6 +24,12 @@ def index():
         return render_template(g.user['type'] + '.html')
     return render_template('index.html')
 
+@app.route('/taker/notes')
+def notes():
+    if g.user:
+        return render_template('notes.html')
+    return redirect(url_for('index'))
+
 @app.route('/register')
 def register_user():
     return render_template('register.html')

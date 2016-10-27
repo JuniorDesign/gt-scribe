@@ -1,5 +1,5 @@
 $(function() {
-	$('#file-upload').change(function(e) {
+	$('.file-upload').change(function(e) {
 		var files = e.target.files || e.dataTransfer.files;
       	var file = files[0];
       	var formData = new FormData();
@@ -10,7 +10,7 @@ $(function() {
     		console.log(pair[0]+ ', ' + pair[1]); 
 		}
       	
-      	$('#upload-btn').click(function() {
+      	$('.upload-btn').click(function() {
       		console.log('request sent!');
       		$.ajax({
 	          contentType: false,
