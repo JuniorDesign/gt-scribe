@@ -5,7 +5,7 @@ from flask_restful.reqparse import RequestParser
 from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
 from werkzeug.datastructures import FileStorage
-
+import boto3
 
 class HelloWorld(Resource):
 	def get(self): #example of api
@@ -82,6 +82,7 @@ class UserLogin(Resource):
 		return {"error": "This username and password combination is not valid."}, 401
 
 class TakerNotes(Resource):
+
 	def __init__(self):
 		print("HIT FILE API ENDPOINT")
 		self.reqparse = RequestParser()
@@ -91,5 +92,17 @@ class TakerNotes(Resource):
 	def post(self):
 		args = self.reqparse.parse_args()
 		file = args['file']
+		filename = file.filename
 		print("FILE: ")
 		print(file)
+		print(file.filename)
+		s3 = boto3.client(
+	    	's3',
+	    	aws_access_key_id='AKIAIEK73EFOV4S6FFGQ',
+	    	aws_secret_access_key='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'
+		)
+		print(s3)
+		
+		
+
+
