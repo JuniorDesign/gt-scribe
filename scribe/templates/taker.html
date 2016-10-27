@@ -18,6 +18,13 @@
             <input type="checkbox" name="class" value="CS 3750">CS 3750<br>
             <input type="checkbox" name="class" value="CS 4460">CS 4460<br>
         </form>
-        <button type="button">Submit</button>
+        <a href="notes"><button type="button">Submit</button></a>
+        <form class="form-group" enctype="multipart/form-data">
+            <legend>Upload Notes</legend>
+            <input id="file-upload" data-icon="false" type="file">
+            <button id="upload-btn" type="button">Upload</button>
+        </div>
     </main>
+
+<script src="/static/scripts/file-upload.js"></script>
 {% endblock %}

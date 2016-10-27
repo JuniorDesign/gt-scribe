@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Admin{% endblock %}
+{% block head %}
+    {{ super() }}
+    <!--link href="/static/styles/index.css" rel="stylesheet"-->
+{% endblock %}
+
+{% block username %}Notetaker{% endblock %}
+{% block bodyHeader %}
+    {{ super() }}
+        
+{% endblock %}
+{% block content %}
+    <main>
+        <h2>Please upload notes below.</h2>
+        <label class="custom-file">
+            <input type="file" id="file" class="custom-file-input">
+            <span class="custom-file-control"></span>
+        </label>
+    </main>
+{% endblock %}

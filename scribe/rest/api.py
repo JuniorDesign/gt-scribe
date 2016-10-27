@@ -6,7 +6,6 @@ from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
 
 
-
 class HelloWorld(Resource):
 	def get(self): #example of api
 		return "hello world!"
