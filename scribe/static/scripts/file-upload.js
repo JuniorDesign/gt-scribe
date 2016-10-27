@@ -14,7 +14,8 @@ $(function() {
       		console.log('request sent!');
       		$.ajax({
 	          contentType: false,
-	          url: '/api/login',
+	          processData: false,
+	          url: '/api/taker/notes',
 	          method: 'POST',
 	          data: formData,
 	          async: true

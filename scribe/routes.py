@@ -53,5 +53,6 @@ def logout():
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
+api.add_resource(scribe_api.TakerNotes, '/api/taker/notes')
 #'/api/reservation/<string:reservation_id>') #example of using string params
 

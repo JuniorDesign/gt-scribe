@@ -4,6 +4,7 @@ from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
+from werkzeug.datastructures import FileStorage
 
 
 class HelloWorld(Resource):
@@ -79,3 +80,16 @@ class UserLogin(Resource):
 				"accountType": accountType
 				}
 		return {"error": "This username and password combination is not valid."}, 401
+
+class TakerNotes(Resource):
+	def __init__(self):
+		print("HIT FILE API ENDPOINT")
+		self.reqparse = RequestParser()
+		self.reqparse.add_argument('file', location='files', type=FileStorage, required=True)
+		super(TakerNotes, self).__init__()
+
+	def post(self):
+		args = self.reqparse.parse_args()
+		file = args['file']
+		print("FILE: ")
+		print(file)
