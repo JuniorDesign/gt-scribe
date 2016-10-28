@@ -24,6 +24,12 @@ def index():
         return render_template(g.user['type'] + '.html')
     return render_template('index.html')
 
+@app.route('/taker/notes')
+def notes():
+    if g.user:
+        return render_template('notes.html')
+    return redirect(url_for('index'))
+
 @app.route('/register')
 def register_user():
     return render_template('register.html')
@@ -47,5 +53,6 @@ def logout():
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
+api.add_resource(scribe_api.TakerNotes, '/api/taker/notes')
 #'/api/reservation/<string:reservation_id>') #example of using string params
 
