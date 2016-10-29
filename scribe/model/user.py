@@ -33,12 +33,10 @@ class User(BaseModel):
 
 
     def __init__(self, username, password, first_name, last_name, type, approved):
-        print("user.py")
         self.username = username
         self.password = password
         self.first_name = first_name
         self.last_name = last_name
         self.type = type
         self.approved = approved
-        print("user created")
 
