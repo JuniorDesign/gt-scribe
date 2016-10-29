@@ -13,10 +13,14 @@ api = Api(app)
 def before_request():
     g.user = None
     if 'username' in session:
-        g.user = {
-            'name': session.get('username'),
-            'type': UserRepository().get_account_type(session.get('username')).lower()
-        }
+        dbUser = UserRepository().get_account_type(session.get('username'))
+        if dbUser is not None: #old cookie may exist but db may not be up-to-date
+            g.user = {
+                'name': session.get('username'),
+                'type': dbUser.lower()
+            }
+        else:
+            session.clear()
 
 @app.route('/')
 def index():
