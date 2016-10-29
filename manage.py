@@ -18,8 +18,6 @@ from scribe.repositories.userRepository import UserRepository
 #python3 manage.py create_db
 def create_db():
     db.create_all()
-    populate_courses()
-    populate_admins()
 
 #run this command everytime you create a new model
 #python3 manage.py drop_db
@@ -28,31 +26,38 @@ def drop_db():
 
 #called in create_db, fills the db with fall 2016 courses
 def populate_courses():
-    with open('courses.json') as courses_json:
-        courses = json.loads(courses_json.read())
-    courseRepository = CourseRepository()
-    for course in courses:
-        if 'sections' in course: #courses without this aren't actually offered, they lack section number and crn
-            for section in course['sections']:
-                subject = course['school'] #CS, MATH, etc
-                if 'number' in course:
-                    course_number = course['number'] #1331, 1332, etc
-                else: #we should never hit this with the above checks, but just in case
-                    course_number = '0000'
-                section_id = section['section_id']
-                crn = section['crn'] 
-                newCourse = Course(crn, subject, course_number, section_id, crn)
-                #lets consider dropping the course_id and only using crn, since crns are unique
-                courseRepository.add_or_update(newCourse)
-    courseRepository.save_changes()
+    try:
+        with open('courses.json') as courses_json:
+            courses = json.loads(courses_json.read())
+        courseRepository = CourseRepository()
+        for course in courses:
+            if 'sections' in course: #courses without this aren't actually offered, they lack section number and crn
+                for section in course['sections']:
+                    subject = course['school'] #CS, MATH, etc
+                    if 'number' in course:
+                        course_number = course['number'] #1331, 1332, etc
+                    else: #we should never hit this with the above checks, but just in case
+                        course_number = '0000'
+                    section_id = section['section_id']
+                    crn = section['crn'] 
+                    newCourse = Course(crn, subject, course_number, section_id, crn)
+                    #lets consider dropping the course_id and only using crn, since crns are unique
+                    courseRepository.add_or_update(newCourse)
+        courseRepository.save_changes()
+        print("Courses have been successfully added!")
+    except:
+        print("The database has already been populated with courses.")
 
 #makes default admin accounts, called in create_db
 def populate_admins():
-    print ("I tried to admin")
-    #userRepository = UserRepository()
-    #newAdmin = User('admin', '123', 'First Name', 'Last Name', 'ADMIN', True)
-    #userRepository.add_or_update(newAdmin)
-    #userRepository.save_changes()
+    try:
+        userRepository = UserRepository()
+        newAdmin = User('admin', '123', 'First Name', 'Last Name', 'ADMIN', True)
+        userRepository.add_or_update(newAdmin)
+        userRepository.save_changes()
+        print("All preset users added into database!")
+    except:
+        print("The database has already been populated with the preset users.")
 
         
 
@@ -72,6 +77,12 @@ def main():
     elif args.command == 'drop_db':
         drop_db()
         print("Database has been dropped and deleted!")
+
+    elif args.command == 'populate_courses':
+        populate_courses()    
+
+    elif args.command == 'populate_admins':
+        populate_admins()
         
     else:
         raise Exception('Invalid command')
