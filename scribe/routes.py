@@ -43,7 +43,7 @@ def loggedin():
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
-    session.pop('username', None)
+    session.pop('username', None) #maybe we can do session.clear() instead?
     return redirect(url_for('index'))
 
 @app.route('/adminview')

@@ -9,14 +9,7 @@ from scribe.repositories.userRepository import UserRepository
 
 class HelloWorld(Resource):
 	def get(self): #example of api
-		return "hello world!"
-
-class GetPassword(Resource):
-	def __init__(self):
-		self.userRepository = UserRepository()
-	def get(self):
-		user = self.userRepository.find(1);
-		return user.as_dict();
+		return "Hello world!"
 
 class UserRegistration(Resource):
 	def __init__(self):
