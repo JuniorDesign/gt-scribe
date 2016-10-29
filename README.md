@@ -10,7 +10,7 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
 1. Download the project and navigate to the top level folder.
 2. Ensure you have Python3 [here](https://www.python.org/downloads/) It can be downloaded directly from the website.
-3. Ensure you have Flask; you can use Pip3 to install it. `p3ip install Flask` and flask_restful, `pip3 install flask_restful`, `pip3 install flask-SQLAlchemy` (and anything else it asks you to install.)
+3. Ensure you have Flask; you can use Pip3 to install it. `p3ip install Flask` and flask_restful, `pip3 install flask_restful`, `pip3 install flask-SQLAlchemy`, `pip3 install boto3` (and anything else it asks you to install.)
 4. Run `python3 serve.py`
 5. If it prompts you about accepting any incoming connections, be sure to allow it.
 6. In your Internet browser, navigate to `localhost:5000` to see the rendered index page.
