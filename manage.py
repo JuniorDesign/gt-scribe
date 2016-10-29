@@ -43,7 +43,7 @@ def populate_courses():
         section = 'A' #sections are stored inconveniently, so for testing real quick, just use this
         crn = str(counter)+subject+course_number+section #crn is located inside the sections array, so use this for quick testing
         print("This is course crn that I made up: "+crn)
-        newCourse = Course(crn, subject, course_number, 'A', crn)
+        newCourse = Course(crn, subject, course_number, section, crn)
         courseRepository.add_or_update(newCourse)
     
     courseRepository.save_changes()

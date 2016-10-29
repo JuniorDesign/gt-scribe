@@ -16,4 +16,5 @@ class Course(BaseModel):
         self.course_id = course_id
         self.subject = subject
         self.course_number = course_number
+        self.section = section
         self.crn = crn
