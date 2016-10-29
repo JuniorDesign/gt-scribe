@@ -4,6 +4,7 @@ from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
+from scribe.repositories.courseRepository import CourseRepository
 
 
 
@@ -77,3 +78,28 @@ class UserLogin(Resource):
 				"accountType": accountType
 				}
 		return {"error": "This username and password combination is not valid."}, 401
+
+class CourseSubject(Resource):
+	def get(self, course_subject):
+		self.course_subject = course_subject
+		courseRepository = CourseRepository()
+		courses = courseRepository.get(subject = course_subject)
+		return [course.as_dict() for course in courses]
+
+class CourseNumber(Resource):
+	def get(self, course_subject, course_number):
+		self.course_subject = course_subject
+		self.course_number = course_number
+		courseRepository = CourseRepository()
+		courses = courseRepository.get(subject = course_subject, course_number = course_number)
+		return [course.as_dict() for course in courses]
+
+#we may not actually use this one
+class CourseSection(Resource):
+	def get(self, course_subject, course_number, course_section):
+		self.course_subject = course_subject
+		self.course_number = course_number
+		self.course_section = course_section
+		courseRepository = CourseRepository()
+		courses = courseRepository.get(subject = course_subject, course_number = course_number, section = course_section)
+		return [course.as_dict() for course in courses]

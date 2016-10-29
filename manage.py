@@ -48,8 +48,8 @@ def populate_courses():
     except:
         print("The database has already been populated with courses.")
 
-#makes default admin accounts, called in create_db
-def populate_admins():
+#makes default user accounts, called in create_db
+def populate_users():
     try:
         userRepository = UserRepository()
         newAdmin = User('admin', '123', 'First Name', 'Last Name', 'ADMIN', True)
@@ -81,8 +81,8 @@ def main():
     elif args.command == 'populate_courses':
         populate_courses()    
 
-    elif args.command == 'populate_admins':
-        populate_admins()
+    elif args.command == 'populate_users':
+        populate_users()
         
     else:
         raise Exception('Invalid command')
