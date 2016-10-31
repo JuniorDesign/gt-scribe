@@ -1,0 +1,50 @@
+/*Select courses*/
+#selectClass{
+	height: 500px;
+	width: 80%;
+	margin: auto;
+}
+
+#selectClass button{
+	float:right;
+}
+
+.courseSubject{
+	float:left;
+	display: block;
+	width: 30%;
+	height: 100%;
+	background-color: red;
+	overflow: scroll;
+	padding: 5px;
+	margin-right: 3%;
+}
+
+.courseNumber{
+	float:left;
+	width: 30%;
+	height: 100%;
+	display: block;
+	background-color: orange;
+	overflow: scroll;
+	padding: 5px;
+	margin-right: 3%;
+}
+
+.courseSection{
+	float:left;
+	width: 30%;
+	height: 100%;
+	display: block;
+	background-color: yellow;
+	overflow: scroll;
+	padding: 5px;
+}
+
+.mySchedule{
+	width: 100%;
+	height: 200px;
+	background-color: green;
+	display: block;
+	clear:both;
+}
