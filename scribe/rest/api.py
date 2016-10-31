@@ -7,7 +7,7 @@ from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 
 from werkzeug.datastructures import FileStorage
-import boto3
+#import boto3
 import random
 import string
 
@@ -123,4 +123,3 @@ class TakerNotes(Resource):
 		s3 = boto3.resource('s3')
 		key = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(20)) + '__' + filename
 		s3.Bucket('gt-scribe').put_object(Key=key, Body=file)		
->>>>>>> ea19273db048eba391ec1c5b43842c04a5cc28a5
