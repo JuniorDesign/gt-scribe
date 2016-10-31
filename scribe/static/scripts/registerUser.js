@@ -24,9 +24,11 @@ $("#registerUserForm").submit(function(){
      var firstName= $("#firstNameInput").val();
      var lastName = $("#lastNameInput").val();
      var password = $("#passwordInput").val();
+     var email = $("#emailInput").val();
      var body = {
           "username": username,
           "password": password,
+          "email": email,
           "firstName": firstName,
           "lastName": lastName,
           "type": selectedType

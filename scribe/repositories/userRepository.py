@@ -44,7 +44,7 @@ class UserRepository(BaseRepository):
 
         # Helper method to grab users of a specific type and with certain approval
         def get_users_by_account_type_and_approval(self, accountType, isApproved):
-            users = super(UserRepository, self).get(type = accountType)
+            users = super(UserRepository, self).get(type = accountType, approved = isApproved)
             return users
 
         # Grabs the approved note takers

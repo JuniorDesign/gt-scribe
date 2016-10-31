@@ -21,6 +21,7 @@ class UserRegistration(Resource):
 		self.reqparse = RequestParser() #this parses the JSON files that get posted via ajax
 		self.reqparse.add_argument('username', type=str, required= True, help="GaTech Username is required to register", location='json')
 		self.reqparse.add_argument('password', type=str, required= True, help="Password is required to register", location='json')
+		self.reqparse.add_argument('email', type=str, required= True, help="Email is required to register", location='json')
 		self.reqparse.add_argument('firstName', type=str, required= True, help="First name is required to register", location='json')
 		self.reqparse.add_argument('lastName', type=str, required= True, help="Last name is required to register", location='json')
 		self.reqparse.add_argument('type', type=str, required= True, help="Type is required to register", location='json')
@@ -32,6 +33,7 @@ class UserRegistration(Resource):
 		username = args['username']
 		print("username is " + str(username))
 		password = args['password']
+		email = args['email']
 		firstName = args['firstName']
 		lastName = args['lastName']
 		approved = True #approve users by default at this point
@@ -51,7 +53,7 @@ class UserRegistration(Resource):
 		if userRepository.user_exists(username):
 			return{"error": "An account with this username already exists"}, 400
 
-		newUser = User(username, password, firstName, lastName, accountType, approved)
+		newUser = User(username, password, email, firstName, lastName, accountType, approved)
 		print("new user created")
 		userRepository.add_or_update(newUser)
 		userRepository.save_changes()

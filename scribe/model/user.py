@@ -12,6 +12,7 @@ class User(BaseModel):
     #id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), db.ForeignKey('user.username'), primary_key=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(256), nullable=False)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     type = db.Column(db.Enum("ADMIN", "REQUESTER", "TAKER"), nullable=False)
@@ -32,9 +33,10 @@ class User(BaseModel):
     #__table_args__ = (db.UniqueConstraint("username", "id", name = "unique_username_id"),)
 
 
-    def __init__(self, username, password, first_name, last_name, type, approved):
+    def __init__(self, username, password, email, first_name, last_name, type, approved):
         self.username = username
         self.password = password
+        self.email = email
         self.first_name = first_name
         self.last_name = last_name
         self.type = type
