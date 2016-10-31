@@ -7,7 +7,7 @@ from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 
 from werkzeug.datastructures import FileStorage
-#import boto3
+import boto3
 import random
 import string
 
