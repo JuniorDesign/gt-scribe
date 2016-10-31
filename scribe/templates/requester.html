@@ -2,21 +2,40 @@
 {% block title %}Note-Requester{% endblock %}
 {% block head %}
     {{ super() }}
+    <link href="/static/styles/selectCourses.css" rel="stylesheet">
 {% endblock %}
 
-{% block username %}Note-Requester{% endblock %}
+{% block username %}Note Requester{% endblock %}
 {% block bodyHeader %}
     {{ super() }}
     
 {% endblock %}
 {% block content %}
-<main>Please select which classes you would like to request notes for from the list below.
-    <form action="">
-    <input type="checkbox" name="class" value="CS 2200">CS 2200<br>
-    <input type="checkbox" name="class" value="MATH 3012">MATH 3012<br>
-    <input type="checkbox" name="class" value="CS 3750">CS 3750<br>
-    <input type="checkbox" name="class" value="CS 4460">CS 4460<br>
-    </form>
-    <button type="button">Submit</button>
+<main>
+	For this page, we need to allow the users the option to select their courses from the database and save them into their own profile <br />
+	<ol>
+		<li>Pick course subject (CS, MATH, etc). Requires a selection box. Onclick, you send an ajax request to the endpoint that should update the next selection box.</li>
+		<li>Pick course number within this subject (1332, 3012, etc). Has a selection box that is populated by the ajax request from step 1. Clicking this will send another ajax request that will populate the sections box next. </li>
+		<li>Pick the section number within this course. Picking this section number should allow you to then click 'add this course' that will add this course into the user's database. This click should also start the matching portion in the backend, looking for notetakers and requesters who share this course.</li>
+		<li>There should also be a box showing all the user's currently selected courses they've already added. Each course should also have the option to delete the course.</li>
+	</ol>
+	<br />
+	<form id="selectClass">
+		<div class="courseSubject">
+			Pull course subject from db here
+		</div>
+		<div class="courseNumber">
+			Pull associated course number for a course section from db here
+		</div>
+		<div class="courseSection">
+			Pull associated sections for that course number and section from the db here
+		</div>
+		<button type="submit">Add course to my schedule</button>
+	</form>
+	<br />
+	<div class="mySchedule">
+		Add classes I pick here
+	</div>
 </main>
+
 {% endblock %}
