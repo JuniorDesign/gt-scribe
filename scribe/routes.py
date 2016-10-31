@@ -13,10 +13,14 @@ api = Api(app)
 def before_request():
     g.user = None
     if 'username' in session:
-        g.user = {
-            'name': session.get('username'),
-            'type': UserRepository().get_account_type(session.get('username')).lower()
-        }
+        dbUser = UserRepository().get_account_type(session.get('username'))
+        if dbUser is not None: #old cookie may exist but db may not be up-to-date
+            g.user = {
+                'name': session.get('username'),
+                'type': dbUser.lower()
+            }
+        else:
+            session.clear()
 
 @app.route('/')
 def index():
@@ -45,14 +49,22 @@ def loggedin():
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
-    session.pop('username', None)
+    session.pop('username', None) #maybe we can do session.clear() instead?
     return redirect(url_for('index'))
 
+@app.route('/adminview')
+def admin_view():
+    userRepository = UserRepository()
+    users = userRepository.get_users_by_account_type("TAKER")
+    return render_template('admin-view.html', users=users)
 
 #example set up from my last project
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
+api.add_resource(scribe_api.CourseSubject, '/api/courses/<course_subject>')
+api.add_resource(scribe_api.CourseNumber, '/api/courses/<course_subject>/<course_number>')
+api.add_resource(scribe_api.CourseSection, '/api/courses/<course_subject>/<course_number>/<course_section>') #may not actually use this one
 api.add_resource(scribe_api.TakerNotes, '/api/taker/notes')
 #'/api/reservation/<string:reservation_id>') #example of using string params
 

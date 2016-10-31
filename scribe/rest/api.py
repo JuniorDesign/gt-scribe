@@ -4,6 +4,8 @@ from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
+from scribe.repositories.courseRepository import CourseRepository
+
 from werkzeug.datastructures import FileStorage
 import boto3
 import random
@@ -12,14 +14,7 @@ import string
 
 class HelloWorld(Resource):
 	def get(self): #example of api
-		return "hello world!"
-
-class GetPassword(Resource):
-	def __init__(self):
-		self.userRepository = UserRepository()
-	def get(self):
-		user = self.userRepository.find(1);
-		return user.as_dict();
+		return "Hello world!"
 
 class UserRegistration(Resource):
 	def __init__(self):
@@ -35,11 +30,13 @@ class UserRegistration(Resource):
 		args = self.reqparse.parse_args()
 		#Taking the information from the registration form and assinging it to Python variables
 		username = args['username']
+		print("username is " + str(username))
 		password = args['password']
 		firstName = args['firstName']
 		lastName = args['lastName']
 		approved = True #approve users by default at this point
-
+		print("approved " + str(password) + " " + str(firstName) + " " + str(lastName) + " " + str(approved))
+		
 		if args['type'] == "admin":
 			accountType = "ADMIN"
 		elif args['type'] == "requester":
@@ -50,10 +47,12 @@ class UserRegistration(Resource):
 			return {"error": "Account type is missing"}, 400
 
 		userRepository = UserRepository()
+		print("user repository reached")
 		if userRepository.user_exists(username):
 			return{"error": "An account with this username already exists"}, 400
 
 		newUser = User(username, password, firstName, lastName, accountType, approved)
+		print("new user created")
 		userRepository.add_or_update(newUser)
 		userRepository.save_changes()
 		print("user has been added to the db!")
@@ -83,6 +82,31 @@ class UserLogin(Resource):
 				"accountType": accountType
 				}
 		return {"error": "This username and password combination is not valid."}, 401
+
+class CourseSubject(Resource):
+	def get(self, course_subject):
+		self.course_subject = course_subject
+		courseRepository = CourseRepository()
+		courses = courseRepository.get(subject = course_subject)
+		return [course.as_dict() for course in courses]
+
+class CourseNumber(Resource):
+	def get(self, course_subject, course_number):
+		self.course_subject = course_subject
+		self.course_number = course_number
+		courseRepository = CourseRepository()
+		courses = courseRepository.get(subject = course_subject, course_number = course_number)
+		return [course.as_dict() for course in courses]
+
+#we may not actually use this one
+class CourseSection(Resource):
+	def get(self, course_subject, course_number, course_section):
+		self.course_subject = course_subject
+		self.course_number = course_number
+		self.course_section = course_section
+		courseRepository = CourseRepository()
+		courses = courseRepository.get(subject = course_subject, course_number = course_number, section = course_section)
+		return [course.as_dict() for course in courses]
 
 class TakerNotes(Resource):
 

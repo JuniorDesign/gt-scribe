@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}Admin View{% endblock %}
+{% block head %}
+  {{ super() }}
+  <!--link href="/static/styles/index.css" rel="stylesheet"-->
+{% endblock %}
+
+{% block username %}Admin View{% endblock %}
+{% block bodyHeader %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+<main>
+  {% for user in users %}
+    <div>{{user["username"]}}</div>
+  {% endfor %}
+</main>
+{% endblock %}
