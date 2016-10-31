@@ -6,6 +6,10 @@ from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 
+from werkzeug.datastructures import FileStorage
+import boto3
+import random
+import string
 
 
 class HelloWorld(Resource):
@@ -103,3 +107,20 @@ class CourseSection(Resource):
 		courseRepository = CourseRepository()
 		courses = courseRepository.get(subject = course_subject, course_number = course_number, section = course_section)
 		return [course.as_dict() for course in courses]
+
+class TakerNotes(Resource):
+
+	def __init__(self):
+		self.reqparse = RequestParser()
+		self.reqparse.add_argument('file', location='files', type=FileStorage, required=True)
+		super(TakerNotes, self).__init__()
+
+	def post(self):
+		args = self.reqparse.parse_args()
+		file = args['file']
+		filename = file.filename
+		
+		s3 = boto3.resource('s3')
+		key = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(20)) + '__' + filename
+		s3.Bucket('gt-scribe').put_object(Key=key, Body=file)		
+>>>>>>> ea19273db048eba391ec1c5b43842c04a5cc28a5

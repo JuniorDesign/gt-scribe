@@ -28,6 +28,12 @@ def index():
         return render_template(g.user['type'] + '.html')
     return render_template('index.html')
 
+@app.route('/taker/notes')
+def notes():
+    if g.user:
+        return render_template('notes.html')
+    return redirect(url_for('index'))
+
 @app.route('/register')
 def register_user():
     return render_template('register.html')
@@ -59,5 +65,6 @@ api.add_resource(scribe_api.UserLogin, '/api/login')
 api.add_resource(scribe_api.CourseSubject, '/api/courses/<course_subject>')
 api.add_resource(scribe_api.CourseNumber, '/api/courses/<course_subject>/<course_number>')
 api.add_resource(scribe_api.CourseSection, '/api/courses/<course_subject>/<course_number>/<course_section>') #may not actually use this one
+api.add_resource(scribe_api.TakerNotes, '/api/taker/notes')
 #'/api/reservation/<string:reservation_id>') #example of using string params
 
