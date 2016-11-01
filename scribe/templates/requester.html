@@ -22,7 +22,11 @@
 	<br />
 	<form id="selectClass">
 		<div class="courseSubject">
-			Pull course subject from db here
+			<ol>
+			{% for subjct in subjects %}
+			    <li class="subject" id="{{subjects[loop.index]}}">{{subjects[loop.index]}}</li>
+			{% endfor %}
+			</ol>
 		</div>
 		<div class="courseNumber">
 			Pull associated course number for a course section from db here

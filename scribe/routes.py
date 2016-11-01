@@ -2,6 +2,7 @@
 
 from scribe import app, db
 from scribe.repositories.userRepository import UserRepository
+from scribe.repositories.courseRepository import CourseRepository
 from scribe.rest import api as scribe_api
 
 from flask import g, redirect, render_template, session, url_for
@@ -25,7 +26,9 @@ def before_request():
 @app.route('/')
 def index():
     if g.user:
-        return render_template(g.user['type'] + '.html')
+        courseRepository = CourseRepository()
+        subjects = courseRepository.get_distinct_subjects()
+        return render_template(g.user['type'] + '.html', subjects=subjects)
     return render_template('index.html')
 
 @app.route('/taker/notes')
@@ -62,7 +65,7 @@ def admin_view():
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
-api.add_resource(scribe_api.CourseSubjectOnly, '/api/subjects')
+#api.add_resource(scribe_api.CourseSubjectOnly, '/api/subjects')
 api.add_resource(scribe_api.CourseNumbersBySubject, '/api/courses/<course_subject>')
 api.add_resource(scribe_api.CoursesSectionsByNumberSubject, '/api/courses/<course_subject>/<course_number>')
 api.add_resource(scribe_api.Course, '/api/courses/<course_subject>/<course_number>/<course_section>') #may not actually use this one
