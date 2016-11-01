@@ -53,7 +53,7 @@ def populate_courses():
 def populate_users():
     try:
         userRepository = UserRepository()
-        newAdmin = User('admin', '123', 'First Name', 'Last Name', 'ADMIN', True)
+        newAdmin = User('admin', '123', "gburdell@gatech.edu", 'First Name', 'Last Name', 'ADMIN', True)
         userRepository.add_or_update(newAdmin)
         userRepository.save_changes()
         print("All preset users added into database!")
