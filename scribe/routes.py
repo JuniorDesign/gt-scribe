@@ -62,9 +62,10 @@ def admin_view():
 api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making the api
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
-api.add_resource(scribe_api.CourseSubject, '/api/courses/<course_subject>')
-api.add_resource(scribe_api.CourseNumber, '/api/courses/<course_subject>/<course_number>')
-api.add_resource(scribe_api.CourseSection, '/api/courses/<course_subject>/<course_number>/<course_section>') #may not actually use this one
+api.add_resource(scribe_api.CourseSubjectOnly, '/api/subjects')
+api.add_resource(scribe_api.CourseNumbersBySubject, '/api/courses/<course_subject>')
+api.add_resource(scribe_api.CoursesSectionsByNumberSubject, '/api/courses/<course_subject>/<course_number>')
+api.add_resource(scribe_api.Course, '/api/courses/<course_subject>/<course_number>/<course_section>') #may not actually use this one
 api.add_resource(scribe_api.TakerNotes, '/api/taker/notes')
 #'/api/reservation/<string:reservation_id>') #example of using string params
 

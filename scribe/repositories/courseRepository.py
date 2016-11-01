@@ -7,3 +7,8 @@ class CourseRepository(BaseRepository):
 
         def add_or_update(self, entity):
             return super(CourseRepository, self).add_or_update(entity)
+
+        def get_distinct_subjects(self):
+        	distinctCourseSubjects = Course.query.group_by(Course.subject)
+        	print(distinctCourseSubjects)
+        	return  [course.subject for course in distinctCourseSubjects]
