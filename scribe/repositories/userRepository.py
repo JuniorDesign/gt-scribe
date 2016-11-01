@@ -3,7 +3,6 @@ from scribe.repositories.baseRepository import BaseRepository
 
 class UserRepository(BaseRepository):
         def __init__(self):
-            print("user repo created")
             super(UserRepository, self).__init__(User)
 
         def add_or_update(self, entity):
@@ -49,7 +48,6 @@ class UserRepository(BaseRepository):
 
         # Grabs the approved note takers
         def get_approved_note_takers(self):
-            print("Entered the method to get approved note takers")
             users = get_users_by_account_type_and_approval("TAKER", True)
             return users
 
