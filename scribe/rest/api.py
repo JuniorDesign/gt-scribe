@@ -98,6 +98,14 @@ class CourseNumbersOnly(Resource): #grabs distinct numbers
 			return courseRepository.get_distinct_course_number_for_subject(course_subject)
 		return {"error": "The requested course subject is not valid."}, 418
 
+class CourseSectionsOnly(Resource): #grabs all sections available for a course number/subject
+	def get(self, course_subject, course_number):
+		courseRepository = CourseRepository()
+		if courseRepository.subject_exists(course_subject):
+			if courseRepository.number_exists(course_subject, course_number):
+				return courseRepository.get_course_sections(course_subject, course_number)
+		return {"error": "The requested course subject and number are not valid together."}, 418
+
 class CourseNumbersBySubject(Resource):
 	def get(self, course_subject):
 		courseRepository = CourseRepository()

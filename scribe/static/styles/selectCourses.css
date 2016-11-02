@@ -49,11 +49,21 @@
 	clear:both;
 }
 
-.courseSubject ol{
+#selectClass ol{
 	list-style-type: none;
 }
 
 li.subject{
 	display:block;
 	background-color:white;
+}
+
+li.number{
+	display:block;
+	background-color:white;
+}
+
+li.section{
+	display:block;
+	background-color: white;
 }
