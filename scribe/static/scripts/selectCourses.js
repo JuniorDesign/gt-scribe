@@ -96,6 +96,10 @@ $("ol").on("click", "li.section", function(){
 
 $("#selectClass").submit(function(e){
 	e.preventDefault();
+	if(!(currSubject && currNumber && currSection)){
+		window.alert("You must select a course subject, course number, and a course section to register.");
+		return false;
+	}
     var body = {
           "subject": currSubject,
           "course_number": currNumber,

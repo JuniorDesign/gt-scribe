@@ -143,22 +143,21 @@ class CourseSectionsOnly(Resource): #grabs all sections available for a course n
 				return courseRepository.get_course_sections(course_subject, course_number)
 		return {"error": "The requested course subject and number are not valid together."}, 418
 
-
-
-
+#don't use currently, but convenient for testing
 class CourseNumbersBySubject(Resource):
 	def get(self, course_subject):
 		courseRepository = CourseRepository()
 		courses = courseRepository.get(subject = course_subject)
 		return [course.as_dict() for course in courses]
 
+#don't use currently, but convenient for testing
 class CoursesSectionsByNumberSubject(Resource):
 	def get(self, course_subject, course_number):
 		courseRepository = CourseRepository()
 		courses = courseRepository.get(subject = course_subject, course_number = course_number)
 		return [course.as_dict() for course in courses]
 
-#we may not actually use this one
+#we may not actually use this one, but convenient for testing
 class Course(Resource):
 	def get(self, course_subject, course_number, course_section):
 		courseRepository = CourseRepository()
@@ -166,7 +165,6 @@ class Course(Resource):
 		return [course.as_dict() for course in courses]
 
 class TakerNotes(Resource):
-
 	def __init__(self):
 		self.reqparse = RequestParser()
 		self.reqparse.add_argument('file', location='files', type=FileStorage, required=True)
