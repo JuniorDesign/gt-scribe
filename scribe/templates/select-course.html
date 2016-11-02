@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Select Course{% endblock %}
+{% block head %}
+    {{ super() }}
+    <!--css goes here-->
+{% endblock %}
+
+{% block username %}{{username}}{% endblock %}
+{% block bodyHeader %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <main>
+    Welcome {{username}}! You have matches for the following class. Select which class you'd like to upload notes for.<br />
+    OR<br />
+    You have matches, which class do you want to download notes from?
+    <br />
+
+    {% include "partials/my-course-matches.html" %}
+
+	</main>
+
+<!--scripts go here-->
+{% endblock %}

@@ -37,6 +37,20 @@ def index():
         myCourses = [e.course for e in user.enrollment]
         #this automatically joins users and enrollment table since we defined a relationship in user for enrollment
         #this will automatically join the course table w the enrollment table mentioned above since we defined the relationship in the enrollment model
+        
+        #if you have matches, then we open the select-course page instead of the enroll-courses page
+        userType = user.type
+        matchedCourses = ""
+        if userType == "TAKER":
+            matchedCourses = [match.course for match in user.taker_matches]
+        elif userType == "REQUESTER":
+            matchedCourses = [match.course for match in user.requester_matches]
+        else:
+            render_template("admin.html", username=username, subjects = subjects, myCourses = myCourses)
+        
+        if len(matchedCourses) > 0:
+            return render_template("select-course.html")
+
         return render_template(g.user['type'] + '.html', username = username, subjects=subjects, myCourses = myCourses)
     return render_template('index.html')
 
