@@ -5,41 +5,18 @@
     <link href="/static/styles/selectCourses.css" rel="stylesheet">
 {% endblock %}
 
-{% block username %}Notetaker{% endblock %}
+{% block username %}{{username}}{% endblock %}
 {% block bodyHeader %}
     {{ super() }}
         
 {% endblock %}
 {% block content %}
     <main>
-    For this page, we need to allow the users the option to select their courses from the database and save them into their own profile <br />
-    <form id="selectClass">
-        <div class="courseSubject">
-            <ol>
-            {% for subject in subjects %}
-                <li class="subject" id="{{subjects[loop.index0]}}">{{subjects[loop.index0]}}</li>
-            {% endfor %}
-            </ol>
-        </div>
-        <div class="courseNumber">
-            <ol>
-            </ol>
-        </div>
-        <div class="courseSection">
-            <ol>
-            </ol>
-        </div>
-        <button type="submit">Add course to my schedule</button>
-    </form>
+    Welcome {{username}}! Please select the courses you'd like to receive notes for.
     <br />
-    <b>My current schedule:</b><br />
-    <div class="mySchedule">
-        {% for course in myCourses %}
-            <div class="enrolledCourse" crn="{{course['crn']}}">
-                <a href="#">[remove course, currently not functional]</a> {{course.subject}} {{course.course_number}} section number {{course.section}}
-            </div>
-        {% endfor %}
-    </div>
+
+    {% include "partials/enroll-courses-template.html" %}
+
 </main>
 
 <script src="/static/scripts/selectCourses.js"></script>

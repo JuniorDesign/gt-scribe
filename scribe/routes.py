@@ -37,7 +37,7 @@ def index():
         myCourses = [e.course for e in user.enrollment]
         #this automatically joins users and enrollment table since we defined a relationship in user for enrollment
         #this will automatically join the course table w the enrollment table mentioned above since we defined the relationship in the enrollment model
-        return render_template(g.user['type'] + '.html', subjects=subjects, myCourses = myCourses)
+        return render_template(g.user['type'] + '.html', username = username, subjects=subjects, myCourses = myCourses)
     return render_template('index.html')
 
 @app.route('/taker/notes')

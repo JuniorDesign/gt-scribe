@@ -1,5 +1,3 @@
-var currUsername = undefined;
-
 $("#loginForm").submit(function(){
      var username = $("#usernameInput").val();
      var password = $("#passwordInput").val();

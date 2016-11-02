@@ -1,0 +1,36 @@
+<!--enroll-courses-template.html-->
+
+<form id="selectClass">
+	<div class="courseSubject">
+		<ol>
+		{% for subject in subjects %}
+		<!--loop.index0 starts at index 0, loop.index starts at 1-->
+		    <li class="subject" id="{{subjects[loop.index0]}}">{{subjects[loop.index0]}}</li>
+		{% endfor %}
+		</ol>
+	</div>
+	<div class="courseNumber">
+		<ol>
+		</ol>
+	</div>
+	<div class="courseSection">
+		<ol>
+		</ol>
+	</div>
+	<button type="submit">Add course to my schedule</button>
+</form>
+
+<br />
+
+<b>My current schedule:</b>
+<br />
+
+<div class="mySchedule">
+	{% for course in myCourses %}
+		<div class="enrolledCourse" crn="{{course['crn']}}">
+			<a href="#">[remove course, currently not functional]</a>
+			{{course.subject}} {{course.course_number}} section number {{course.section}}
+		</div>
+	{% endfor %}
+</div>
+
