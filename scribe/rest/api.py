@@ -110,10 +110,32 @@ class CourseRegistration(Resource):
 			enrollCourse = Enrollment(username, crn)
 			enrollmentRepository.add_or_update(enrollCourse)
 			enrollmentRepository.save_changes()
+			#check for matches here
+			userRepository = UserRepository()
+			user = userRepository.find(username)
+			userType = user.type
+
+			#check enrollment table for the crn
+			# if crn exists, grab the username
+			# check user table to see what the user type is of those usernames
+			# if its the opposite of what you are, make a match and add it to the match table
+			courseToMatch = enrollmentRepository.get(username = username, course_id = crn)
+			if userType == "REQUESTER":
+				matchedCourses = [match.course_id for match in user.requester_matches]
+				print("This is a matched course for the requester: "+str(matchedCourses))
+
+			elif userType == "TAKER":
+				matchedCourses = [match.course_id for match in user.taker_matches]
+				print("This is a matched course for the taker: "+str(matchedCourses))
+
+			else:
+				print("why are you here??")
+				# fail here, return some error
 			return {
 				"message": "Course has been enrolled in successfully.",
 				"username": username,
-				"crn": crn
+				"crn": crn,
+				"matchedCourses": matchedCourses
 			}
 
 		else:
