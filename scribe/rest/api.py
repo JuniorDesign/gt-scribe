@@ -89,7 +89,6 @@ class CourseSubjectOnly(Resource):
 	def get(self):
 		courseRepository = CourseRepository()
 		return courseRepository.get_distinct_subjects()
-		#return [subject.as_dict() for subject in subjects]
 
 class CourseNumbersBySubject(Resource):
 	def get(self, course_subject):

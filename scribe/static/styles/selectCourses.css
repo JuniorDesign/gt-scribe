@@ -48,3 +48,12 @@
 	display: block;
 	clear:both;
 }
+
+.courseSubject ol{
+	list-style-type: none;
+}
+
+li.subject{
+	display:block;
+	background-color:white;
+}
