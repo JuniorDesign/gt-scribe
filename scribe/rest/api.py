@@ -104,7 +104,6 @@ class CourseRegistration(Resource):
 			enrollmentRepository = EnrollmentRepository()
 			courseRepository = CourseRepository()
 			course = courseRepository.get(subject = subject, course_number = course_number, section = section)[0]
-			print(course.course_id)
 			crn = course.course_id
 			if enrollmentRepository.course_already_registered(username, crn):
 				return {"error": "You have already registered for this course."}, 418
@@ -133,7 +132,7 @@ class CourseNumbersOnly(Resource): #grabs distinct numbers
 		courseRepository = CourseRepository()
 		if courseRepository.subject_exists(course_subject):
 			return courseRepository.get_distinct_course_number_for_subject(course_subject)
-		return {"error": "The requested course subject is not valid."}, 418
+		return {"error": "The requested course subject is not valid."}, 404
 
 class CourseSectionsOnly(Resource): #grabs all sections available for a course number/subject
 	def get(self, course_subject, course_number):
@@ -141,7 +140,7 @@ class CourseSectionsOnly(Resource): #grabs all sections available for a course n
 		if courseRepository.subject_exists(course_subject):
 			if courseRepository.number_exists(course_subject, course_number):
 				return courseRepository.get_course_sections(course_subject, course_number)
-		return {"error": "The requested course subject and number are not valid together."}, 418
+		return {"error": "The requested course subject and number are not valid together."}, 404
 
 class CourseByCrn(Resource):
 	def get(self, crn):
