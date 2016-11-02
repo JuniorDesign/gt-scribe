@@ -43,10 +43,11 @@
 
 .mySchedule{
 	width: 100%;
-	height: 200px;
+	min-height: 200px;
 	background-color: green;
 	display: block;
 	clear:both;
+
 }
 
 #selectClass ol{
@@ -66,4 +67,12 @@ li.number{
 li.section{
 	display:block;
 	background-color: white;
+}
+
+.enrolledCourse{
+	display: block;
+	width: 100%;
+	background-color: white;
+	padding: 5px;
+	margin-bottom: 5px;
 }

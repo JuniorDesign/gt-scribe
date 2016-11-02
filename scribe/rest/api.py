@@ -143,6 +143,14 @@ class CourseSectionsOnly(Resource): #grabs all sections available for a course n
 				return courseRepository.get_course_sections(course_subject, course_number)
 		return {"error": "The requested course subject and number are not valid together."}, 418
 
+class CourseByCrn(Resource):
+	def get(self, crn):
+		courseRepository = CourseRepository()
+		course = courseRepository.find(crn)
+		if course:
+			return course.as_dict()
+		return {"error": "Couldn't find a course with the specified CRN."}, 404
+
 #don't use currently, but convenient for testing
 class CourseNumbersBySubject(Resource):
 	def get(self, course_subject):

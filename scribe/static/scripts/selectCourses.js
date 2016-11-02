@@ -29,6 +29,44 @@ function clearCourseSections(){
 	$(".courseSection ol").empty();
 }
 
+function addCourseToSchedule(crn){
+	console.log("adding a course to schedule");
+	var thisCourseSubject = undefined;
+	var thisCourseNumber = undefined;
+	var thisCourseSection = undefined;
+
+	$.ajax({
+    	contentType: "application/json",
+        url: "/api/courses/crn/"+crn,
+        method: "GET",
+        async: true
+    }).done(function(data) {
+        console.log("Connection successful!");
+        console.log("making the thing for the schedule");
+        var course = data;
+        if(course != undefined){
+        	thisCourseSubject = course.subject;
+        	thisCourseNumber = course.course_number;
+			thisCourseSection = course.section;
+			console.log("this course subject "+thisCourseSubject);
+			console.log("this course number "+thisCourseNumber);
+			console.log("this course section "+thisCourseSection);
+			var newCourse = "<div class='enrolledCourse' crn='"+crn+"'>"+thisCourseSubject+" "+thisCourseNumber+" section number "+thisCourseSection+"</div>";
+        	$(".mySchedule").append(newCourse);
+        }
+
+    }).fail(function(data){
+        console.log("Connection failed!");
+        var response = JSON.parse(data.responseText);
+        if(response.error != undefined){
+            console.log(response.error);
+            window.alert(response.error);
+       	}
+    });
+	
+	
+}
+
 //highlights the item selected
 $("li.subject").click(function(){
 	$("li.subject").css("background-color", "white");
@@ -115,8 +153,10 @@ $("#selectClass").submit(function(e){
           console.log("Connection successful!");
           if(data.message != undefined){
                console.log(data.message);
-               console.log("Welcome user: "+ data.username);
+               console.log("Hey user: "+ data.username);
                console.log("Got your CRN: " + data.crn);
+               //add a thing to that myschedule block
+               addCourseToSchedule(data.crn);
           }
 
     }).fail(function(data){ //error messages come in as a diff format than success messages

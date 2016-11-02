@@ -7,7 +7,10 @@ from scribe.model.base import BaseModel
 class Enrollment(BaseModel):
     __tablename__ = "enrollment"
     username = db.Column(db.String(50), db.ForeignKey('user.username'), primary_key=True, nullable=False)
-    course_id = db.Column(db.String(50), primary_key=True, nullable=False)
+    course_id = db.Column(db.String(50), db.ForeignKey('course.course_id'), primary_key=True, nullable=False)
+
+    course = db.relationship('Course') 
+    user = db.relationship('User')
 
     def __init__(self, username, course_id):
         self.username = username

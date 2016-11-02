@@ -24,7 +24,7 @@
 		<div class="courseSubject">
 			<ol>
 			{% for subject in subjects %}
-			    <li class="subject" id="{{subjects[loop.index]}}">{{subjects[loop.index]}}</li>
+			    <li class="subject" id="{{subjects[loop.index]}}">{{subjects[loop.index-1]}}</li>
 			{% endfor %}
 			</ol>
 		</div>
@@ -39,8 +39,13 @@
 		<button type="submit">Add course to my schedule</button>
 	</form>
 	<br />
+	<b>My current schedule:</b><br />
 	<div class="mySchedule">
-		Add classes I pick here
+		{% for course in myCourses %}
+			<div class="enrolledCourse" crn="{{course['crn']}}">
+				<a href="#">[remove course, currently not functional]</a> {{course.subject}} {{course.course_number}} section number {{course.section}}
+			</div>
+		{% endfor %}
 	</div>
 </main>
 
