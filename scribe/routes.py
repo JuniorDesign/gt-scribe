@@ -48,14 +48,20 @@ def notes():
 
 @app.route('/register')
 def register_user():
+    if g.user:
+        return redirect(url_for('index'))
     return render_template('register.html')
 
 @app.route('/login')
 def login():
+    if g.user:
+        return redirect(url_for('index'))
     return render_template('login.html')
 
 @app.route('/register/success')
 def loggedin():
+    if g.user:
+        return redirect(url_for('index'))
     return render_template('register-success.html')
 
 @app.route('/logout')

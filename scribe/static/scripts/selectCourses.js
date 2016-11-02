@@ -51,7 +51,7 @@ function addCourseToSchedule(crn){
 			console.log("this course subject "+thisCourseSubject);
 			console.log("this course number "+thisCourseNumber);
 			console.log("this course section "+thisCourseSection);
-			var newCourse = "<div class='enrolledCourse' crn='"+crn+"'>"+thisCourseSubject+" "+thisCourseNumber+" section number "+thisCourseSection+"</div>";
+			var newCourse = "<div class='enrolledCourse' crn='"+crn+"'> <a href='#''>[remove course, currently not functional]</a> "+thisCourseSubject+" "+thisCourseNumber+" section number "+thisCourseSection+"</div>";
         	$(".mySchedule").append(newCourse);
         }
 
