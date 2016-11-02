@@ -85,10 +85,18 @@ class UserLogin(Resource):
 				}
 		return {"error": "This username and password combination is not valid."}, 401
 
-class CourseSubjectOnly(Resource):
+#currently not used
+class CourseSubjectOnly(Resource): #grabs distinct subjects
 	def get(self):
 		courseRepository = CourseRepository()
 		return courseRepository.get_distinct_subjects()
+
+class CourseNumbersOnly(Resource): #grabs distinct numbers
+	def get(self, course_subject):
+		courseRepository = CourseRepository()
+		if courseRepository.subject_exists(course_subject):
+			return courseRepository.get_distinct_course_number_for_subject(course_subject)
+		return {"error": "The requested course subject is not valid."}, 418
 
 class CourseNumbersBySubject(Resource):
 	def get(self, course_subject):
