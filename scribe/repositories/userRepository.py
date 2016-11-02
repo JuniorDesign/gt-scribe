@@ -22,8 +22,7 @@ class UserRepository(BaseRepository):
         def check_username_and_password(self, username, password):
             user = super(UserRepository, self).find(username)
             if user:
-                if user.password == password:
-                    return True
+                return user.check_password(password)
             return False
 
         # Grabs the account type of the user based on their username.
@@ -65,3 +64,4 @@ class UserRepository(BaseRepository):
         def get_unapproved_note_requesters(self):
             users = get_users_by_account_type_and_approval("REQUESTER", False)
             return users
+

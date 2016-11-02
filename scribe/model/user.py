@@ -2,6 +2,8 @@
 #represents the schema for the user database
 #all users have a username, password, first name, last name, type (admin or student), approved (t/f)
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 from scribe import db
 from scribe.model.base import BaseModel
 from scribe.model.matches import Matches
@@ -35,10 +37,12 @@ class User(BaseModel):
 
     def __init__(self, username, password, email, first_name, last_name, type, approved):
         self.username = username
-        self.password = password
+        self.password = generate_password_hash(password)
         self.email = email
         self.first_name = first_name
         self.last_name = last_name
         self.type = type
         self.approved = approved
 
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
