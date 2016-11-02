@@ -5,6 +5,8 @@ from flask_restful.reqparse import RequestParser
 from scribe.model.user import User
 from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
+from scribe.model.enrollment import Enrollment
+from scribe.repositories.enrollmentRepository import EnrollmentRepository
 
 from werkzeug.datastructures import FileStorage
 import boto3
@@ -49,7 +51,6 @@ class UserRegistration(Resource):
 			return {"error": "Account type is missing"}, 400
 
 		userRepository = UserRepository()
-		print("user repository reached")
 		if userRepository.user_exists(username):
 			return{"error": "An account with this username already exists"}, 400
 
@@ -85,33 +86,92 @@ class UserLogin(Resource):
 				}
 		return {"error": "This username and password combination is not valid."}, 401
 
-class CourseSubject(Resource):
+class CourseRegistration(Resource):
+	def __init__(self):
+		self.reqparse = RequestParser()
+		self.reqparse.add_argument('subject', type=str, required= True, help="Course subject is required to enroll in course", location='json')
+		self.reqparse.add_argument('course_number', type=str, required= True, help="Course number is required to enroll in course", location='json')
+		self.reqparse.add_argument('section', type=str, required= True, help="Course section is required to enroll in course", location='json')
+		super(CourseRegistration, self).__init__()
+
+	def post(self):
+		args = self.reqparse.parse_args()
+		if 'username' in session:
+			username = session['username']
+			subject = args['subject']
+			course_number = args['course_number']
+			section = args['section']
+			enrollmentRepository = EnrollmentRepository()
+			courseRepository = CourseRepository()
+			course = courseRepository.get(subject = subject, course_number = course_number, section = section)[0]
+			crn = course.course_id
+			if enrollmentRepository.course_already_registered(username, crn):
+				return {"error": "You have already registered for this course."}, 418
+			enrollCourse = Enrollment(username, crn)
+			enrollmentRepository.add_or_update(enrollCourse)
+			enrollmentRepository.save_changes()
+			return {
+				"message": "Course has been enrolled in successfully.",
+				"username": username,
+				"crn": crn
+			}
+
+		else:
+			return {"error": "There is no currently logged in account."}, 401
+
+
+
+#currently not used
+class CourseSubjectOnly(Resource): #grabs distinct subjects
+	def get(self):
+		courseRepository = CourseRepository()
+		return courseRepository.get_distinct_subjects()
+
+class CourseNumbersOnly(Resource): #grabs distinct numbers
 	def get(self, course_subject):
-		self.course_subject = course_subject
+		courseRepository = CourseRepository()
+		if courseRepository.subject_exists(course_subject):
+			return courseRepository.get_distinct_course_number_for_subject(course_subject)
+		return {"error": "The requested course subject is not valid."}, 404
+
+class CourseSectionsOnly(Resource): #grabs all sections available for a course number/subject
+	def get(self, course_subject, course_number):
+		courseRepository = CourseRepository()
+		if courseRepository.subject_exists(course_subject):
+			if courseRepository.number_exists(course_subject, course_number):
+				return courseRepository.get_course_sections(course_subject, course_number)
+		return {"error": "The requested course subject and number are not valid together."}, 404
+
+class CourseByCrn(Resource):
+	def get(self, crn):
+		courseRepository = CourseRepository()
+		course = courseRepository.find(crn)
+		if course:
+			return course.as_dict()
+		return {"error": "Couldn't find a course with the specified CRN."}, 404
+
+#don't use currently, but convenient for testing
+class CourseNumbersBySubject(Resource):
+	def get(self, course_subject):
 		courseRepository = CourseRepository()
 		courses = courseRepository.get(subject = course_subject)
 		return [course.as_dict() for course in courses]
 
-class CourseNumber(Resource):
+#don't use currently, but convenient for testing
+class CoursesSectionsByNumberSubject(Resource):
 	def get(self, course_subject, course_number):
-		self.course_subject = course_subject
-		self.course_number = course_number
 		courseRepository = CourseRepository()
 		courses = courseRepository.get(subject = course_subject, course_number = course_number)
 		return [course.as_dict() for course in courses]
 
-#we may not actually use this one
-class CourseSection(Resource):
+#we may not actually use this one, but convenient for testing
+class Course(Resource):
 	def get(self, course_subject, course_number, course_section):
-		self.course_subject = course_subject
-		self.course_number = course_number
-		self.course_section = course_section
 		courseRepository = CourseRepository()
 		courses = courseRepository.get(subject = course_subject, course_number = course_number, section = course_section)
 		return [course.as_dict() for course in courses]
 
 class TakerNotes(Resource):
-
 	def __init__(self):
 		self.reqparse = RequestParser()
 		self.reqparse.add_argument('file', location='files', type=FileStorage, required=True)
