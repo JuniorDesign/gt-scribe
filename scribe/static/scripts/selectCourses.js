@@ -94,3 +94,36 @@ $("ol").on("click", "li.section", function(){
 	currSection = $(this).attr('id');
 });
 
+$("#selectClass").submit(function(e){
+	e.preventDefault();
+    var body = {
+          "subject": currSubject,
+          "course_number": currNumber,
+          "section": currSection
+    }
+    $.ajax({
+          contentType: "application/json",
+          url: "/api/course/register",
+          method: "POST",
+          data: JSON.stringify(body),
+          async: true
+    }).done(function(data) {
+          console.log("Connection successful!");
+          if(data.message != undefined){
+               console.log(data.message);
+               console.log("Welcome user: "+ data.username);
+               console.log("Got your CRN: " + data.crn);
+          }
+
+    }).fail(function(data){ //error messages come in as a diff format than success messages
+          console.log("Connection failed!");
+          console.log(data);
+          var response = JSON.parse(data.responseText);
+        if(response.error != undefined){
+               console.log(response.error);
+               window.alert(response.error); //temporary feedback to user until we create a UI for this
+        }
+    });
+
+    return false;
+});

@@ -66,6 +66,7 @@ api.add_resource(scribe_api.HelloWorld, '/api/helloworld') #example of making th
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
 #api.add_resource(scribe_api.CourseSubjectOnly, '/api/subjects')
+api.add_resource(scribe_api.CourseRegistration, '/api/course/register')
 api.add_resource(scribe_api.CourseNumbersOnly, '/api/courses/distinct/<course_subject>')
 api.add_resource(scribe_api.CourseSectionsOnly, '/api/courses/distinct/<course_subject>/<course_number>')
 api.add_resource(scribe_api.CourseNumbersBySubject, '/api/courses/<course_subject>')
