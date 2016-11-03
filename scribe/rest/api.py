@@ -7,6 +7,8 @@ from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 from scribe.model.enrollment import Enrollment
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
+from scribe.model.matches import Matches
+from scribe.repositories.matchesRepository import MatchesRepository
 
 from werkzeug.datastructures import FileStorage
 import boto3
@@ -106,7 +108,7 @@ class CourseRegistration(Resource):
 			course = courseRepository.get(subject = subject, course_number = course_number, section = section)[0]
 			crn = course.course_id
 			if enrollmentRepository.course_already_registered(username, crn):
-				return {"error": "You have already registered for this course."}, 418
+				return {"error": "You have already registered for this course."}, 400
 			enrollCourse = Enrollment(username, crn)
 			enrollmentRepository.add_or_update(enrollCourse)
 			enrollmentRepository.save_changes()
@@ -114,28 +116,31 @@ class CourseRegistration(Resource):
 			userRepository = UserRepository()
 			user = userRepository.find(username)
 			userType = user.type
+			matchesRepository = MatchesRepository()
 
+			oppEnrollments = enrollmentRepository.get_enrollments_of_opposite_type(userType, username)
+			if oppEnrollments is not None or len(oppEnrollments) > 0:
+				if userType == "REQUESTER":
+					newMatch = Matches(oppEnrollments[0].username, username, crn)
+					matchesRepository.add_or_update(newMatch)
+				elif userType == "TAKER":
+					unmatchedRequesters = matchesRepository.get_unmatched_users(crn, [oppEnrollment.username for oppEnrollment in oppEnrollments])
+					for requester in unmatchedRequesters:
+						newMatch = Matches(username, requester, crn)
+						matchesRepository.add_or_update(newMatch)
+					#match to all requesters who arent matched yet
+				else:
+					print("why are you here??")
+					# fail here, return some error
+				matchesRepository.save_changes()
 			#check enrollment table for the crn
 			# if crn exists, grab the username
 			# check user table to see what the user type is of those usernames
 			# if its the opposite of what you are, make a match and add it to the match table
-			courseToMatch = enrollmentRepository.get(username = username, course_id = crn)
-			if userType == "REQUESTER":
-				matchedCourses = [match.course_id for match in user.requester_matches]
-				print("This is a matched course for the requester: "+str(matchedCourses))
-
-			elif userType == "TAKER":
-				matchedCourses = [match.course_id for match in user.taker_matches]
-				print("This is a matched course for the taker: "+str(matchedCourses))
-
-			else:
-				print("why are you here??")
-				# fail here, return some error
 			return {
 				"message": "Course has been enrolled in successfully.",
 				"username": username,
-				"crn": crn,
-				"matchedCourses": matchedCourses
+				"crn": crn
 			}
 
 		else:

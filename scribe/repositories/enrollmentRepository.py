@@ -1,5 +1,6 @@
 from scribe.model.enrollment import Enrollment
 from scribe.repositories.baseRepository import BaseRepository
+from scribe.model.user import User
 
 class EnrollmentRepository(BaseRepository):
         def __init__(self):
@@ -13,3 +14,14 @@ class EnrollmentRepository(BaseRepository):
         	if len(enrollment) > 0:
         		return True
         	return False
+
+        def get_enrollments_of_opposite_type(self, userType, course_id):
+        	oppType = ""
+        	if userType == "REQUESTER":
+        		oppType = "TAKER"
+        	elif userType == "TAKER":
+        		oppType = "REQUESTER"
+        	else:
+        		return None
+        	enrollments = Enrollment.query.filter(course_id == course_id).filter(User.type == oppType )
+        	return enrollments
