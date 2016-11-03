@@ -23,5 +23,6 @@ class EnrollmentRepository(BaseRepository):
         		oppType = "REQUESTER"
         	else:
         		return None
-        	enrollments = Enrollment.query.filter(course_id == course_id).filter(User.type == oppType )
+        	enrollments = [enrollment for enrollment in Enrollment.query.filter(course_id == Enrollment.course_id) if enrollment.user.type == oppType]
+
         	return enrollments

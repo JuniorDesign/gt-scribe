@@ -48,8 +48,8 @@ def index():
         else:
             render_template("admin.html", username=username, subjects = subjects, myCourses = myCourses)
         
-        if len(matchedCourses) > 0:
-            return render_template("select-course.html")
+        #if len(matchedCourses) > 0:
+        #    return render_template("select-course.html")
 
         return render_template(g.user['type'] + '.html', username = username, subjects=subjects, myCourses = myCourses)
     return render_template('index.html')

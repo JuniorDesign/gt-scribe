@@ -118,14 +118,15 @@ class CourseRegistration(Resource):
 			userType = user.type
 			matchesRepository = MatchesRepository()
 
-			oppEnrollments = enrollmentRepository.get_enrollments_of_opposite_type(userType, username)
-			if oppEnrollments is not None or len(oppEnrollments) > 0:
+			oppEnrollments = enrollmentRepository.get_enrollments_of_opposite_type(userType, crn)
+			if oppEnrollments is not None and len(oppEnrollments) > 0:
 				if userType == "REQUESTER":
 					newMatch = Matches(oppEnrollments[0].username, username, crn)
 					matchesRepository.add_or_update(newMatch)
 				elif userType == "TAKER":
 					unmatchedRequesters = matchesRepository.get_unmatched_users(crn, [oppEnrollment.username for oppEnrollment in oppEnrollments])
 					for requester in unmatchedRequesters:
+						print("New match for the requester: "+requester)
 						newMatch = Matches(username, requester, crn)
 						matchesRepository.add_or_update(newMatch)
 					#match to all requesters who arent matched yet

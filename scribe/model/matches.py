@@ -37,7 +37,6 @@ class Matches(BaseModel):
     #__table_args__ = (db.UniqueConstraint("username", "id", name = "unique_username_id"),)
 
     def __init__(self, notetaker_id, noterequester_id, course_id):
-        print("matches.py")
         self.notetaker_id = notetaker_id
         self.noterequester_id = noterequester_id
         self.course_id = course_id

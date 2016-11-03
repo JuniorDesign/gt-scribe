@@ -9,5 +9,6 @@ class MatchesRepository(BaseRepository):
             return super(MatchesRepository, self).add_or_update(entity)
 
         def get_unmatched_users(self, course_id, usernames):
-        	usernamesWithMatches =  [match.noterequester_id for match in Matches.query.filter(Matches.noterequester_id.in_(usernames))]
+        	usernamesWithMatches =  [match.noterequester_id for match in Matches.query.filter(Matches.noterequester_id.in_(usernames)).filter(Matches.course_id==course_id)]
+        	print("Username w matches: "+str(usernamesWithMatches))
         	return [username for username in usernames if username not in usernamesWithMatches]
