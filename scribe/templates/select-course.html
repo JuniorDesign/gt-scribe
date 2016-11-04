@@ -11,9 +11,16 @@
 {% endblock %}
 {% block content %}
     <main>
-    Welcome {{username}}! You have matches for the following class. Select which class you'd like to upload notes for.<br />
-    OR<br />
-    You have matches, which class do you want to download notes from?
+    Welcome {{username}}! You have matches for the following class(es).<br />
+    {% if userType=="REQUESTER" %}
+        Select which class you'd like to download notes for.
+    {% else %}
+        Select which class you'd like to upload notes for.
+    {% endif %}
+    
+    <br />
+
+    <a href="enrollment">Register for more courses by clicking here.</a>
     <br />
 
     {% include "partials/my-course-matches.html" %}

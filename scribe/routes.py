@@ -28,17 +28,52 @@ def before_request():
 def index():
     if g.user:
         username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        userType = user.type
+
+        matchedCourses = ""
+        if userType == "TAKER":
+            matchedCourses = [match.course for match in user.taker_matches]
+        elif userType == "REQUESTER":
+            matchedCourses = [match.course for match in user.requester_matches]
+        else:
+            render_template("admin.html", username=username)
+        
+        if len(matchedCourses) > 0: #if you have a match, you're taken to the match page instead
+            return redirect(url_for('myClasses'))
+        return redirect(url_for('enrollment')) #if you don't have any matches yet, you're back at the class enrollment page
+    return render_template('index.html')
+
+# Route for selecting courses you either need notes for, or you want to take notes for
+# This route can be used by either taker or requester
+# The pages are identical, but we use a different intro text based on the user type
+@app.route('/enrollment')
+def enrollment():
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        userType = user.type
+        if userType != "TAKER" and userType != "REQUESTER":
+            render_template("admin.html", username=username)
 
         courseRepository = CourseRepository()
         subjects = courseRepository.get_distinct_subjects()
+        myCourses = [e.course for e in user.enrollment]
+        print(myCourses)
+        return render_template('enrollment.html', username = username, userType = userType, subjects = subjects, myCourses = myCourses)
+    return redirect(url_for('index'))
 
+# Route for the matches that you have
+# Page is the same for both takers and requesters
+# Toggles text based on the user type
+@app.route('/my-classes')
+def myClasses():
+    if g.user:
+        username = session['username']
         userRepository = UserRepository()
         user = userRepository.find(username)
-        myCourses = [e.course for e in user.enrollment]
-        #this automatically joins users and enrollment table since we defined a relationship in user for enrollment
-        #this will automatically join the course table w the enrollment table mentioned above since we defined the relationship in the enrollment model
-        
-        #if you have matches, then we open the select-course page instead of the enroll-courses page
         userType = user.type
         matchedCourses = ""
         if userType == "TAKER":
@@ -46,13 +81,10 @@ def index():
         elif userType == "REQUESTER":
             matchedCourses = [match.course for match in user.requester_matches]
         else:
-            render_template("admin.html", username=username, subjects = subjects, myCourses = myCourses)
-        
-        #if len(matchedCourses) > 0:
-        #    return render_template("select-course.html")
+            render_template("admin.html", username=username)
 
-        return render_template(g.user['type'] + '.html', username = username, subjects=subjects, myCourses = myCourses)
-    return render_template('index.html')
+        return render_template('select-course.html', username = username, userType = userType, matchedCourses = matchedCourses)
+    return redirect(url_for('index'))
 
 @app.route('/taker/notes')
 def notes():
