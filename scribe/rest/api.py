@@ -213,7 +213,6 @@ class TakerNotes(Resource):
 	def post(self):
 		#getting all arguments from request
 		args = self.reqparse.parse_args()
-		print(args)
 		file = args['file']
 		notetaker_id = args['user_id']
 		course_id = args['course_id']
