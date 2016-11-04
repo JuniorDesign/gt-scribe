@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Note-Requester{% endblock %}
+{% block title %}~~missing a title~~ (Enrollmentpage){% endblock %}
 {% block head %}
     {{ super() }}
     <link href="/static/styles/selectCourses.css" rel="stylesheet">
@@ -12,7 +12,8 @@
 {% endblock %}
 {% block content %}
 <main>
-	Welcome {{username}}! We're glad you want to help out your classmates! Please select the courses you're willing to take notes from. <br />
+	Welcome {{username}}! Here is some intro text we need to figure out later! <br />
+	<h1>On this page, select the classes you want.</h1><br />
 	{% if userType == "REQUESTER" %}
 		You're a requester!!
 	{% else %}

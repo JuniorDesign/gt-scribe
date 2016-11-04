@@ -5,7 +5,7 @@ my-course-matches.html
 Pull courses here from the match table.<br /><br />
 
 {% for course in matchedCourses %}
-	{{course.subject}} {{course.course_number}} section number {{course.section}}<br />
+	<a href="notes/{{course.course_id}}">This is crn: {{course.course_id}} || {{course.subject}} {{course.course_number}} section number {{course.section}}</a><br />
 {% endfor %}
 
 <br /><br />

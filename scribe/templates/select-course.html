@@ -12,6 +12,9 @@
 {% block content %}
     <main>
     Welcome {{username}}! You have matches for the following class(es).<br />
+    <h1>On this page, you select the class you want to upload/download notes for!</h1><br />
+    If you have any matches, you come to this page by default when you log in.<br />
+    
     {% if userType=="REQUESTER" %}
         Select which class you'd like to download notes for.
     {% else %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Upload or Download Notes{% endblock %}
+{% block head %}
+    {{ super() }}
+    <!--link href="/static/styles/index.css" rel="stylesheet"-->
+{% endblock %}
+
+{% block username %}{{username}}{% endblock %}
+{% block bodyHeader %}
+    {{ super() }}
+        
+{% endblock %}
+{% block content %}
+    <main>
+    	<h1>Hello! This is the page for {{course_id}}!</h1>
+
+    	{% if userType == "REQUESTER" %}
+    		<h2>You should only be seeing this if you're a note requester</h2><br />
+    		Make some info here about downloads.
+    	{% else %}
+    		<h2>You should only be seeing this if you're a note taker</h2><br />
+	    	<h2>Please upload notes below.</h2>
+	        <form class="form-group" enctype="multipart/form-data">
+	            <legend>Upload Notes</legend>
+	            <input class="file-upload" data-icon="false" type="file">
+	            <button type="button" class="btn btn-primary upload-btn">Upload</button>
+	        </form>
+    	{% endif %}
+
+    	To access the user's username here, do it like this { { username } } (without any spaces)<br />
+    	To access the user's type, do this { { userType } }<br />
+    	To access the user's course_id you selected, use { { course_id } }<br />
+    	Currently, that's all that's available to access from here. To add more, do it from the route.py file, /notes/< int : course_id > route.
+        
+    </main>
+
+<script src="/static/scripts/file-upload.js"></script>
+{% endblock %}

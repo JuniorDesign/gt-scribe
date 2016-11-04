@@ -86,10 +86,18 @@ def myClasses():
         return render_template('select-course.html', username = username, userType = userType, matchedCourses = matchedCourses)
     return redirect(url_for('index'))
 
-@app.route('/taker/notes')
-def notes():
+@app.route('/notes/<int:course_id>')
+def notes(course_id):
     if g.user:
-        return render_template('notes.html')
+        #Do security checks here to make sure only matching students get through this block#
+        #don't want willynilly students trying to upload/download notes#
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        userType = user.type
+        if userType == "ADMIN":
+            redirect(url_for('admin'))
+        return render_template('upload-download.html', username = username, userType = userType, course_id = course_id)
     return redirect(url_for('index'))
 
 @app.route('/register')
@@ -116,8 +124,8 @@ def logout():
     session.pop('username', None) #maybe we can do session.clear() instead?
     return redirect(url_for('index'))
 
-@app.route('/adminview')
-def admin_view():
+@app.route('/admin')
+def admin():
     userRepository = UserRepository()
     users = userRepository.get_users_by_account_type("TAKER")
     return render_template('admin-view.html', users=users)
