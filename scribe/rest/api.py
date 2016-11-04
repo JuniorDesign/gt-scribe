@@ -7,6 +7,8 @@ from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 from scribe.model.enrollment import Enrollment
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
+from scribe.model.matches import Matches
+from scribe.repositories.matchesRepository import MatchesRepository
 
 from werkzeug.datastructures import FileStorage
 import boto3
@@ -106,10 +108,36 @@ class CourseRegistration(Resource):
 			course = courseRepository.get(subject = subject, course_number = course_number, section = section)[0]
 			crn = course.course_id
 			if enrollmentRepository.course_already_registered(username, crn):
-				return {"error": "You have already registered for this course."}, 418
+				return {"error": "You have already registered for this course."}, 400
 			enrollCourse = Enrollment(username, crn)
 			enrollmentRepository.add_or_update(enrollCourse)
 			enrollmentRepository.save_changes()
+			#check for matches here
+			userRepository = UserRepository()
+			user = userRepository.find(username)
+			userType = user.type
+			matchesRepository = MatchesRepository()
+
+			oppEnrollments = enrollmentRepository.get_enrollments_of_opposite_type(userType, crn)
+			if oppEnrollments is not None and len(oppEnrollments) > 0:
+				if userType == "REQUESTER":
+					newMatch = Matches(oppEnrollments[0].username, username, crn)
+					matchesRepository.add_or_update(newMatch)
+				elif userType == "TAKER":
+					unmatchedRequesters = matchesRepository.get_unmatched_users(crn, [oppEnrollment.username for oppEnrollment in oppEnrollments])
+					for requester in unmatchedRequesters:
+						print("New match for the requester: "+requester)
+						newMatch = Matches(username, requester, crn)
+						matchesRepository.add_or_update(newMatch)
+					#match to all requesters who arent matched yet
+				else:
+					print("why are you here??")
+					# fail here, return some error
+				matchesRepository.save_changes()
+			#check enrollment table for the crn
+			# if crn exists, grab the username
+			# check user table to see what the user type is of those usernames
+			# if its the opposite of what you are, make a match and add it to the match table
 			return {
 				"message": "Course has been enrolled in successfully.",
 				"username": username,

@@ -1,0 +1,12 @@
+-----------------------------<br />
+my-course-matches.html
+
+<br /><br />
+Pull courses here from the match table.<br /><br />
+
+{% for course in matchedCourses %}
+	{{course.subject}} {{course.course_number}} section number {{course.section}}<br />
+{% endfor %}
+
+<br /><br />
+-----------------------------

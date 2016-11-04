@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}Select Course{% endblock %}
+{% block head %}
+    {{ super() }}
+    <!--css goes here-->
+{% endblock %}
+
+{% block username %}{{username}}{% endblock %}
+{% block bodyHeader %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <main>
+    Welcome {{username}}! You have matches for the following class(es).<br />
+    {% if userType=="REQUESTER" %}
+        Select which class you'd like to download notes for.
+    {% else %}
+        Select which class you'd like to upload notes for.
+    {% endif %}
+    
+    <br />
+
+    <a href="enrollment">Register for more courses by clicking here.</a>
+    <br />
+
+    {% include "partials/my-course-matches.html" %}
+
+	</main>
+
+<!--scripts go here-->
+{% endblock %}

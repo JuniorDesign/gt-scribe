@@ -30,7 +30,6 @@ function clearCourseSections(){
 }
 
 function addCourseToSchedule(crn){
-	console.log("adding a course to schedule");
 	var thisCourseSubject = undefined;
 	var thisCourseNumber = undefined;
 	var thisCourseSection = undefined;
@@ -42,15 +41,11 @@ function addCourseToSchedule(crn){
         async: true
     }).done(function(data) {
         console.log("Connection successful!");
-        console.log("making the thing for the schedule");
         var course = data;
         if(course != undefined){
         	thisCourseSubject = course.subject;
         	thisCourseNumber = course.course_number;
 			thisCourseSection = course.section;
-			console.log("this course subject "+thisCourseSubject);
-			console.log("this course number "+thisCourseNumber);
-			console.log("this course section "+thisCourseSection);
 			var newCourse = "<div class='enrolledCourse' crn='"+crn+"'> <a href='#''>[remove course, currently not functional]</a> "+thisCourseSubject+" "+thisCourseNumber+" section number "+thisCourseSection+"</div>";
         	$(".mySchedule").append(newCourse);
         }
@@ -155,8 +150,10 @@ $("#selectClass").submit(function(e){
                console.log(data.message);
                console.log("Hey user: "+ data.username);
                console.log("Got your CRN: " + data.crn);
+               console.log("Matches???: " + data.matchedCourses);
                //add a thing to that myschedule block
                addCourseToSchedule(data.crn);
+               //check for a match here.
           }
 
     }).fail(function(data){ //error messages come in as a diff format than success messages

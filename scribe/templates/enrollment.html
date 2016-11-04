@@ -13,7 +13,11 @@
 {% block content %}
 <main>
 	Welcome {{username}}! We're glad you want to help out your classmates! Please select the courses you're willing to take notes from. <br />
-	<h1>This page is currently not being used.</h1><br />
+	{% if userType == "REQUESTER" %}
+		You're a requester!!
+	{% else %}
+		You're a taker!!
+	{% endif %}
 
 	{% include "partials/enroll-courses-template.html" %}
 
