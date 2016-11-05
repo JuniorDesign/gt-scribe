@@ -24,8 +24,10 @@ $(function() {
 	        	data: formData,
 	        	async: true
 	     	})
+	     	//consider putting a spinner here to show loading
 	     	.done(function(data) {
 				console.log('Connection Successful!');
+				window.alert("You've successfully uploaded "+file.name);
 	     	})
 	     	.fail(function(data) {
 	        	console.log('Connection failed!');

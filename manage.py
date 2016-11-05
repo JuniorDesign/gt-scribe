@@ -47,7 +47,7 @@ def populate_courses():
         courseRepository.save_changes()
         print("Courses have been successfully added!")
     except Exception as e:
-        print("The database has already been populated with courses.")
+        print("The database has likely already been populated with courses.")
         print("---------------------------------------------------------")
         print(e)
 

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}~~missing a title~~ (Enrollmentpage){% endblock %}
+{% block title %}Course Selection{% endblock %}
 {% block head %}
     {{ super() }}
     <link href="/static/styles/selectCourses.css" rel="stylesheet">
@@ -12,12 +12,11 @@
 {% endblock %}
 {% block content %}
 <main>
-	Welcome {{username}}! Here is some intro text we need to figure out later! <br />
-	<h1>On this page, select the classes you want.</h1><br />
+	Welcome {{username}}! <br />
 	{% if userType == "REQUESTER" %}
-		You're a requester!!
+		We're excited to help match you with your classmates! Select the courses you would like to receive notes for.
 	{% else %}
-		You're a taker!!
+		We're excited you're ready to help your classmates! Select the courses you would like to volunteer to take notes for.
 	{% endif %}
 
 	{% include "partials/enroll-courses-template.html" %}
