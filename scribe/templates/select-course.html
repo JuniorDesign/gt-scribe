@@ -12,21 +12,24 @@
 {% block content %}
     <main>
     Welcome {{username}}! You have matches for the following class(es).<br />
-    <h1>On this page, you select the class you want to upload/download notes for!</h1><br />
-    If you have any matches, you come to this page by default when you log in.<br />
-    
+    Please select which course you'd like to 
     {% if userType=="REQUESTER" %}
-        Select which class you'd like to download notes for.
+        download
     {% else %}
-        Select which class you'd like to upload notes for.
+        upload
     {% endif %}
+    notes for.
     
     <br />
-
-    <a href="enrollment">Register for more courses by clicking here.</a>
     <br />
 
-    {% include "partials/my-course-matches.html" %}
+    {% for course in matchedCourses %}
+        <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning">{{course.subject}} {{course.course_number}} Section {{course.section}}</a>   
+    {% endfor %}
+
+    <br />
+    <br />
+    <a href="enrollment">Register for more courses by clicking here.</a>
 
 	</main>
 

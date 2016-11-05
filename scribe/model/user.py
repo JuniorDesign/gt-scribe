@@ -34,6 +34,8 @@ class User(BaseModel):
     enrollment = db.relationship('Enrollment', backref='User', lazy='dynamic')
     #__table_args__ = (db.UniqueConstraint("username", "id", name = "unique_username_id"),)
 
+    files = db.relationship('File')
+
 
     def __init__(self, username, password, email, first_name, last_name, type, approved):
         self.username = username
