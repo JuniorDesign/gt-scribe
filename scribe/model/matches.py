@@ -18,12 +18,6 @@ class Matches(BaseModel):
     course = db.relationship('Course') 
     #Links course to the course table, it knows that the above FK for course.course_id corresponds to this
     #so it will find the course w this course_id
-    
-    # Relationship specifying the files this match contains
-    files = db.relationship('File', secondary="file_match")
-    #Allows the file_match table to enter Matches and look for something that corresponds to a FK from file_match
-    #file_match has either match_id and file_id, and since match_id is the PK here, it grabs anything with the matching match_id
-    #To join back on with file_match
 
     # Relationship specifying the note taker for this match
     notetaker = db.relationship('User', foreign_keys=[notetaker_id], back_populates="taker_matches")
@@ -40,11 +34,3 @@ class Matches(BaseModel):
         self.notetaker_id = notetaker_id
         self.noterequester_id = noterequester_id
         self.course_id = course_id
-
-
-#a join table, not a real table for our db
-class FileMatch(BaseModel):
-    __tablename__ = "file_match"
-    id = db.Column(db.Integer, primary_key = True)
-    file_id = db.Column(db.Integer, db.ForeignKey("file.file_id"))
-    match_id = db.Column(db.Integer, db.ForeignKey("matches.match_id"))

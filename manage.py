@@ -46,8 +46,10 @@ def populate_courses():
                     courseRepository.add_or_update(newCourse)
         courseRepository.save_changes()
         print("Courses have been successfully added!")
-    except:
+    except Exception as e:
         print("The database has already been populated with courses.")
+        print("---------------------------------------------------------")
+        print(e)
 
 #makes default user accounts, called in create_db
 def populate_users():

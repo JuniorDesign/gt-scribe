@@ -11,6 +11,8 @@ from scribe.model.enrollment import Enrollment
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
 from scribe.model.matches import Matches
 from scribe.repositories.matchesRepository import MatchesRepository
+from scribe.model.file import File
+from scribe.repositories.fileRepository import FileRepository
 
 from werkzeug.datastructures import FileStorage
 import boto3
@@ -201,6 +203,39 @@ class Course(Resource):
 		courseRepository = CourseRepository()
 		courses = courseRepository.get(subject = course_subject, course_number = course_number, section = course_section)
 		return [course.as_dict() for course in courses]
+
+class Notes(Resource):
+	def __init__(self):
+		self.reqparse = RequestParser()
+		self.reqparse.add_argument('file', location='files', type=FileStorage, required=True)
+		self.reqparse.add_argument('user_id', type=str, required=True)
+		self.reqparse.add_argument('course_id', type=str, required=True)
+		super(Notes, self).__init__()
+
+	def post(self):
+		#getting all arguments from request
+		args = self.reqparse.parse_args()
+		file = args['file']
+		notetaker_id = args['user_id']
+		course_id = args['course_id']
+		file_name = file.filename
+		file_id = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(20)) + '__' + file_name
+		timestamp = datetime.datetime.now()
+
+		#making a file object and db object
+		newFile = File(file_id, file_name, timestamp, notetaker_id, course_id)
+		fileRepository = FileRepository()
+		print("new file created")
+		fileRepository.add_or_update(newFile)
+		fileRepository.save_changes()
+		print("file has been added to the db!")
+
+		#uploading to S3
+		#s3 = boto3.resource('s3')
+		#s3.Bucket('gt-scribe').put_object(Key=file_id, Body=file)
+
+		return {"message": "Post to database was successful. New file added."}
+
 
 class TakerNotes(Resource):
 	def __init__(self):
