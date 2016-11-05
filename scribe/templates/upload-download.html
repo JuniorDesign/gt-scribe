@@ -19,11 +19,11 @@
     		Make some info here about downloads.
     	{% else %}
     		<h2>You should only be seeing this if you're a note taker</h2><br />
-	    	<h2>Please upload notes below.</h2>
-	        <form class="form-group" enctype="multipart/form-data">
+	    	<h2>Please upload notes below.</h2><br />
+	        <form class="form-group" enctype="multipart/form-data" id="uploadNotes">
 	            <legend>Upload Notes</legend>
 	            <input class="file-upload" data-icon="false" type="file">
-	            <button type="button" class="btn btn-primary upload-btn">Upload</button>
+	            <button type="submit" class="btn btn-primary upload-btn">Upload</button>
 	        </form>
     	{% endif %}
 

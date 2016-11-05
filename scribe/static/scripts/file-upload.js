@@ -4,11 +4,6 @@ $(function() {
       	var file = files[0];
       	var userID = $('#username').text();
       	var courseID = $('#course-id').text();
-      	var body = {
-      		"file": file,
-      		"user_id": userID,
-      		"course_id": courseID
-      	}
       	var formData = new FormData();
       	
       	formData.append('file', file);
@@ -22,24 +17,18 @@ $(function() {
       	$('.upload-btn').click(function() {
       		console.log('Request Sent!');
       		$.ajax({
-	          contentType: false, //"application/json",
-	          processData: false,
-	          url: '/api/notes',
-	          method: 'POST',
-	          data: formData,//JSON.stringify(body),
-	          async: true
+	        	contentType: false,
+	        	processData: false,
+	        	url: '/api/notes',
+	        	method: 'POST',
+	        	data: formData,
+	        	async: true
 	     	})
 	     	.done(function(data) {
-	          console.log('Connection Successful!');
+				console.log('Connection Successful!');
 	     	})
-	     	.fail(function(data) { //error messages come in as a diff format than success messages
-	          console.log('Connection failed!');
-	          /*var response = JSON.parse(data.responseText);
-	          if (response !== null && response !== undefined && 
-	          	  response.error !== null && response.error !== undefined) { 
-              	console.log(response.error);
-	            window.alert(response.error); //temporary feedback to user until we create a UI for this
-	          }*/
+	     	.fail(function(data) {
+	        	console.log('Connection failed!');
 	     	});
 
 	     	return false;
