@@ -4,6 +4,7 @@ from scribe import app, db
 from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
+from scribe.repositories.feedbackRepository import FeedbackRepository
 from scribe.rest import api as scribe_api
 
 from flask import g, redirect, render_template, session, url_for
@@ -158,6 +159,13 @@ def feedback():
             %s
             """ % (form.name.data, form.email.data, form.message.data)
             mail.send(msg)
+            #making a post to the table
+            feedbackRepository = FeedbackRepository()
+            username = session['username']
+            feedback_text = form.message.data
+            feedbackRepository.add_or_update(username, feedback_text)
+            feedbackRepository.save_changes()
+
             return render_template('feedback.html', success=True)
     elif request.method == 'GET':
         return render_template('feedback.html', form=form)

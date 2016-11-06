@@ -10,7 +10,6 @@ class Feedback(BaseModel):
     username = db.Column(db.String(50), nullable=False)
     feedback_text = db.Column(db.String(256), nullable=False)
 
-    def __init__(self, feedback_id, username, feedback_text):
-    	self.feedback_id = feedback_id
+    def __init__(self, username, feedback_text):
     	self.username = username
     	self.feedback_text = feedback_text

@@ -230,3 +230,21 @@ class HandleNotes(Resource):
 		s3.Bucket('gt-scribe').put_object(Key=file_id, Body=file)
 
 		return {"message": "Post to database was successful. New file added."}
+
+
+# class UserFeedback(Resource):
+# 	def __init__(self):
+# 		self.reqparse = RequestParser()
+# 		self.reqparse.add_argument('username', type=str, required= True, help="username needed", location='json')
+# 		self.reqparse.add_argument('feedback_text', type=str, required= True, help="feedback text needed", location='json')
+# 		super(UserFeedback, self).__init__()
+
+# 	def post(self):
+# 		args = self.reqparse.parse_args()
+# 		feedback_text = args['feedback_text']
+# 		username = session['username']
+# 		feedbackRepository = FeedbackRepository()
+# 		return {
+# 			"username": username,
+# 			"feedback_text": feedback_text
+# 		}
