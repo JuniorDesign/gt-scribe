@@ -18,6 +18,7 @@
 {% endblock %}
 
 {% block content %}
+    {{ super() }}
     <main>
     	{% if userType == "REQUESTER" %}
     		Select the day you'd like to download notes from. 

@@ -6,13 +6,9 @@
 {% endblock %}
 
 {% block username %}{{username}}{% endblock %}
-{% block bodyHeader %}
-    {{ super() }}
-    
-{% endblock %}
 {% block content %}
+{{super()}}
 <main>
-	Welcome {{username}}! <br />
 	{% if userType == "REQUESTER" %}
 		We're excited to help match you with your classmates! Select the courses you would like to receive notes for.
 	{% else %}

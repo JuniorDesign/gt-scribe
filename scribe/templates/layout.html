@@ -22,30 +22,21 @@
         <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         {% endblock %}
     </head>
-    <header>
-    <div class="container">
-        <h1 class="logo">Flask App</h1>
-        <nav>
-        <ul class="menu">
-            <li><a href="{{ url_for('feedback') }}">Contact</a></li>
-        </ul>
-        </nav>
-    </div>
-    </header>
     <body class="container">
         <header class="clearfix">
             {% block bodyHeader %}
             <div class="row">
                 <div class="col-xs-6">
                     <img src="/static/images/gtscribe-logo.png" />
-                </div>
-                <div class="col-xs-6">
-                    <h3>Hello, {% block username %}User{% endblock %}!</h3>
+                    <br/>
+                    <a href="{{ url_for('feedback') }}">Contact</a>
                 </div>
             </div>
             {% endblock %}
         </header>
-        {% block content %}{% endblock %}
+        {% block content %}
+        <h3>Hello, {% block username %}User{% endblock %}!</h3>
+	{% endblock %}
 
         
 
@@ -56,3 +47,4 @@
         </footer>
     </body>
 </html>
+

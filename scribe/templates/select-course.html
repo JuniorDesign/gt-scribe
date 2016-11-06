@@ -6,10 +6,8 @@
 {% endblock %}
 
 {% block username %}{{username}}{% endblock %}
-{% block bodyHeader %}
-    {{ super() }}
-{% endblock %}
 {% block content %}
+    {{ super() }}
     <main>
     Welcome {{username}}! You have matches for the following class(es).<br />
     Please select which course you'd like to 
