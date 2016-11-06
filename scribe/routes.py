@@ -8,8 +8,22 @@ from scribe.rest import api as scribe_api
 
 from flask import g, redirect, render_template, session, url_for
 from flask_restful import Api
+from flask import Flask, request, flash
+from scribe.forms import FeedbackForm
 
+from flask.ext.mail import Message, Mail
+mail = Mail()
+
+app.secret_key = 'development key'
 api = Api(app)
+
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = 'gburdell369@gmail.com'
+app.config["MAIL_PASSWORD"] = 'GTjuniordesign'
+
+mail.init_app(app)
 
 @app.before_request
 def before_request():
@@ -129,6 +143,24 @@ def admin():
     userRepository = UserRepository()
     users = userRepository.get_users_by_account_type("TAKER")
     return render_template('admin-view.html', users=users)
+
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    form = FeedbackForm()
+    if request.method == 'POST':
+        if form.validate() == False:
+            #flash('All fields are required')
+            return render_template('feedback.html', form=form)
+        else:
+            msg = Message(form.subject.data, sender='gburdell369@gmail.com', recipients=['gburdell369@gmail.com'])
+            msg.body = """
+            From: %s <%s>
+            %s
+            """ % (form.name.data, form.email.data, form.message.data)
+            mail.send(msg)
+            return render_template('feedback.html', success=True)
+    elif request.method == 'GET':
+        return render_template('feedback.html', form=form)
 
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')

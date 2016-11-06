@@ -22,6 +22,16 @@
         <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         {% endblock %}
     </head>
+    <header>
+    <div class="container">
+        <h1 class="logo">Flask App</h1>
+        <nav>
+        <ul class="menu">
+            <li><a href="{{ url_for('feedback') }}">Contact</a></li>
+        </ul>
+        </nav>
+    </div>
+    </header>
     <body class="container">
         <header class="clearfix">
             {% block bodyHeader %}
