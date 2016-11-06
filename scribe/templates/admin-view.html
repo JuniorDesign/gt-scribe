@@ -1,19 +1,29 @@
 {% extends "layout.html" %}
-{% block title %}Admin View{% endblock %}
+{% block title %}Admin{% endblock %}
+
+{% block username %}Admin{% endblock %}
+
 {% block head %}
-  {{ super() }}
-  <!--link href="/static/styles/index.css" rel="stylesheet"-->
+ {{ super() }}
+ <link href="/static/styles/index.css" rel="stylesheet">
 {% endblock %}
-
-{% block username%}Admin{% endblock %}
-{% block bodyHeader %}
-    {{ super() }}
-{% endblock %}
-
 {% block content %}
-	<main>
-	  {% for user in users %}
-	    <div>notetaker : {{user["notetaker_id"]}} and noterequester : {{user["noterequester_id"]}}</div>
-	  {% endfor %}
-	</main>
+<main>
+<ul class="nav nav-pills nav-stacked col-md-2">
+    <li class="active"><a href="#students" data-toggle="pill">Student List</a></li>
+    <li><a href="#matches" data-toggle="pill">Matches</a></li>
+    <li><a href="#feedback" data-toggle="pill">Feedback</a></li>
+</ul>
+<div class="tab-content col-md-10">
+    <div class="tab-pane" id="students">
+	    {% include "partials/admin-students.html" %}
+    </div>
+    <div class="tab-pane" id="matches">
+	    {% include "partials/admin-matches.html" %}
+    </div>
+    <div class="tab-pane" id="feedback">
+	    {% include "partials/admin-feedback.html" %}
+    </div>
+</div>	
+</main>
 {% endblock %}

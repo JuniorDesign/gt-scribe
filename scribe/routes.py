@@ -1,8 +1,3 @@
-#handles the routing for our application running on the local server (see serve.py in the root-level directory)
-
-from scribe import app, db
-from scribe.repositories.userRepository import UserRepository
-from scribe.repositories.courseRepository import CourseRepository
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
 from scribe.repositories.feedbackRepository import FeedbackRepository
 from scribe.repositories.matchesRepository import MatchesRepository
