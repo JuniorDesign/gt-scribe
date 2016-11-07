@@ -5,6 +5,7 @@ from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
 from scribe.repositories.feedbackRepository import FeedbackRepository
+from scribe.repositories.matchesRepository import MatchesRepository
 from scribe.rest import api as scribe_api
 
 from flask import g, redirect, render_template, session, url_for
@@ -12,7 +13,7 @@ from flask_restful import Api
 from flask import Flask, request, flash
 from scribe.forms import FeedbackForm
 
-from flask.ext.mail import Message, Mail
+from flask_mail import Message, Mail
 mail = Mail()
 
 app.secret_key = 'development key'
@@ -139,11 +140,60 @@ def logout():
     session.pop('username', None) #maybe we can do session.clear() instead?
     return redirect(url_for('index'))
 
-@app.route('/admin')
-def admin():
+# @app.route('/admin')
+# def admin():
+#     userRepository = UserRepository()
+#     users = userRepository.get_users_by_account_type("TAKER")
+#     return render_template('admin-view.html', users=users)
+
+
+@app.route('/admin/approved_notetakers')
+def approved_notetakers():
     userRepository = UserRepository()
-    users = userRepository.get_users_by_account_type("TAKER")
+    users = userRepository.get_users_by_account_type_and_approval("TAKER", True)
     return render_template('admin-view.html', users=users)
+
+@app.route('/admin/unapproved_notetakers')
+def unapproved_notetakers():
+    userRepository = UserRepository()
+    users = userRepository.get_users_by_account_type_and_approval("TAKER", False)
+    return render_template('admin-view.html', users=users)
+
+@app.route('/admin/approved_noterequesters')
+def approved_noterequestors():
+    userRepository = UserRepository()
+    users = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
+    return render_template('admin-view.html', users=users)
+
+@app.route('/admin/unapproved_noterequesters')
+def unapproved_noterequesters():
+    userRepository = UserRepository()
+    users = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
+    return render_template('admin-view.html', users=users)
+
+@app.route('/admin/matches')
+def get_matches():
+    matchesRepository = MatchesRepository()
+    matches = matchesRepository.get_matches()
+    return render_template('admin-view.html', users=matches)
+
+@app.route('/admin/matches_for_notetaker/<username>')
+def matches_for_notetakers(username):
+    matchesRepository = MatchesRepository()
+    matches = matchesRepository.get_matches_for_notetaker(username)
+    return render_template('admin-view.html', users=matches)
+
+@app.route('/admin/matches_for_noterequester/<username>')
+def matches_for_noterequesters(username):
+    matchesRepository = MatchesRepository()
+    matches = matchesRepository.get_matches_for_noterequester(username)
+    return render_template('admin-view.html', users=matches)
+
+@app.route('/admin/feedback')
+def get_feedback():
+    feedbackRepository = FeedbackRepository()
+    feedback = feedbackRepository.get_feedback()
+    return render_template('admin-view.html', users=feedback)
 
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():

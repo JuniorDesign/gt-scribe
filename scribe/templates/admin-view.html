@@ -13,7 +13,7 @@
 {% block content %}
 <main>
   {% for user in users %}
-    <div>{{user["username"]}}</div>
+    <div>notetaker : {{user["notetaker_id"]}} and noterequestor : {{user["noterequester_id"]}}</div>
   {% endfor %}
 </main>
 {% endblock %}

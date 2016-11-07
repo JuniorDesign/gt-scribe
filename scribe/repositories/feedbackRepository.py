@@ -9,3 +9,7 @@ class FeedbackRepository(BaseRepository):
     def add_or_update(self, username, feedback_text):
     	feedback = Feedback(username, feedback_text)
     	return super(FeedbackRepository, self).add_or_update(feedback)
+
+    def get_feedback(self):
+    	feedback = super(FeedbackRepository, self).get()
+    	return feedback
