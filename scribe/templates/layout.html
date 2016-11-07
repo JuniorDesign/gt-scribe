@@ -29,7 +29,13 @@
                 <div class="col-xs-6">
                     <img src="/static/images/gtscribe-logo.png" />
                     <br/>
-                    <a href="{{ url_for('feedback') }}">Contact</a>
+                    {% if userType == "REQUESTER" %}
+                        <a href="{{ url_for('feedback') }}">Contact</a>
+                    {% endif %}  
+                    <br/>
+                    {% if userType!= NULL %}
+                        <a href="{{ url_for('logout') }}">Log Out</a>
+                    {% endif %}                                        
                 </div>
             </div>
             {% endblock %}
