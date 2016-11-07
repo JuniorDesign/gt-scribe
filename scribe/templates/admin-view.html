@@ -5,15 +5,15 @@
   <!--link href="/static/styles/index.css" rel="stylesheet"-->
 {% endblock %}
 
-{% block username %}Admin View{% endblock %}
+{% block username%}Admin{% endblock %}
 {% block bodyHeader %}
     {{ super() }}
 {% endblock %}
 
 {% block content %}
-<main>
-  {% for user in users %}
-    <div>notetaker : {{user["notetaker_id"]}} and noterequestor : {{user["noterequester_id"]}}</div>
-  {% endfor %}
-</main>
+	<main>
+	  {% for user in users %}
+	    <div>notetaker : {{user["notetaker_id"]}} and noterequester : {{user["noterequester_id"]}}</div>
+	  {% endfor %}
+	</main>
 {% endblock %}

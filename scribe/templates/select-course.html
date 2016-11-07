@@ -5,29 +5,31 @@
     <!--css goes here-->
 {% endblock %}
 
-{% block username %}{{username}}{% endblock %}
+{% block bodyHeader%}
+    {{super()}}
+{% endblock %}
+
 {% block content %}
-    {{ super() }}
     <main>
-    Welcome {{username}}! You have matches for the following class(es).<br />
-    Please select which course you'd like to 
-    {% if userType=="REQUESTER" %}
-        download
-    {% else %}
-        upload
-    {% endif %}
-    notes for.
-    
-    <br />
-    <br />
+        Welcome, {{username}}! You have matches for the following class(es).<br />
+        Please select which course you'd like to 
+        {% if userType=="REQUESTER" %}
+            download
+        {% else %}
+            upload
+        {% endif %}
+        notes for.
+        
+        <br />
+        <br />
 
-    {% for course in matchedCourses %}
-        <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning">{{course.subject}} {{course.course_number}} Section {{course.section}}</a>   
-    {% endfor %}
+        {% for course in matchedCourses %}
+            <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning">{{course.subject}} {{course.course_number}} Section {{course.section}}</a>   
+        {% endfor %}
 
-    <br />
-    <br />
-    <a href="enrollment">Register for more courses by clicking here.</a>
+        <br />
+        <br />
+        <a href="enrollment">Register for more courses by clicking here.</a>
 
 	</main>
 

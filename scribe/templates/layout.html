@@ -28,21 +28,27 @@
             <div class="row">
                 <div class="col-xs-6">
                     <img src="/static/images/gtscribe-logo.png" />
+                </div>
+                <div class="col-xs-6">
+                    {% if username != NULL %}
+                        <h3>Hello, {% block username %}User{% endblock %}!</h3>
                     <br/>
-                    {% if userType == "REQUESTER" %}
-                        <a href="{{ url_for('feedback') }}">Contact</a>
-                    {% endif %}  
-                    <br/>
+                    {% endif %}
                     {% if userType!= NULL %}
-                        <a href="{{ url_for('logout') }}">Log Out</a>
-                    {% endif %}                                        
+                        <a href="{{ url_for('logout') }}" role="button" class="btn btn-primary" id="logoutButton">Log Out</a>
+                    {% endif %}  
+                    {% if userType == "REQUESTER" %}
+                        <a href="{{ url_for('feedback') }}" role="button" class="btn btn-primary" id="contactButton">Contact</a>
+                    {% endif %}  
                 </div>
             </div>
+
             {% endblock %}
         </header>
+
         {% block content %}
-        <h3>Hello, {% block username %}User{% endblock %}!</h3>
-	{% endblock %}
+            
+	    {% endblock %}
 
         
 

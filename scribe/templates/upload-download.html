@@ -9,16 +9,14 @@
 {% endblock %}
 {% block head %}
     {{ super() }}
-    <!--link href="/static/styles/index.css" rel="stylesheet"-->
+    <!--css goes here-->
 {% endblock %}
 
-{% block username %}<span id="username">{{username}}</span>{% endblock %}
 {% block bodyHeader %}
     {{ super() }}
 {% endblock %}
 
 {% block content %}
-    {{ super() }}
     <main>
     	{% if userType == "REQUESTER" %}
     		Select the day you'd like to download notes from. 

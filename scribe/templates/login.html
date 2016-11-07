@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
-{% block title %}{% endblock %}
+{% block title %}Login{% endblock %}
 {% block head %}
  {{ super() }}
  <link href="/static/styles/index.css" rel="stylesheet">
 {% endblock %}
 
-
+{% block bodyHeader %}
+    {{ super() }}
+{% endblock %}
 {% block content %}
 
 <div class="jumbotron text-center">

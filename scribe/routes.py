@@ -54,7 +54,7 @@ def index():
         elif userType == "REQUESTER":
             matchedCourses = [match.course for match in user.requester_matches]
         else:
-            render_template("admin.html", username=username)
+            return redirect(url_for('admin'))
         
         if len(matchedCourses) > 0: #if you have a match, you're taken to the match page instead
             return redirect(url_for('myClasses'))
@@ -140,11 +140,17 @@ def logout():
     session.pop('username', None) #maybe we can do session.clear() instead?
     return redirect(url_for('index'))
 
-# @app.route('/admin')
-# def admin():
-#     userRepository = UserRepository()
-#     users = userRepository.get_users_by_account_type("TAKER")
-#     return render_template('admin-view.html', users=users)
+@app.route('/admin')
+def admin():
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        if user.type != "ADMIN":
+            return redirect(url_for('index'))
+        #users = userRepository.get_users_by_account_type("TAKER")
+        return render_template('admin-view.html', username = username, userType = user.type)
+    return redirect(url_for('index'))
 
 
 @app.route('/admin/approved_notetakers')
@@ -197,28 +203,33 @@ def get_feedback():
 
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
-    form = FeedbackForm()
-    if request.method == 'POST':
-        if form.validate() == False:
-            #flash('All fields are required')
-            return render_template('feedback.html', form=form)
-        else:
-            msg = Message(form.subject.data, sender='gburdell369@gmail.com', recipients=['gburdell369@gmail.com'])
-            msg.body = """
-            From: %s <%s>
-            %s
-            """ % (form.name.data, form.email.data, form.message.data)
-            mail.send(msg)
-            #making a post to the table
-            feedbackRepository = FeedbackRepository()
-            username = session['username']
-            feedback_text = form.message.data
-            feedbackRepository.add_or_update(username, feedback_text)
-            feedbackRepository.save_changes()
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        form = FeedbackForm()
+        if request.method == 'POST':
+            if form.validate() == False:
+                #flash('All fields are required')
+                return render_template('feedback.html', form=form)
+            else:
+                msg = Message(form.subject.data, sender='gburdell369@gmail.com', recipients=['gburdell369@gmail.com'])
+                msg.body = """
+                From: %s <%s>
+                %s
+                """ % (form.name.data, form.email.data, form.message.data)
+                mail.send(msg)
+                #making a post to the table
+                feedbackRepository = FeedbackRepository()
+                username = session['username']
+                feedback_text = form.message.data
+                feedbackRepository.add_or_update(username, feedback_text)
+                feedbackRepository.save_changes()
 
-            return render_template('feedback.html', success=True)
-    elif request.method == 'GET':
-        return render_template('feedback.html', form=form)
+                return render_template('feedback.html', success=True, username = username, firstName = user.first_name, lastName = user.last_name, userType = user.type)
+        elif request.method == 'GET':
+            return render_template('feedback.html', form=form, username = username, firstName = user.first_name, lastName = user.last_name, userType = user.type)
+    return redirect(url_for('index'))
 
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')

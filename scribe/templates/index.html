@@ -5,8 +5,12 @@
     <link href="/static/styles/index.css" rel="stylesheet">
 {% endblock %}
 
+{% block bodyHeader %}
+    {{super()}}
+{% endblock %}
+
 {% block content %}
-    {{ super() }}
+    <!--{{ super() }}-->
     <div class="jumbotron text-center">
         <h1 class="display-3">Notetaking made simple.</h1>
         <a href="register"><button type="button" class="btn btn-success index-btn">Register</button></a>
