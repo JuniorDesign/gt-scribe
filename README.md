@@ -10,7 +10,7 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
 1. Download the project and navigate to the top level folder.
 2. Ensure you have Python3 [here](https://www.python.org/downloads/) It can be downloaded directly from the website.
-3. Ensure you have Flask; you can use Pip3 to install it. `p3ip install Flask` and flask_restful, `pip3 install flask_restful`, `pip3 install flask-SQLAlchemy`, `pip3 install boto3`, 'pip3 install flask-wtf', 'pip3 install flask-mail' (and anything else it asks you to install.)
+3. Ensure you have Flask; you can use Pip3 to install it. `pip3 install Flask` and flask_restful, `pip3 install flask_restful`, `pip3 install flask-SQLAlchemy`, `pip3 install boto3`, `pip3 install flask-wtf`, `pip3 install flask-mail` (and anything else it asks you to install.)
 4. Create the database before running this for the first time. Do this with: `python3 manage.py create_db`, `python3 manage.py populate_courses`, `python3 manage.py populate_users`. If there are any errors in this process, drop the db and then restart this step, `python3 manage.py drop_db`.
 5. Run `python3 serve.py`
 6. If it prompts you about accepting any incoming connections, be sure to allow it.
