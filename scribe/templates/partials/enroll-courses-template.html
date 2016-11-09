@@ -2,30 +2,53 @@
 
 <form id="selectClass">
 	<div class="courseSubject">
-		<ol>
-		{% for subject in subjects %}
-		<!--loop.index0 starts at index 0, loop.index starts at 1-->
-		    <li class="subject" id="{{subjects[loop.index0]}}">{{subjects[loop.index0]}}</li>
-		{% endfor %}
-		</ol>
+		<div class="titleBlock">
+			Select course subject
+		</div>
+		<div class="scroll">
+			<!--ol-->
+			{% for subject in subjects %}
+			<!--loop.index0 starts at index 0, loop.index starts at 1-->
+			    <div class="subject" id="{{subjects[loop.index0]}}">{{subjects[loop.index0]}}</div>
+			{% endfor %}
+			<!--/ol-->
+		</div>
 	</div>
 	<div class="courseNumber">
-		<ol>
-		</ol>
+		<div class="titleBlock">
+			Select course number
+		</div>
+		<div class="scroll">
+			<!--ol>
+			</ol-->
+		</div>
 	</div>
 	<div class="courseSection">
-		<ol>
-		</ol>
+		<div class="titleBlock">
+			Select course section
+		</div>
+		<div class="scroll">
+			<!--ol>
+			</ol-->
+		</div>
 	</div>
-	<button type="submit">Add course to my schedule</button>
+	<div class="selectedCourseBlock">
+		<div id="currCourse">
+			I want to ~take/receive~ notes for [this class].
+		</div>
+		<button type="submit" class="btn btn-primary">Add Course to My Schedule</button>
+	</div>
 </form>
 
 <br />
 
-<b>My current schedule:</b>
+
 <br />
 
 <div class="mySchedule">
+	<div class="titleBlock">
+			My Schedule
+		</div>
 	{% for course in myCourses %}
 		<div class="enrolledCourse" crn="{{course['crn']}}">
 			<a href="#">[remove course, currently not functional]</a>

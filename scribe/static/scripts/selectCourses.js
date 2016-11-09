@@ -6,27 +6,27 @@ var currSection = undefined;
 function populateCourseNumbers(courseNumbers){
 	var newList = "";
 	for(var i=0; i<courseNumbers.length; i++){
-		newList += "<li class='number' id='"+courseNumbers[i]+"'>"+courseNumbers[i]+"</li>";
+		newList += "<div class='number' id='"+courseNumbers[i]+"'>"+courseNumbers[i]+"</div>";
 	}
-	$(".courseNumber ol").html(newList);
+	$(".courseNumber .scroll").html(newList);
 }
 
 function populateCourseSections(courseSections){
 	var newList = "";
 	for(var i=0; i<courseSections.length; i++){
-		newList += "<li class='section' id='"+courseSections[i]+"'>"+courseSections[i]+"</li>";
+		newList += "<div class='section' id='"+courseSections[i]+"'>"+courseSections[i]+"</div>";
 	}
-	$(".courseSection ol").html(newList);
+	$(".courseSection .scroll").html(newList);
 }
 
 function clearCourseNumbers(){
 	currNumber = undefined;
-	$(".courseNumbers ol").empty();
+	$(".courseNumbers .scroll").empty();
 }
 
 function clearCourseSections(){
 	currSection = undefined;
-	$(".courseSection ol").empty();
+	$(".courseSection .scroll").empty();
 }
 
 function addCourseToSchedule(crn){
@@ -63,8 +63,8 @@ function addCourseToSchedule(crn){
 }
 
 //highlights the item selected
-$("li.subject").click(function(){
-	$("li.subject").css("background-color", "white");
+$(".scroll .subject").click(function(){
+	$(".scroll .subject").css("background-color", "transparent");
 	$(this).css("background-color", "yellow");
 	var subject = $(this).attr('id');
 	$.ajax({
@@ -93,8 +93,8 @@ $("li.subject").click(function(){
     });
 });
 
-$("ol").on("click", "li.number", function(){
-	$("li.number").css("background-color", "white");
+$(".scroll").on("click", ".number", function(){
+	$(".scroll .number").css("background-color", "transparent");
 	$(this).css("background-color", "yellow");
 	var number = $(this).attr('id');
 	$.ajax({
@@ -121,8 +121,8 @@ $("ol").on("click", "li.number", function(){
     });
 });
 
-$("ol").on("click", "li.section", function(){
-	$("li.section").css("background-color", "white");
+$(".scroll").on("click", ".section", function(){
+	$(".scroll.section").css("background-color", "transparent");
 	$(this).css("background-color", "yellow");
 	currSection = $(this).attr('id');
 });
