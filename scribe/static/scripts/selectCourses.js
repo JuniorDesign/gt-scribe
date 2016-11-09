@@ -29,6 +29,14 @@ function clearCourseSections(){
 	$(".courseSection .scroll").empty();
 }
 
+function displayCurrCourse(){
+  $("#currCourse").html(currSubject+" "+currNumber+" section "+currSection);
+}
+
+function clearCurrCourse(){
+  $("#currCourse").html("...");
+}
+
 function addCourseToSchedule(crn){
 	var thisCourseSubject = undefined;
 	var thisCourseNumber = undefined;
@@ -45,9 +53,9 @@ function addCourseToSchedule(crn){
         if(course != undefined){
         	thisCourseSubject = course.subject;
         	thisCourseNumber = course.course_number;
-			thisCourseSection = course.section;
-			var newCourse = "<div class='enrolledCourse' crn='"+crn+"'> <a href='#''>[remove course, currently not functional]</a> "+thisCourseSubject+" "+thisCourseNumber+" section number "+thisCourseSection+"</div>";
-        	$(".mySchedule").append(newCourse);
+    			thisCourseSection = course.section;
+    			var newCourse = "<div class='enrolledCourse' crn='"+crn+"'> <a href='#''>[remove course, currently not functional]</a> "+thisCourseSubject+" "+thisCourseNumber+" section number "+thisCourseSection+"</div>";
+          $(".mySchedule").append(newCourse);
         }
 
     }).fail(function(data){
@@ -76,6 +84,7 @@ $(".scroll .subject").click(function(){
         console.log("Connection successful!");
         clearCourseNumbers();
         clearCourseSections();
+        clearCurrCourse();
         currSubject = subject; //save so we can use it if the user selects this course
         var courseNumbers = data;
         if(courseNumbers != undefined){
@@ -106,6 +115,7 @@ $(".scroll").on("click", ".number", function(){
         console.log("Connection successful!");
         currNumber = number; //save so we can use it if the user selects this course
         clearCourseSections();
+        clearCurrCourse();
         var courseSections = data;
         if(courseSections != undefined){
         	populateCourseSections(courseSections);
@@ -125,6 +135,7 @@ $(".scroll").on("click", ".section", function(){
 	$(".scroll.section").css("background-color", "transparent");
 	$(this).css("background-color", "yellow");
 	currSection = $(this).attr('id');
+  displayCurrCourse();
 });
 
 $("#selectClass").submit(function(e){

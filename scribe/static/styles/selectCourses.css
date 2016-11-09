@@ -61,6 +61,10 @@
 	clear: both;
 }
 
+#currCourse{
+	display: inline;
+}
+
 .mySchedule{
 	width: 96%;
 	margin: auto;
