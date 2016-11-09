@@ -30,7 +30,7 @@
 	</div>
 	<div class="selectedCourseBlock">
 		<div class="currCourse">
-			I want to ~take/receive~ notes for <div id="currCourse">...</div>
+			I want to {% if userType == "REQUESTER" %} receive{% else %} take{% endif %} notes for <div id="currCourse">...</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Add Course to My Schedule</button>
 	</div>
@@ -43,13 +43,15 @@
 
 <div class="mySchedule">
 	<div class="titleBlock">
-			My Schedule
-		</div>
-	{% for course in myCourses %}
-		<div class="enrolledCourse" crn="{{course['crn']}}">
-			<a href="#">[remove course, currently not functional]</a>
-			{{course.subject}} {{course.course_number}} section number {{course.section}}
-		</div>
-	{% endfor %}
+		My Schedule
+	</div>
+	<div class="scroll">
+		{% for course in myCourses %}
+			<div class="enrolledCourse" crn="{{course['crn']}}">
+				<button class="btn btn-danger btn-sm">X</button>
+				{{course.subject}} {{course.course_number}} section {{course.section}}
+			</div>
+		{% endfor %}
+	</div>
 </div>
 

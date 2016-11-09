@@ -70,7 +70,7 @@ function addCourseToSchedule(crn){
 	
 }
 
-//highlights the item selected
+//highlights the subject selected
 $(".scroll .subject").click(function(){
 	$(".scroll .subject").css("background-color", "transparent");
 	$(this).css("background-color", "yellow");
@@ -102,6 +102,7 @@ $(".scroll .subject").click(function(){
     });
 });
 
+//highlights the number selected
 $(".scroll").on("click", ".number", function(){
 	$(".scroll .number").css("background-color", "transparent");
 	$(this).css("background-color", "yellow");
@@ -131,8 +132,9 @@ $(".scroll").on("click", ".number", function(){
     });
 });
 
+//highlights the section selected
 $(".scroll").on("click", ".section", function(){
-	$(".scroll.section").css("background-color", "transparent");
+	$(".scroll .section").css("background-color", "transparent");
 	$(this).css("background-color", "yellow");
 	currSection = $(this).attr('id');
   displayCurrCourse();
