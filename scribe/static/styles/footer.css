@@ -1,9 +1,25 @@
 footer {
   border-top: .05rem solid #e5e5e5;
-  color: #777;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 1.5rem;
+  /*padding-top: 1.5rem;*/
+  margin-top: 1.5rem;
+  background-color: rgb(238, 178, 17);
+  color: #000;
+}
+
+#scribeFooter{
+	display:block;
+	background-color: rgb(169, 170, 174);
+	color: #fff;
+	/*padding-bottom: 0px;
+	margin-bottom: 0px;*/
+	/*padding:1rem;*/
+}
+
+footer img{
+	max-width: 150px;
+	max-height: 100px;
 }
 
 @media screen and (min-width: 48em) {
