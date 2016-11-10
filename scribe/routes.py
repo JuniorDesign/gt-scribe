@@ -5,16 +5,20 @@ from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
 from scribe.repositories.feedbackRepository import FeedbackRepository
+from scribe.repositories.fileRepository import FileRepository
 from scribe.repositories.matchesRepository import MatchesRepository
 from scribe.rest import api as scribe_api
 
-
-from flask import g, redirect, render_template, session, url_for
+from flask import g, make_response, redirect, render_template, send_file, session, url_for
 from flask_restful import Api
 from flask import Flask, request, flash
 from scribe.forms import FeedbackForm
 
 from flask_mail import Message, Mail
+import boto3
+import botocore
+import io
+
 mail = Mail()
 
 app.secret_key = 'development key'
@@ -120,7 +124,27 @@ def notes(course_id):
         userType = user.type
         if userType == "ADMIN":
             redirect(url_for('admin'))
-        return render_template('upload-download.html', username = username, userType = userType, course_id = course_id)
+        files = FileRepository().get_files_for_course(course_id)
+        return render_template('upload-download.html', username = username, userType = userType, course_id = course_id, files=files)
+    return redirect(url_for('index'))
+
+@app.route('/notes/<course_id>/<key>', methods=['GET'])
+def get_notes(course_id, key):
+    s3 = boto3.resource('s3')
+    bucket = s3.Bucket('gt-scribe')
+    if g.user:
+        file_to_download = FileRepository().get_file(key)
+        if file_to_download.course_id == course_id and EnrollmentRepository().course_already_registered(g.user['name'], course_id): 
+            try:
+                data = io.BytesIO()
+                bucket.download_fileobj(file_to_download.file_id, data)
+                data.seek(0)
+                return send_file(data, as_attachment=True, attachment_filename=file_to_download.file_name)
+            except botocore.exceptions.ClientError as err:
+                print(err)
+                return None
+
+        return "file not found"
     return redirect(url_for('index'))
 
 # Route for user registration in the system

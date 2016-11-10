@@ -16,6 +16,8 @@
     {{ super() }}
 {% endblock %}
 
+{% block username %}user{% endblock %}
+
 {% block content %}
     <main>
     	{% if userType == "REQUESTER" %}
@@ -28,11 +30,13 @@
 	            <button type="submit" class="btn btn-primary upload-btn">Upload</button>
 	        </form>
     	{% endif %}
-
-    	To access the user's username here, do it like this { { username } } (without any spaces)<br />
+        {% for file in files %}
+	    <a href="{{file.course_id}}/{{file.file_id}}" role="button" class="btn btn-warning">{{file.file_name}}</a>
+        {% endfor %}
+    	<!-- To access the user's username here, do it like this { { username } } (without any spaces)<br />
     	To access the user's type, do this { { userType } }<br />
     	To access the user's course_id you selected, use { { course_id } }<br />
-    	Currently, that's all that's available to access from here. To add more, do it from the route.py file, /notes/< int : course_id > route.
+    	Currently, that's all that's available to access from here. To add more, do it from the route.py file, /notes/< int : course_id > route. -->
     </main>
 
 <script src="/static/scripts/file-upload.js"></script>
