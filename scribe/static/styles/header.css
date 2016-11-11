@@ -23,6 +23,19 @@ header h3 {
   width: 250px;
 }
 
+.header-greeting {
+  padding-top: 10px;
+}
+
+.header-logout button {
+  background: #EEB211;
+  margin-top: 15px;
+}
+
+.btn-style:hover {
+  opacity: 0.75;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 48em) {
   header {

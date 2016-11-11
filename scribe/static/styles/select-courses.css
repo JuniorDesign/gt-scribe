@@ -1,15 +1,15 @@
 /*Select courses*/
-#selectClass{
+#selectClass {
 	width: 80%;
 	margin: auto;
 }
 
-#selectClass button{
-	float:right;
+#selectClass button {
+	float: right;
 }
 
-.titleBlock{
-	display:block;
+.titleBlock {
+	display: block;
 	color: rgb(238, 178, 17); /*georgia tech yellow*/
 	background-color: black;
 	width: 100%;
@@ -17,7 +17,7 @@
 	padding: 5px;
 }
 
-.scroll{
+.scroll {
 	width: 100%;
 	height: 400px;
 	overflow: scroll;

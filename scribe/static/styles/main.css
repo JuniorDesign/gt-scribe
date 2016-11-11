@@ -36,7 +36,7 @@
 }
 
 .btn-style:hover {
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 #black-btn {
@@ -45,6 +45,7 @@
 
 #gold-btn {
   background: #EEB211;
+  color: #000;
 }
 
 /* Supporting marketing content */
