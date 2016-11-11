@@ -29,6 +29,7 @@ header h3 {
 
 .header-logout button {
   background: #EEB211;
+  float: right;
   margin-top: 15px;
 }
 

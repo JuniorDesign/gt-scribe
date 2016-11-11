@@ -71,9 +71,9 @@ function addCourseToSchedule(crn){
 }
 
 //highlights the subject selected
-$(".scroll .subject").click(function(){
+$(".scroll .subject").click(function() {
 	$(".scroll .subject").css("background-color", "transparent");
-	$(this).css("background-color", "yellow");
+	$(this).css("background-color", "#A3A3A3");
 	var subject = $(this).attr('id');
 	$.ajax({
     	contentType: "application/json",
@@ -105,7 +105,7 @@ $(".scroll .subject").click(function(){
 //highlights the number selected
 $(".scroll").on("click", ".number", function(){
 	$(".scroll .number").css("background-color", "transparent");
-	$(this).css("background-color", "yellow");
+	$(this).css("background-color", "#A3A3A3");
 	var number = $(this).attr('id');
 	$.ajax({
     	contentType: "application/json",
@@ -135,7 +135,7 @@ $(".scroll").on("click", ".number", function(){
 //highlights the section selected
 $(".scroll").on("click", ".section", function(){
 	$(".scroll .section").css("background-color", "transparent");
-	$(this).css("background-color", "yellow");
+	$(this).css("background-color", "#A3A3A3");
 	currSection = $(this).attr('id');
   displayCurrCourse();
 });

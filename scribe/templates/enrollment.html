@@ -12,9 +12,9 @@
 {% block content %}
 <main>
 	{% if userType == "REQUESTER" %}
-		Select the courses you would like to receive notes for.
+		<h2 class="select-courses-title">Select below for the courses you are receiving notes.</h2>
 	{% else %}
-		Select the courses you would like to volunteer to take notes for.
+		<h2 class="select-courses-title">Select below for the courses you are taking notes.</h2>
 	{% endif %}
 
 	{% include "partials/enroll-courses-template.html" %}
