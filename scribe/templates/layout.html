@@ -26,8 +26,8 @@
         <header class="clearfix">
             {% block bodyHeader %}
             <div class="row">
-                <div class="col-xs-6">
-                    <a href="/"><img src="/static/images/gtscribe-logo.png" /></a>
+                <div class="col-xs-6 header-logo">
+                    <a href="/"><img id="logo" src="/static/images/gtscribe-logo.png" /></a>
                 </div>
                 <div class="col-xs-6">
                     {% if username != NULL %}
@@ -50,15 +50,12 @@
             
 	    {% endblock %}
 
-        
-
         <footer>
             {% block footer %}
-            <div id="scribeFooter">
-                <p>&copy; GTScribe 2016</p>
-            </div>
-                <img src="http://www.gatech.edu/sites/all/themes/gt/images/logos/gt-logo-footer-retina.png" alt="Georgia Tech Logo" /><br />
-                &copy; Georgia Institute of Technology
+                <a href="http://www.gatech.edu" target="_blank"><img src="http://www.gatech.edu/sites/all/themes/gt/images/logos/gt-logo-footer-retina.png" alt="Georgia Tech Logo" /></a><br />
+                <div class="text">
+                    &copy; 2016 GTScribe. All rights reserved.
+                </div>
             {% endblock %}
         </footer>
     </body>

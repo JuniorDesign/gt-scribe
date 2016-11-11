@@ -18,6 +18,11 @@ header h3 {
   line-height: 3rem;
 }
 
+.header-logo #logo {
+  height: 50px;
+  width: 250px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 48em) {
   header {
