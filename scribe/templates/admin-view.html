@@ -9,10 +9,14 @@
 {% endblock %}
 {% block content %}
 <main>
+<body>
+<a href="admin/students">Student Information</a>
+<a href="admin/feedback">Feedback</a>
+
 <ul class="nav nav-pills nav-stacked col-md-2">
     <li class="active"><a href="#students" data-toggle="pill">Student List</a></li>
-    <li><a href="#matches" data-toggle="pill">Matches</a></li>
-    <li><a href="#feedback" data-toggle="pill">Feedback</a></li>
+    <li><a href="admin/matches" data-toggle="pill">Matches</a></li>
+    <li><a href="admin/feedback" data-toggle="pill">Feedback</a></li>
 </ul>
 <div class="tab-content col-md-10">
     <div class="tab-pane" id="students">
@@ -25,5 +29,6 @@
 	    {% include "partials/admin-feedback.html" %}
     </div>
 </div>	
+</body>
 </main>
 {% endblock %}

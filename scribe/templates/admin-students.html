@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block title %}Admin{% endblock %}
+
+{% block username %}Admin{% endblock %}
+
+{% block head %}
+ {{ super() }}
+ <link href="/static/styles/index.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<main>
+
+<body>
+
+<h2>Approved Notetakers</h2>
+<table style="width:100%">
+  
+  <tr>
+    <th>Username</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  {% for user in approved_notetakers %}
+  <tr>
+    <td><div>{{user["username"]}}</div></td>
+    <td><div>{{user["first_name"]}}</div></td>
+    <td><div>{{user["last_name"]}}</div></td>
+  </tr>
+  {% endfor %}
+</table>
+&nbsp;
+<h2>Unapproved Notetakers</h2>
+<table style="width:100%">
+  
+  <tr>
+    <th>Username</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  {% for user in unapproved_notetakers %}
+  <tr>
+    <td><div>{{user["username"]}}</div></td>
+    <td><div>{{user["first_name"]}}</div></td>
+    <td><div>{{user["last_name"]}}</div></td>
+  </tr>
+  {% endfor %}
+</table>
+&nbsp;
+<h2>Approved Noterequesters</h2>
+<table style="width:100%">
+  
+  <tr>
+    <th>Username</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  {% for user in approved_noterequesters %}
+  <tr>
+    <td><div>{{user["username"]}}</div></td>
+    <td><div>{{user["first_name"]}}</div></td>
+    <td><div>{{user["last_name"]}}</div></td>
+  </tr>
+  {% endfor %}
+</table>
+&nbsp;  
+<h2>Unapproved Noterequesters</h2>
+<table style="width:100%">
+  
+  <tr>
+    <th>Username</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  {% for user in unapproved_noterequesters %}
+  <tr>
+    <td><div>{{user["username"]}}</div></td>
+    <td><div>{{user["first_name"]}}</div></td>
+    <td><div>{{user["last_name"]}}</div></td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+
+</main>
+{% endblock %}

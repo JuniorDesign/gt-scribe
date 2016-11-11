@@ -166,6 +166,15 @@ def unapproved_notetakers():
     users = userRepository.get_users_by_account_type_and_approval("TAKER", False)
     return render_template('admin-view.html', users=users)
 
+@app.route('/admin/students')
+def students():
+    userRepository = UserRepository()
+    approved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", True)
+    unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
+    approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
+    unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
+    return render_template('admin-students.html', approved_notetakers=approved_notetakers, unapproved_notetakers=unapproved_notetakers, approved_noterequesters=approved_noterequesters,unapproved_noterequesters=unapproved_noterequesters)
+
 @app.route('/admin/approved_noterequesters')
 def approved_noterequestors():
     userRepository = UserRepository()
@@ -200,7 +209,7 @@ def matches_for_noterequesters(username):
 def get_feedback():
     feedbackRepository = FeedbackRepository()
     feedback = feedbackRepository.get_feedback()
-    return render_template('admin-view.html', users=feedback)
+    return render_template('admin-feedback.html', users=feedback)
 
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
