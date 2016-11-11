@@ -48,8 +48,13 @@
 }
 
 .selectedCourseBlock {
-	padding-top: 15px;
+	height: 75px;
+	padding-top: 20px;
 	text-align: center;
+}
+
+.currCourse h3 {
+	margin-bottom: 15px;
 }
 
 #currCourse {
