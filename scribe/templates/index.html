@@ -2,7 +2,7 @@
 {% block title %}Index{% endblock %}
 {% block head %}
     {{ super() }}
-    <link href="/static/styles/index.css" rel="stylesheet">
+    <link href="/static/styles/main.css" rel="stylesheet">
 {% endblock %}
 
 {% block bodyHeader %}
@@ -13,8 +13,8 @@
     <!--{{ super() }}-->
     <div class="jumbotron text-center">
         <h1 class="display-3">Notetaking made simple.</h1>
-        <a href="register"><button type="button" class="btn btn-success index-btn">Register</button></a>
-        <a href="login"><button type="button" class="btn btn-primary index-btn">Login</button></a>
+        <a href="register"><button type="button" class="btn btn-style" id="black-btn">Register</button></a>
+        <a href="login"><button type="button" class="btn btn-style" id="gold-btn">Login</button></a>
     </div>
     <div class="row options">
         <div class="col-md-6">

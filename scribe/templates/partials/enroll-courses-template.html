@@ -1,9 +1,9 @@
 <!--enroll-courses-template.html-->
 
 <form id="selectClass">
-	<div class="courseSubject">
+	<div class="courseBlock courseSubject">
 		<div class="titleBlock">
-			Select course subject
+			Course Subject
 		</div>
 		<div class="scroll">
 			<!--ol-->
@@ -14,25 +14,25 @@
 			<!--/ol-->
 		</div>
 	</div>
-	<div class="courseNumber">
+	<div class="courseBlock courseNumber">
 		<div class="titleBlock">
-			Select course number
+			Course Number
 		</div>
 		<div class="scroll">
 		</div>
 	</div>
-	<div class="courseSection">
+	<div class="courseBlock courseSection">
 		<div class="titleBlock">
-			Select course section
+			Course Section
 		</div>
 		<div class="scroll">
 		</div>
 	</div>
 	<div class="selectedCourseBlock">
 		<div class="currCourse">
-			I want to {% if userType == "REQUESTER" %} receive{% else %} take{% endif %} notes for <div id="currCourse">...</div>
+			<h3>I want to {% if userType == "REQUESTER" %} receive{% else %} take{% endif %} notes for <div id="currCourse">...</div></h3>
 		</div>
-		<button type="submit" class="btn btn-primary">Add Course to My Schedule</button>
+		<button type="submit" class="btn btn-style">Add Course to Schedule</button>
 	</div>
 </form>
 

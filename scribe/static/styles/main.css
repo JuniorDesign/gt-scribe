@@ -11,8 +11,8 @@
 /* Main marketing message and sign up button */
 .jumbotron {
   border-bottom: .05rem solid #e5e5e5;
-  margin-bottom: ;
   text-align: center;
+  padding: 40px 20px 40px 20px;
 }
 
 .jumbotron h1 {
@@ -29,14 +29,28 @@
   margin: auto;
 }
 
-.index-btn {
+.btn-style {
+  color: #FFF;
   margin: 0 10px 0 10px;
   width: 135px;
 }
 
+.btn-style:hover {
+  opacity: 0.75;
+}
+
+#black-btn {
+  background: #000;
+}
+
+#gold-btn {
+  background: #EEB211;
+  color: #000;
+}
+
 /* Supporting marketing content */
 .options {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 .options p + h4 {
   margin-top: 1.5rem;

@@ -1,0 +1,99 @@
+.select-courses-title {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+/* Select courses */
+#selectClass {
+	width: 80%;
+	margin: auto;
+}
+
+.titleBlock {
+	display: block;
+	color: rgb(238, 178, 17); /*georgia tech yellow*/
+	background-color: black;
+	padding: 12px;
+	text-align: center;
+}
+
+.scroll {
+	width: 100%;
+	height: 400px;
+	overflow: scroll;
+	display: block;
+	background-color: #eeeeee; /*rgb(169, 170, 174); /* the grey color */
+}
+
+.courseBlock {
+	float: left;
+	display: block;
+	width: 30%;
+	height: 100%;
+	text-align: center;
+}
+
+.courseSubject, .courseNumber {
+	margin-right: 3%;
+}
+
+.selectedCourseBlock {
+	width: 60%;
+	height: 60px;
+	display:block;
+	margin: auto;
+	padding: 5px;
+	clear: both;
+	vertical-align: text-bottom;
+}
+
+.selectedCourseBlock {
+	height: 75px;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.currCourse h3 {
+	margin-bottom: 15px;
+}
+
+#currCourse {
+	display: inline;
+}
+
+.selectedCourseBlock button {
+	background: #EEB211;
+}
+
+.mySchedule {
+	width: 55%;
+	margin: auto;
+	/*min-height: 200px;*/
+	/*background-color: rgb(169, 170, 174);*/
+	display: block;
+	clear:both;
+	/*overflow: scroll;*/
+}
+
+.mySchedule .scroll{
+	width: 100%;
+	height: 200px;
+	display: block;
+	background-color: #eeeeee;/*rgb(169, 170, 174);*/
+	overflow: scroll;
+}
+
+#selectClass ol {
+	list-style-type: none;
+}
+
+.scroll {
+	padding: 3px 0;
+}
+
+.enrolledCourse {
+	display: block;
+	width: 100%;
+	padding: 20px;
+	margin-bottom: 5px;
+}
