@@ -153,45 +153,82 @@ def admin():
         return render_template('admin-view.html', username = username, userType = user.type)
     return redirect(url_for('index'))
 
+@app.route('/admin/students')
+def students():
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        if user.type == "ADMIN":
+            approved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", True)
+            unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
+            approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
+            unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
+            return render_template('admin-students.html', approved_notetakers=approved_notetakers, unapproved_notetakers=unapproved_notetakers, approved_noterequesters=approved_noterequesters,unapproved_noterequesters=unapproved_noterequesters)
+    return redirect(url_for('index'))
 
 @app.route('/admin/approved_notetakers')
 def approved_notetakers():
-    userRepository = UserRepository()
-    users = userRepository.get_users_by_account_type_and_approval("TAKER", True)
-    return render_template('admin-view.html', users=users)
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        if user.type == "ADMIN":
+            approved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", True)
+            return render_template('admin-approved-notetakers.html', approved_notetakers=approved_notetakers)
+    return redirect(url_for('index'))
 
 @app.route('/admin/unapproved_notetakers')
 def unapproved_notetakers():
-    userRepository = UserRepository()
-    users = userRepository.get_users_by_account_type_and_approval("TAKER", False)
-    return render_template('admin-view.html', users=users)
-
-@app.route('/admin/students')
-def students():
-    userRepository = UserRepository()
-    approved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", True)
-    unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
-    approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
-    unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
-    return render_template('admin-students.html', approved_notetakers=approved_notetakers, unapproved_notetakers=unapproved_notetakers, approved_noterequesters=approved_noterequesters,unapproved_noterequesters=unapproved_noterequesters)
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        if user.type:
+            unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
+            return render_template('admin-unapproved-notetakers.html', unapproved_notetakers=unapproved_notetakers)
+    return redirect(url_for('index'))
 
 @app.route('/admin/approved_noterequesters')
 def approved_noterequestors():
-    userRepository = UserRepository()
-    users = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
-    return render_template('admin-view.html', users=users)
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        if user.type == "ADMIN":
+            approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
+            return render_template('admin-approved-noterequesters.html', approved_noterequesters=approved_noterequesters)
+    return redirect(url_for('index'))
 
 @app.route('/admin/unapproved_noterequesters')
 def unapproved_noterequesters():
-    userRepository = UserRepository()
-    users = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
-    return render_template('admin-view.html', users=users)
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        if user.type == "ADMIN":
+            unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
+            return render_template('admin-unapproved-noterequesters.html', unapproved_noterequesters=unapproved_noterequesters)
 
 @app.route('/admin/matches')
 def get_matches():
-    matchesRepository = MatchesRepository()
-    matches = matchesRepository.get_matches()
-    return render_template('admin-view.html', users=matches)
+    if g.user:
+        username = session['username']
+        userRepository = UserRepository()
+        user = userRepository.find(username)
+        if user.type == "ADMIN":
+            matchesRepository = MatchesRepository()
+            matches = matchesRepository.get_matches()
+            matches_list = []
+            for match in matches:
+                notetaker_id = match.notetaker_id
+                notetaker = userRepository.find(notetaker_id)
+                noterequester_id = match.noterequester_id
+                noterequester = userRepository.find(noterequester_id)
+                match = (notetaker, noterequester)
+                matches_list.append(match)
+            return render_template('admin-matches.html', matches=matches, matches_list=matches_list)
+    return redirect(url_for('index'))
 
 @app.route('/admin/matches_for_notetaker/<username>')
 def matches_for_notetakers(username):

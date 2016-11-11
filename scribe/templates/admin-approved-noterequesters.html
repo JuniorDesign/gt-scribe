@@ -5,35 +5,29 @@
 
 {% block head %}
  {{ super() }}
- <link href="/static/styles/main.css" rel="stylesheet">
+ <link href="/static/styles/index.css" rel="stylesheet">
 {% endblock %}
 {% block content %}
 <main>
 
 <body>
 
-<div class="container">
-
-<header>
-   <h1>Feedback for GT Scribe</h1>
-</header>
-  
+<h2>Approved Noterequesters</h2>
 <table style="width:100%">
+  
   <tr>
     <th>Username</th>
-    <th>Message</th>
+    <th>First Name</th>
+    <th>Last Name</th>
   </tr>
-  {% for user in users %}
+  {% for user in approved_noterequesters %}
   <tr>
     <td><div>{{user["username"]}}</div></td>
-    <td><div>{{user["feedback_text"]}}</div></td>
+    <td><div>{{user["first_name"]}}</div></td>
+    <td><div>{{user["last_name"]}}</div></td>
   </tr>
   {% endfor %}
 </table>
-
-<footer>Copyright © W3Schools.com</footer>
-
-</div>
 
 </body>
 
