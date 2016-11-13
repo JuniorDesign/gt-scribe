@@ -17,8 +17,8 @@ class File(BaseModel):
     
 
     def __init__(self, file_id, file_name, timestamp, notetaker_id, course_id):
-    	self.file_id = file_id
-    	self.file_name = file_name
-    	self.timestamp = timestamp
-    	self.notetaker_id = notetaker_id
-    	self.course_id = course_id
+        self.file_id = file_id
+        self.file_name = file_name
+        self.timestamp = timestamp
+        self.notetaker_id = notetaker_id
+        self.course_id = course_id

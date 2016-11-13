@@ -11,5 +11,5 @@ class Feedback(BaseModel):
     feedback_text = db.Column(db.String(256), nullable=False)
 
     def __init__(self, username, feedback_text):
-    	self.username = username
-    	self.feedback_text = feedback_text
+        self.username = username
+        self.feedback_text = feedback_text
