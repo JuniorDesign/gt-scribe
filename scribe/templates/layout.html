@@ -29,7 +29,7 @@
         <header class="clearfix">
             {% block bodyHeader %}
             <div class="row">
-                <div class="col-md-6 header-logo">
+                <div class="col-md-4 header-logo">
                     <a href="/"><img id="logo" src="/static/images/gtscribe-logo.png" /></a>
                 </div>
                 <div class="col-sm-4 header-greeting">
@@ -37,12 +37,12 @@
                         <h3>Hello, {% block username %}User{% endblock %}!</h3>
                     {% endif %}
                 </div>
-                <div class="col-sm-2 header-logout">
+                <div class="col-sm-4 header-logout">
                     {% if userType!= NULL %}
                         <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-style logoutButton">Log Out</button></a>
                     {% endif %}  
                     {% if userType == "REQUESTER" %}
-                        <a href="{{ url_for('feedback') }}" role="button" class="btn btn-style" id="contactButton">Contact</a>
+                        <a href="{{ url_for('feedback') }}"><button role="button" class="btn btn-style black" id="contactButton">Contact</button></a>
                     {% endif %}  
                 </div>
             </div>
