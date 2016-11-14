@@ -33,10 +33,11 @@
   color: #FFF;
   margin: 0 10px 0 10px;
   width: 135px;
+  opacity: 0.8;
 }
 
 .btn-style:hover {
-  opacity: 0.75;
+  opacity: 1.0;
 }
 
 #black-btn {

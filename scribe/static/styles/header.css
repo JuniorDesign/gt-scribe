@@ -24,17 +24,24 @@ header h3 {
 }
 
 .header-greeting {
+  text-align: center;
   padding-top: 10px;
 }
 
 .header-logout button {
   background: #EEB211;
   float: right;
-  margin-top: 15px;
+  margin: 15px 0 0 10px;
+  opacity: 0.8;
+}
+
+.black {
+  background-color: #000 !important;
+  color: #FFF;
 }
 
 .btn-style:hover {
-  opacity: 0.75;
+  opacity: 1.0;
 }
 
 /* Responsive: Portrait tablets and up */
