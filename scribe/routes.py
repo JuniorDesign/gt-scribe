@@ -41,6 +41,9 @@ def before_request():
         else:
             session.clear()
 
+# Route for the index page.
+# Users without a login cookie are taken to the home page.
+# Users with a login cookie are taken to the enrollment page or match page
 @app.route('/')
 def index():
     if g.user:
@@ -94,15 +97,18 @@ def myClasses():
         userType = user.type
         matchedCourses = ""
         if userType == "TAKER":
-            matchedCourses = [match.course for match in user.taker_matches]
+            matchedCoursesDupes = [match.course for match in user.taker_matches]
+            matchedCourses = set(matchedCoursesDupes) #by using sets, we don't get duplicates
         elif userType == "REQUESTER":
-            matchedCourses = [match.course for match in user.requester_matches]
+            matchedCoursesDupes = [match.course for match in user.requester_matches]
+            matchedCourses = set(matchedCoursesDupes)
         else:
             render_template("admin.html", username=username)
 
         return render_template('select-course.html', username = username, userType = userType, matchedCourses = matchedCourses)
     return redirect(url_for('index'))
 
+# Route for the upload/download page for this course
 @app.route('/notes/<int:course_id>')
 def notes(course_id):
     if g.user:
@@ -117,24 +123,30 @@ def notes(course_id):
         return render_template('upload-download.html', username = username, userType = userType, course_id = course_id)
     return redirect(url_for('index'))
 
+# Route for user registration in the system
 @app.route('/register')
 def register_user():
     if g.user:
         return redirect(url_for('index'))
     return render_template('register.html')
 
+# Route for logging in
 @app.route('/login')
 def login():
     if g.user:
         return redirect(url_for('index'))
     return render_template('login.html')
 
+# Route for successful user registration
+# Users must manually navigate back to the login screen
 @app.route('/register/success')
 def loggedin():
     if g.user:
         return redirect(url_for('index'))
     return render_template('register-success.html')
 
+# Route for logging out
+# clears the user cookie from their browser
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
@@ -280,7 +292,6 @@ def feedback():
 
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
-#api.add_resource(scribe_api.CourseSubjectOnly, '/api/subjects')
 api.add_resource(scribe_api.HandleNotes, '/api/notes')
 api.add_resource(scribe_api.CourseRegistration, '/api/course/register')
 api.add_resource(scribe_api.CourseNumbersOnly, '/api/courses/distinct/<course_subject>')
@@ -288,5 +299,4 @@ api.add_resource(scribe_api.CourseSectionsOnly, '/api/courses/distinct/<course_s
 api.add_resource(scribe_api.CourseByCrn, '/api/courses/crn/<crn>')
 api.add_resource(scribe_api.CourseNumbersBySubject, '/api/courses/<course_subject>') #not really used, but nice for testing
 api.add_resource(scribe_api.CoursesSectionsByNumberSubject, '/api/courses/<course_subject>/<course_number>') #not really used, but nice for testing
-#api.add_resource(scribe_api.Course, '/api/courses/<course_subject>/<course_number>/<course_section>') #may not actually use this one
 
