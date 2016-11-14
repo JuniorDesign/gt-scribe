@@ -64,6 +64,10 @@ class UserRegistration(Resource):
 
 		return {"message": "Post to database was successful. New user registered."}
 
+	#def put(self):
+		#args = self.reqparse.parse_args()
+
+
 
 class UserLogin(Resource):
 	def __init__(self):
