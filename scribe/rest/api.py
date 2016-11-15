@@ -40,7 +40,7 @@ class UserRegistration(Resource):
         email = args['email']
         firstName = args['firstName']
         lastName = args['lastName']
-        approved = True #approve users by default at this point
+        approved = False #approve users by default at this point
         print("approved " + str(password) + " " + str(firstName) + " " + str(lastName) + " " + str(approved))
         
         if args['type'] == "admin":

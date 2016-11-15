@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Admin{% endblock %}
+
+{% block head %}
+ {{ super() }}
+ <link href="/static/styles/index.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<main>
+
+<body>
+Success! {{user.first_name}} {{user.last_name}} with username = {{user.username}} has been successfully approved!
+
+</body>
+
+</main>
+{% endblock %}

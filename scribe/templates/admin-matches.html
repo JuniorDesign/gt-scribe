@@ -16,11 +16,13 @@
   <tr>
     <th>Notetaker Name</th>
     <th>Noterequester Name</th>
+    <th>Course</th>
   </tr>
   {% for match in matches_list %}
   <tr>
     <td><div>{{match[0]["first_name"]}}</div></td>
     <td><div>{{match[1]["first_name"]}}</div></td>
+    <td><div>{{match[2]["subject"]}} {{match[2]["course_number"]}} {{match[2]["section"]}}</div></td>
   </tr>
   {% endfor %}
 </table>

@@ -215,6 +215,7 @@ def get_matches():
     if g.user:
         username = session['username']
         userRepository = UserRepository()
+        courseRepository = CourseRepository()
         user = userRepository.find(username)
         if user.type == "ADMIN":
             matchesRepository = MatchesRepository()
@@ -225,7 +226,9 @@ def get_matches():
                 notetaker = userRepository.find(notetaker_id)
                 noterequester_id = match.noterequester_id
                 noterequester = userRepository.find(noterequester_id)
-                match = (notetaker, noterequester)
+                course_id = match.course_id
+                course = courseRepository.find(course_id)
+                match = (notetaker, noterequester, course)
                 matches_list.append(match)
             return render_template('admin-matches.html', matches=matches, matches_list=matches_list)
     return redirect(url_for('index'))
@@ -247,6 +250,15 @@ def get_feedback():
     feedbackRepository = FeedbackRepository()
     feedback = feedbackRepository.get_feedback()
     return render_template('admin-feedback.html', users=feedback)
+
+@app.route('/admin/approve/<username>')
+def approve(username):
+    username = username
+    userRepository = UserRepository()
+    user = userRepository.find(username)
+    user.approved = 1
+    userRepository.save_changes()
+    return render_template('admin-approval.html', user=user)
 
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
