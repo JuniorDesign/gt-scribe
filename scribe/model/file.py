@@ -22,3 +22,4 @@ class File(BaseModel):
         self.timestamp = timestamp
         self.notetaker_id = notetaker_id
         self.course_id = course_id
+

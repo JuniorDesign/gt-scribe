@@ -24,12 +24,12 @@
         <br />
 
         {% for course in matchedCourses %}
-            <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning">{{course.subject}} {{course.course_number}} Section {{course.section}}</a>   
+            <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning"><b>{{course.subject}} {{course.course_number}} Section {{course.section}}</b></a>   
         {% endfor %}
 
         <br />
         <br />
-        <a href="enrollment">Register for more courses by clicking here.</a>
+        Forgot to volunteer for one of your other classes? <a href="enrollment">Register for more courses by clicking here.</a>
 
 	</main>
 

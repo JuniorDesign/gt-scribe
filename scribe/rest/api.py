@@ -1,7 +1,4 @@
 from scribe import db
-from flask import session
-from flask_restful import Resource
-from flask_restful.reqparse import RequestParser
 from scribe.model.user import User
 from scribe.model.file import File
 from scribe.repositories.userRepository import UserRepository
@@ -14,11 +11,16 @@ from scribe.repositories.matchesRepository import MatchesRepository
 from scribe.model.file import File
 from scribe.repositories.fileRepository import FileRepository
 
+from flask import g, session
+from flask_restful import Resource
+from flask_restful.reqparse import RequestParser
 from werkzeug.datastructures import FileStorage
+from werkzeug.utils import secure_filename
 import boto3
+import datetime
 import random
 import string
-import datetime
+import uuid
 
 class UserRegistration(Resource):
     def __init__(self):
@@ -40,7 +42,7 @@ class UserRegistration(Resource):
         email = args['email']
         firstName = args['firstName']
         lastName = args['lastName']
-        approved = False #approve users by default at this point
+        approved = False 
         print("approved " + str(password) + " " + str(firstName) + " " + str(lastName) + " " + str(approved))
         
         if args['type'] == "admin":
@@ -207,7 +209,6 @@ class HandleNotes(Resource):
     def __init__(self):
         self.reqparse = RequestParser()
         self.reqparse.add_argument('file', location='files', type=FileStorage, required=True)
-        self.reqparse.add_argument('user_id', type=str, required=True)
         self.reqparse.add_argument('course_id', type=str, required=True)
         super(HandleNotes, self).__init__()
 
@@ -215,10 +216,10 @@ class HandleNotes(Resource):
         #getting all arguments from request
         args = self.reqparse.parse_args()
         file = args['file']
-        notetaker_id = args['user_id']
+        notetaker_id = g.user['name']
         course_id = args['course_id']
-        file_name = file.filename
-        file_id = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(20)) + '__' + file_name
+        file_name = secure_filename(file.filename)
+        file_id = str(uuid.uuid4())
         timestamp = datetime.datetime.now()
 
         #making a file object and db object
@@ -234,7 +235,6 @@ class HandleNotes(Resource):
         s3.Bucket('gt-scribe').put_object(Key=file_id, Body=file)
 
         return {"message": "Post to database was successful. New file added."}
-
 
 # class UserFeedback(Resource):
 #     def __init__(self):
@@ -252,3 +252,4 @@ class HandleNotes(Resource):
 #             "username": username,
 #             "feedback_text": feedback_text
 #         }
+

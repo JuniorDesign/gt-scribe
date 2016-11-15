@@ -5,16 +5,20 @@ from scribe.repositories.userRepository import UserRepository
 from scribe.repositories.courseRepository import CourseRepository
 from scribe.repositories.enrollmentRepository import EnrollmentRepository
 from scribe.repositories.feedbackRepository import FeedbackRepository
+from scribe.repositories.fileRepository import FileRepository
 from scribe.repositories.matchesRepository import MatchesRepository
 from scribe.rest import api as scribe_api
 
-
-from flask import g, redirect, render_template, session, url_for
+from flask import g, make_response, redirect, render_template, send_file, session, url_for
 from flask_restful import Api
 from flask import Flask, request, flash
 from scribe.forms import FeedbackForm
 
 from flask_mail import Message, Mail
+import boto3
+import botocore
+import io
+
 mail = Mail()
 
 app.secret_key = 'development key'
@@ -41,6 +45,9 @@ def before_request():
         else:
             session.clear()
 
+# Route for the index page.
+# Users without a login cookie are taken to the home page.
+# Users with a login cookie are taken to the enrollment page or match page
 @app.route('/')
 def index():
     if g.user:
@@ -94,15 +101,18 @@ def myClasses():
         userType = user.type
         matchedCourses = ""
         if userType == "TAKER":
-            matchedCourses = [match.course for match in user.taker_matches]
+            matchedCoursesDupes = [match.course for match in user.taker_matches]
+            matchedCourses = set(matchedCoursesDupes) #by using sets, we don't get duplicates
         elif userType == "REQUESTER":
-            matchedCourses = [match.course for match in user.requester_matches]
+            matchedCoursesDupes = [match.course for match in user.requester_matches]
+            matchedCourses = set(matchedCoursesDupes)
         else:
             render_template("admin.html", username=username)
 
         return render_template('select-course.html', username = username, userType = userType, matchedCourses = matchedCourses)
     return redirect(url_for('index'))
 
+# Route for the upload/download page for this course
 @app.route('/notes/<int:course_id>')
 def notes(course_id):
     if g.user:
@@ -114,27 +124,53 @@ def notes(course_id):
         userType = user.type
         if userType == "ADMIN":
             redirect(url_for('admin'))
-        return render_template('upload-download.html', username = username, userType = userType, course_id = course_id)
+        files = FileRepository().get_files_for_course(course_id)
+        return render_template('upload-download.html', username = username, userType = userType, course_id = course_id, files=files)
     return redirect(url_for('index'))
 
+@app.route('/notes/<course_id>/<key>', methods=['GET'])
+def get_notes(course_id, key):
+    s3 = boto3.resource('s3')
+    bucket = s3.Bucket('gt-scribe')
+    if g.user:
+        file_to_download = FileRepository().get_file(key)
+        if file_to_download.course_id == course_id and EnrollmentRepository().course_already_registered(g.user['name'], course_id): 
+            try:
+                data = io.BytesIO()
+                bucket.download_fileobj(file_to_download.file_id, data)
+                data.seek(0)
+                return send_file(data, as_attachment=True, attachment_filename=file_to_download.file_name)
+            except botocore.exceptions.ClientError as err:
+                print(err)
+                return None
+
+        return "file not found"
+    return redirect(url_for('index'))
+
+# Route for user registration in the system
 @app.route('/register')
 def register_user():
     if g.user:
         return redirect(url_for('index'))
     return render_template('register.html')
 
+# Route for logging in
 @app.route('/login')
 def login():
     if g.user:
         return redirect(url_for('index'))
     return render_template('login.html')
 
+# Route for successful user registration
+# Users must manually navigate back to the login screen
 @app.route('/register/success')
 def loggedin():
     if g.user:
         return redirect(url_for('index'))
     return render_template('register-success.html')
 
+# Route for logging out
+# clears the user cookie from their browser
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
@@ -164,7 +200,7 @@ def students():
             unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
             approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
             unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
-            return render_template('admin-students.html', approved_notetakers=approved_notetakers, unapproved_notetakers=unapproved_notetakers, approved_noterequesters=approved_noterequesters,unapproved_noterequesters=unapproved_noterequesters)
+            return render_template('admin-students.html', approved_notetakers=approved_notetakers, unapproved_notetakers=unapproved_notetakers, approved_noterequesters=approved_noterequesters,unapproved_noterequesters=unapproved_noterequesters, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/approved_notetakers')
@@ -175,7 +211,7 @@ def approved_notetakers():
         user = userRepository.find(username)
         if user.type == "ADMIN":
             approved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", True)
-            return render_template('admin-approved-notetakers.html', approved_notetakers=approved_notetakers)
+            return render_template('admin-approved-notetakers.html', approved_notetakers=approved_notetakers, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/unapproved_notetakers')
@@ -186,7 +222,7 @@ def unapproved_notetakers():
         user = userRepository.find(username)
         if user.type:
             unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
-            return render_template('admin-unapproved-notetakers.html', unapproved_notetakers=unapproved_notetakers)
+            return render_template('admin-unapproved-notetakers.html', unapproved_notetakers=unapproved_notetakers, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/approved_noterequesters')
@@ -197,7 +233,7 @@ def approved_noterequestors():
         user = userRepository.find(username)
         if user.type == "ADMIN":
             approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
-            return render_template('admin-approved-noterequesters.html', approved_noterequesters=approved_noterequesters)
+            return render_template('admin-approved-noterequesters.html', approved_noterequesters=approved_noterequesters, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/unapproved_noterequesters')
@@ -208,7 +244,7 @@ def unapproved_noterequesters():
         user = userRepository.find(username)
         if user.type == "ADMIN":
             unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
-            return render_template('admin-unapproved-noterequesters.html', unapproved_noterequesters=unapproved_noterequesters)
+            return render_template('admin-unapproved-noterequesters.html', unapproved_noterequesters=unapproved_noterequesters, username = username)
 
 @app.route('/admin/matches')
 def get_matches():
@@ -230,26 +266,35 @@ def get_matches():
                 course = courseRepository.find(course_id)
                 match = (notetaker, noterequester, course)
                 matches_list.append(match)
-            return render_template('admin-matches.html', matches=matches, matches_list=matches_list)
+            return render_template('admin-matches.html', matches=matches, matches_list=matches_list, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/matches_for_notetaker/<username>')
 def matches_for_notetakers(username):
-    matchesRepository = MatchesRepository()
-    matches = matchesRepository.get_matches_for_notetaker(username)
-    return render_template('admin-view.html', users=matches)
+    if g.user:
+        adminUsername = session['username']
+        matchesRepository = MatchesRepository()
+        matches = matchesRepository.get_matches_for_notetaker(username)
+        return render_template('admin-view.html', users=matches, username = adminUsername)
+    return redirect(url_for('index'))
 
 @app.route('/admin/matches_for_noterequester/<username>')
 def matches_for_noterequesters(username):
-    matchesRepository = MatchesRepository()
-    matches = matchesRepository.get_matches_for_noterequester(username)
-    return render_template('admin-view.html', users=matches)
+    if g.user:
+        adminUsername = session['username']
+        matchesRepository = MatchesRepository()
+        matches = matchesRepository.get_matches_for_noterequester(username)
+        return render_template('admin-view.html', users=matches, username = adminUsername)
+    return redirect(url_for('index'))
 
 @app.route('/admin/feedback')
 def get_feedback():
-    feedbackRepository = FeedbackRepository()
-    feedback = feedbackRepository.get_feedback()
-    return render_template('admin-feedback.html', users=feedback)
+    if g.user:
+        username = session['username']
+        feedbackRepository = FeedbackRepository()
+        feedback = feedbackRepository.get_feedback()
+        return render_template('admin-feedback.html', users=feedback, username = username)
+    return redirect(url_for('index'))
 
 @app.route('/admin/approve/<username>')
 def approve(username):
@@ -292,7 +337,6 @@ def feedback():
 
 api.add_resource(scribe_api.UserRegistration, '/api/register')
 api.add_resource(scribe_api.UserLogin, '/api/login')
-#api.add_resource(scribe_api.CourseSubjectOnly, '/api/subjects')
 api.add_resource(scribe_api.HandleNotes, '/api/notes')
 api.add_resource(scribe_api.CourseRegistration, '/api/course/register')
 api.add_resource(scribe_api.CourseNumbersOnly, '/api/courses/distinct/<course_subject>')
@@ -300,5 +344,4 @@ api.add_resource(scribe_api.CourseSectionsOnly, '/api/courses/distinct/<course_s
 api.add_resource(scribe_api.CourseByCrn, '/api/courses/crn/<crn>')
 api.add_resource(scribe_api.CourseNumbersBySubject, '/api/courses/<course_subject>') #not really used, but nice for testing
 api.add_resource(scribe_api.CoursesSectionsByNumberSubject, '/api/courses/<course_subject>/<course_number>') #not really used, but nice for testing
-#api.add_resource(scribe_api.Course, '/api/courses/<course_subject>/<course_number>/<course_section>') #may not actually use this one
 

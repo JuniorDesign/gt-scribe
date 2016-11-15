@@ -5,12 +5,17 @@
  {{ super() }}
  <link href="/static/styles/index.css" rel="stylesheet">
 {% endblock %}
+
+{% block bodyHeader %}
+    {{super()}}
+{% endblock %}
+
 {% block content %}
 <main>
 
 <body>
 
-<h2>Unpproved Notetakers</h2>
+<h2>Unapproved Notetakers</h2>
 <table style="width:100%">
   
   <tr>

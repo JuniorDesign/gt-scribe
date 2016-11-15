@@ -2,12 +2,11 @@ $(function() {
 	$('.file-upload').change(function(e) {
 		var files = e.target.files || e.dataTransfer.files;
       	var file = files[0];
-      	var userID = $('#username').text();
-      	var courseID = $('#course-id').text();
+      	var courseID = window.location.href.match(/.*\/notes\/(\d+)\W*.*/);
+      	var courseID = courseID.length <= 1 ? '' : courseID[1] 
       	var formData = new FormData();
-      	
+
       	formData.append('file', file);
-      	formData.append('user_id', userID);
       	formData.append('course_id', courseID);
       	
       	for (var pair of formData.entries()) {
@@ -28,6 +27,7 @@ $(function() {
 	     	.done(function(data) {
 				console.log('Connection Successful!');
 				window.alert("You've successfully uploaded "+file.name);
+				location.reload();
 	     	})
 	     	.fail(function(data) {
 	        	console.log('Connection failed!');
