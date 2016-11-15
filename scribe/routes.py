@@ -176,7 +176,7 @@ def students():
             unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
             approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
             unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
-            return render_template('admin-students.html', approved_notetakers=approved_notetakers, unapproved_notetakers=unapproved_notetakers, approved_noterequesters=approved_noterequesters,unapproved_noterequesters=unapproved_noterequesters)
+            return render_template('admin-students.html', approved_notetakers=approved_notetakers, unapproved_notetakers=unapproved_notetakers, approved_noterequesters=approved_noterequesters,unapproved_noterequesters=unapproved_noterequesters, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/approved_notetakers')
@@ -187,7 +187,7 @@ def approved_notetakers():
         user = userRepository.find(username)
         if user.type == "ADMIN":
             approved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", True)
-            return render_template('admin-approved-notetakers.html', approved_notetakers=approved_notetakers)
+            return render_template('admin-approved-notetakers.html', approved_notetakers=approved_notetakers, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/unapproved_notetakers')
@@ -198,7 +198,7 @@ def unapproved_notetakers():
         user = userRepository.find(username)
         if user.type:
             unapproved_notetakers = userRepository.get_users_by_account_type_and_approval("TAKER", False)
-            return render_template('admin-unapproved-notetakers.html', unapproved_notetakers=unapproved_notetakers)
+            return render_template('admin-unapproved-notetakers.html', unapproved_notetakers=unapproved_notetakers, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/approved_noterequesters')
@@ -209,7 +209,7 @@ def approved_noterequestors():
         user = userRepository.find(username)
         if user.type == "ADMIN":
             approved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", True)
-            return render_template('admin-approved-noterequesters.html', approved_noterequesters=approved_noterequesters)
+            return render_template('admin-approved-noterequesters.html', approved_noterequesters=approved_noterequesters, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/unapproved_noterequesters')
@@ -220,7 +220,7 @@ def unapproved_noterequesters():
         user = userRepository.find(username)
         if user.type == "ADMIN":
             unapproved_noterequesters = userRepository.get_users_by_account_type_and_approval("REQUESTER", False)
-            return render_template('admin-unapproved-noterequesters.html', unapproved_noterequesters=unapproved_noterequesters)
+            return render_template('admin-unapproved-noterequesters.html', unapproved_noterequesters=unapproved_noterequesters, username = username)
 
 @app.route('/admin/matches')
 def get_matches():
@@ -239,26 +239,35 @@ def get_matches():
                 noterequester = userRepository.find(noterequester_id)
                 match = (notetaker, noterequester)
                 matches_list.append(match)
-            return render_template('admin-matches.html', matches=matches, matches_list=matches_list)
+            return render_template('admin-matches.html', matches=matches, matches_list=matches_list, username = username)
     return redirect(url_for('index'))
 
 @app.route('/admin/matches_for_notetaker/<username>')
 def matches_for_notetakers(username):
-    matchesRepository = MatchesRepository()
-    matches = matchesRepository.get_matches_for_notetaker(username)
-    return render_template('admin-view.html', users=matches)
+    if g.user:
+        adminUsername = session['username']
+        matchesRepository = MatchesRepository()
+        matches = matchesRepository.get_matches_for_notetaker(username)
+        return render_template('admin-view.html', users=matches, username = adminUsername)
+    return redirect(url_for('index'))
 
 @app.route('/admin/matches_for_noterequester/<username>')
 def matches_for_noterequesters(username):
-    matchesRepository = MatchesRepository()
-    matches = matchesRepository.get_matches_for_noterequester(username)
-    return render_template('admin-view.html', users=matches)
+    if g.user:
+        adminUsername = session['username']
+        matchesRepository = MatchesRepository()
+        matches = matchesRepository.get_matches_for_noterequester(username)
+        return render_template('admin-view.html', users=matches, username = adminUsername)
+    return redirect(url_for('index'))
 
 @app.route('/admin/feedback')
 def get_feedback():
-    feedbackRepository = FeedbackRepository()
-    feedback = feedbackRepository.get_feedback()
-    return render_template('admin-feedback.html', users=feedback)
+    if g.user:
+        username = session['username']
+        feedbackRepository = FeedbackRepository()
+        feedback = feedbackRepository.get_feedback()
+        return render_template('admin-feedback.html', users=feedback, username = username)
+    return redirect(url_for('index'))
 
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
