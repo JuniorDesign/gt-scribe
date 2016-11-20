@@ -40,6 +40,7 @@ def before_request():
         if dbUser is not None: #old cookie may exist but db may not be up-to-date
             g.user = {
                 'name': session.get('username'),
+                'firstName': session.get('first_name'),
                 'type': dbUser.lower()
             }
         else:

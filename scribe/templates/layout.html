@@ -33,8 +33,8 @@
                     <a href="/"><img id="logo" src="/static/images/gtscribe-logo.png" /></a>
                 </div>
                 <div class="col-sm-4 header-greeting">
-                    {% if username != NULL %}
-                        <h3>Hello, {{username}}!</h3>
+                    {% if g.user.firstName != NULL %}
+                        <h3>Hello, {{g.user.firstName}}!</h3>
                     {% endif %}
                 </div>
                 <div class="col-sm-4 header-logout">
