@@ -118,6 +118,8 @@ def notes(course_id):
     if g.user:
         #Do security checks here to make sure only matching students get through this block#
         #don't want willynilly students trying to upload/download notes#
+        courseRepository = CourseRepository()
+        course = courseRepository.find(course_id)
         username = session['username']
         userRepository = UserRepository()
         user = userRepository.find(username)
@@ -125,7 +127,7 @@ def notes(course_id):
         if userType == "ADMIN":
             redirect(url_for('admin'))
         files = FileRepository().get_files_for_course(course_id)
-        return render_template('upload-download.html', username = username, userType = userType, course_id = course_id, files=files)
+        return render_template('upload-download.html', username = username, userType = userType, course=course, course_id = course_id, files=files)
     return redirect(url_for('index'))
 
 @app.route('/notes/<course_id>/<key>', methods=['GET'])
