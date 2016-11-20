@@ -1,11 +1,9 @@
 {% extends "layout.html" %}
 {% block title %}Admin{% endblock %}
 
-<!--{% block username %}Admin{% endblock %}-->
-
 {% block head %}
- {{ super() }}
- <link href="/static/styles/index.css" rel="stylesheet">
+	{{ super() }}
+	<link href="/static/styles/admin.css" rel="stylesheet">
 {% endblock %}
 
 {% block bodyHeader %}
@@ -14,8 +12,15 @@
 
 {% block content %}
 <main>
-<!--<body> -->
-<a href="admin/approved_notetakers" role="button" class="btn btn-primary" id="approved_notetakers">Approved Notetakers</a>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-4 triBlock0"><a href="admin/students"><span>Student</span></a></div>
+	    	<div class="col-xs-4 triBlock0"><a href="admin/matches"><span>Matches</span></a></div>
+	    	<div class="col-xs-4 triBlock0"><a href="admin/feedback"><span>Feedback</span></a></div>
+		</div>
+	</div>
+
+<!--a href="admin/approved_notetakers" role="button" class="btn btn-primary" id="approved_notetakers">Approved Notetakers</a>
 <br><br>
 <a href="admin/unapproved_notetakers" role="button" class="btn btn-primary" id="unapproved_notetakers">Unapproved Notetakers</a>
 <br><br>
@@ -27,25 +32,8 @@
 <br><br>
 <a href="admin/feedback" role="button" class="btn btn-primary" id="feedback">Feedback</a>
 <br><br>
-<a href="admin/matches" role="button" class="btn btn-primary" id="matches">Matches</a>
+<a href="admin/matches" role="button" class="btn btn-primary" id="matches">Matches</a-->
 
-<!--<ul class="nav nav-pills nav-stacked col-md-2">
-    <li class="active"><a href="#students" data-toggle="pill">Student List</a></li>
-    <li><a href="admin/matches" data-toggle="pill">Matches</a></li>
-    <li><a href="admin/feedback" data-toggle="pill">Feedback</a></li>
-</ul>
-<div class="tab-content col-md-26">
-    <div class="tab-pane" id="students">
-	    {% include "partials/admin-students.html" %}
-    </div>
-    <div class="tab-pane" id="matches">
-	    {% include "partials/admin-matches.html" %}
-    </div>
-    <div class="tab-pane" id="feedback">
-	    {% include "partials/admin-feedback.html" %}
-    </div>
-</div> -->	
-<!--</body>-->
 
 </main>
 {% endblock %}

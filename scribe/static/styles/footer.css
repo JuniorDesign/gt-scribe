@@ -6,6 +6,7 @@ footer {
   margin-top: 1.5rem;
   background-color: rgb(238, 178, 17);
   color: #000;
+  clear: both;
 }
 
 #scribeFooter {
