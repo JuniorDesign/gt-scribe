@@ -37,10 +37,11 @@ def before_request():
     g.user = None
     if 'username' in session:
         dbUser = UserRepository().get_account_type(session.get('username'))
+        first_name = UserRepository().get_first_name(session.get('username'))
         if dbUser is not None: #old cookie may exist but db may not be up-to-date
             g.user = {
                 'name': session.get('username'),
-                'firstName': session.get('first_name'),
+                'firstName': first_name,
                 'type': dbUser.lower()
             }
         else:

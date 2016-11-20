@@ -34,6 +34,13 @@ class UserRepository(BaseRepository):
                 return user.type
             return None
 
+        # Grabs the first_name of user
+        def get_first_name(self, username):
+            user = super(UserRepository, self).find(username)
+            if user:
+                return user.first_name
+            return None
+
         # Grabs the collection of users based on their account type
         # accountType must be ADMIN, REQUESTER, or TAKER
         def get_users_by_account_type(self, accountType):
