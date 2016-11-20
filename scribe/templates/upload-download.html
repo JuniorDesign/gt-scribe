@@ -53,7 +53,7 @@
                                 {% if userType == "TAKER" %}
                                 <button class="btn btn-danger btn-sm">X</button> 
                                 {% endif %}
-                                <a href="{{file.course_id}}/{{file.file_id}}" role="button" class="btn btn-warning">{{file.file_name}}</a>
+                                <a href="{{file.course_id}}/{{file.file_id}}" role="button" class="btn btn-warning" download>{{file.file_name}}</a>
                             </td>
                             <td>
                                 {{file.timestamp}}
