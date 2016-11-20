@@ -9,7 +9,7 @@
 {% endblock %}
 {% block head %}
     {{ super() }}
-    <!--css goes here-->
+    <link href="/static/styles/upload-download.css" rel="stylesheet">
 {% endblock %}
 
 {% block bodyHeader %}
@@ -20,8 +20,65 @@
 
 {% block content %}
     <main>
-    	{% if userType == "REQUESTER" %}
-    		Select the day you'd like to download notes from. 
+        Note repository for [class name]
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <form class="form-group" enctype="multipart/form-data" id="uploadNotes">
+                    <legend>Upload Notes</legend>
+                    <input class="file-upload" data-icon="false" type="file">
+                    <button type="submit" class="btn upload-btn">Upload</button>
+                </form>
+            </div>
+            <div class="col-md-8">
+                History of note upload here
+                <table id="noteHistory" class="table-hover">
+                    <tr>
+                        <th>File</th>
+                        <th>Upload Date</th>
+                    </tr>
+                    <!-- for file in files -->
+                    <tr>
+                        <td>
+                            <button class="btn btn-danger btn-sm">X</button> file name link
+                        </td>
+                        <td>
+                            some date
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-danger btn-sm">X</button> file name link
+                        </td>
+                        <td>
+                            some date
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-danger btn-sm">X</button> file name link
+                        </td>
+                        <td>
+                            some date
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-danger btn-sm">X</button> file name link
+                        </td>
+                        <td>
+                            some date
+                        </td>
+                    </tr>
+                    <!-- endfor -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    	<!--{% if userType == "REQUESTER" %}
+    		Download your notes here. 
     	{% else %}
 	    	<h2>Thanks for uploading your notes daily!</h2><br />
 	        <form class="form-group" enctype="multipart/form-data" id="uploadNotes">
@@ -32,7 +89,9 @@
     	{% endif %}
         {% for file in files %}
 	    <a href="{{file.course_id}}/{{file.file_id}}" role="button" class="btn btn-warning">{{file.file_name}}</a>
-        {% endfor %}
+        {% endfor %}-->
+
+
     	<!-- To access the user's username here, do it like this { { username } } (without any spaces)<br />
     	To access the user's type, do this { { userType } }<br />
     	To access the user's course_id you selected, use { { course_id } }<br />

@@ -1,21 +1,3 @@
-/*.triBlock{
-	display: block;
-	background-color: rgba(2, 61, 123, 0.95);
-	color: white;
-	width: 30%;
-	height: 500px;
-	float: left;
-	margin-left: 0px;
-	margin-right: 0px;
-	vertical-align: middle;
-	text-align: center;
-}*/
-
-/*.triBlock:nth-child(odd){
-	margin-left: 5px; /*These values here should be changed to percentages but they're acting weird*/
-/*	margin-right: 5px;
-}*/
-
 span{
 	vertical-align: middle;
 	display: inline-block;
