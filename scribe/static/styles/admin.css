@@ -1,3 +1,21 @@
+/*.triBlock{
+	display: block;
+	background-color: rgba(2, 61, 123, 0.95);
+	color: white;
+	width: 30%;
+	height: 500px;
+	float: left;
+	margin-left: 0px;
+	margin-right: 0px;
+	vertical-align: middle;
+	text-align: center;
+}*/
+
+/*.triBlock:nth-child(odd){
+	margin-left: 5px; /*These values here should be changed to percentages but they're acting weird*/
+/*	margin-right: 5px;
+}*/
+
 span{
 	vertical-align: middle;
 	display: inline-block;
@@ -7,10 +25,19 @@ span{
 	width: 100%;
 }
 
-.triBlock{
+.triBlock0{
 	color: white;
 	height: 500px;
 	text-align:center;
+}
+
+.triBlock0 a{
+	color:white;
+}
+
+.triBlock0 a:hover{
+	color:white;
+	font-weight: bold; /* turns bold when hover; we can change this to change colors or something instead*/
 }
 
 .triBlock0:nth-child(odd){
