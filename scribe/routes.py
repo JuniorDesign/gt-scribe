@@ -100,8 +100,11 @@ def myClasses():
         username = session['username']
         userRepository = UserRepository()
         user = userRepository.find(username)
+        courseRepository = CourseRepository()
         userType = user.type
         matchedCourses = ""
+        if userType =="ADMIN":
+            return redirect(url_for('admin'))
         if userType == "TAKER":
             matchedCoursesDupes = [match.course for match in user.taker_matches]
             matchedCourses = set(matchedCoursesDupes) #by using sets, we don't get duplicates
@@ -109,9 +112,13 @@ def myClasses():
             matchedCoursesDupes = [match.course for match in user.requester_matches]
             matchedCourses = set(matchedCoursesDupes)
         else:
-            render_template("admin.html", username=username)
-
-        return render_template('select-course.html', username = username, userType = userType, matchedCourses = matchedCourses)
+            return redirect(url_for('index'))
+        myCourses = [e.course for e in user.enrollment]
+        unmatchedCourses = []
+        for course in myCourses:
+            if course not in matchedCourses:
+                unmatchedCourses.append(course)
+        return render_template('select-course.html', username = username, userType = userType, matchedCourses = matchedCourses, unmatchedCourses = unmatchedCourses, firstName = user.first_name)
     return redirect(url_for('index'))
 
 # Route for the upload/download page for this course

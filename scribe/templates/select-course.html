@@ -11,7 +11,7 @@
 
 {% block content %}
     <main>
-        Welcome, {{username}}! You have matches for the following class(es).<br />
+        Welcome, {{firstName}}! You have matches for the following class(es).<br />
         Please select which course you'd like to 
         {% if userType=="REQUESTER" %}
             download
@@ -22,12 +22,19 @@
         
         <br />
         <br />
-
-        {% for course in matchedCourses %}
-            <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning"><b>{{course.subject}} {{course.course_number}} Section {{course.section}}</b></a>   
-        {% endfor %}
-
+        {% if matchedCourses|length < 1%}
+            Looks like you don't have any matches yet!
+        {% else %}
+            {% for course in matchedCourses %}
+                <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning"><b>{{course.subject}} {{course.course_number}} Section {{course.section}}</b></a>   
+            {% endfor %}
+        {% endif %}
         <br />
+        <br />
+        Here are the courses you've volunteered for:<br />
+        {% for course in unmatchedCourses %}
+            {{course.subject}} {{course.course_number}} <br />
+        {% endfor %}
         <br />
         Forgot to volunteer for one of your other classes? <a href="enrollment">Register for more courses by clicking here.</a>
 
