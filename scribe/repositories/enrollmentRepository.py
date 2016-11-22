@@ -26,3 +26,6 @@ class EnrollmentRepository(BaseRepository):
             enrollments = [enrollment for enrollment in Enrollment.query.filter(course_id == Enrollment.course_id).group_by(Enrollment.enrollment_id) if enrollment.user.type == oppType]
 
             return enrollments
+
+        def delete_by_username_and_course_id(self, username, course_id):
+            Enrollment.query.filter_by(username=username, course_id=course_id).delete()

@@ -165,13 +165,11 @@ $("#selectClass").submit(function(e){
         }).done(function(data) {
                     console.log("Connection successful!");
                     if(data.message != undefined){
-                             console.log(data.message);
-                             console.log("Hey user: "+ data.username);
-                             console.log("Got your CRN: " + data.crn);
-                             console.log("Matches???: " + data.matchedCourses);
-                             //add a thing to that myschedule block
-                             addCourseToSchedule(data.crn);
-                             //check for a match here.
+                        console.log(data.message);
+                        console.log("Hey user: "+ data.username);
+                        console.log("Got your CRN: " + data.crn);
+                        console.log("Matches???: " + data.matchedCourses);
+                        addCourseToSchedule(data.crn);
                     }
 
         }).fail(function(data){ //error messages come in as a diff format than success messages
@@ -179,8 +177,8 @@ $("#selectClass").submit(function(e){
                     console.log(data);
                     var response = JSON.parse(data.responseText);
                 if(response.error != undefined){
-                             console.log(response.error);
-                             window.alert(response.error); //temporary feedback to user until we create a UI for this
+                    console.log(response.error);
+                    window.alert(response.error); //temporary feedback to user until we create a UI for this
                 }
         });
 
@@ -189,5 +187,31 @@ $("#selectClass").submit(function(e){
 
 //delete course on red X click
 $(".scroll").on("click", ".enrolledCourse .delete", function(){
+    var crnToDelete = $(this).attr('id');
     console.log("I've clicked: "+ $(this).attr('id'));
+    var body = {
+        "course_id": crnToDelete
+    }
+    $.ajax({
+        contentType: "application/json",
+        url: "/api/enrollment/delete",
+        method: "DELETE",
+        data: JSON.stringify(body),
+        async: true
+    }).done(function(data) {
+        console.log("Connection successful!");
+        if(data.message != undefined){
+            console.log(data.message);
+            //addCourseToSchedule(data.crn);
+        }
+
+    }).fail(function(data){ //error messages come in as a diff format than success messages
+        console.log("Connection failed!");
+        console.log(data);
+        var response = JSON.parse(data.responseText);
+        if(response.error != undefined){
+            console.log(response.error);
+            window.alert(response.error); //temporary feedback to user until we create a UI for this
+        }
+    });
 });
