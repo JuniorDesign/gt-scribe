@@ -165,12 +165,8 @@ class DeleteCourseFromEnrollment(Resource):
             username = session['username']
             course_id = args['course_id']
             enrollmentRepository = EnrollmentRepository()
-            #courseToDelete = enrollmentRepository.get(username = username, course_id = course_id)[0].enrollment_id
-            #print("about to delete this crn "+str(courseToDelete))
-            #enrollmentRepository.delete(courseToDelete)
             enrollmentRepository.delete_by_username_and_course_id(username, course_id)
             enrollmentRepository.save_changes()
-            print("deleted successfully")
             return {
                 "message": "Course has been deleted successfully.",
                 "username": username,

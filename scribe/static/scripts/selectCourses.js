@@ -37,6 +37,7 @@ function clearCurrCourse(){
     $("#currCourse").html("...");
 }
 
+//adds course to the schedule on the dom
 function addCourseToSchedule(crn){
     var thisCourseSubject = undefined;
     var thisCourseNumber = undefined;
@@ -68,9 +69,12 @@ function addCourseToSchedule(crn){
                         console.log(response.error);
                         window.alert(response.error);
                 }
-        });
-    
-    
+        });   
+}
+
+//removes the deleted course from the dom
+function removeCourseFromSchedule(crn){
+    $(".enrolledCourse[crn="+crn+"]").remove()
 }
 
 //highlights the subject selected
@@ -145,6 +149,8 @@ $(".scroll").on("click", ".section", function(){
     displayCurrCourse();
 });
 
+
+//selecs the course and adds it to the user's schedule in the db, calls a function to update the dom
 $("#selectClass").submit(function(e){
     e.preventDefault();
     if(!(currSubject && currNumber && currSection)){
@@ -185,7 +191,7 @@ $("#selectClass").submit(function(e){
         return false;
 });
 
-//delete course on red X click
+//delete course on red X click, deletes database info and then calls to update the dom
 $(".scroll").on("click", ".enrolledCourse .delete", function(){
     var crnToDelete = $(this).attr('id');
     console.log("I've clicked: "+ $(this).attr('id'));
@@ -202,7 +208,7 @@ $(".scroll").on("click", ".enrolledCourse .delete", function(){
         console.log("Connection successful!");
         if(data.message != undefined){
             console.log(data.message);
-            //addCourseToSchedule(data.crn);
+            removeCourseFromSchedule(data.crn);
         }
 
     }).fail(function(data){ //error messages come in as a diff format than success messages
