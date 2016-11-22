@@ -31,10 +31,14 @@
         {% endif %}
         <br />
         <br />
-        Here are the courses you've volunteered for:<br />
-        {% for course in unmatchedCourses %}
-            {{course.subject}} {{course.course_number}} <br />
-        {% endfor %}
+        Here are the courses you've volunteered for but don't have a match with yet:<br />
+        {% if unmatchedCourses|length < 1%}
+            There's nothing here! Either all your courses have been matched, or you haven't volunteered for any courses.
+        {% else %}
+            {% for course in unmatchedCourses %}
+                {{course.subject}} {{course.course_number}} <br />
+            {% endfor %}
+        {% endif %}
         <br />
         Forgot to volunteer for one of your other classes? <a href="enrollment">Register for more courses by clicking here.</a>
 

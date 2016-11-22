@@ -50,7 +50,7 @@
 	<div class="scroll">
 		{% for course in myCourses %}
 			<div class="enrolledCourse" crn="{{course['crn']}}">
-				<button class="btn btn-danger btn-sm">X</button>
+				<button class="btn btn-danger btn-sm delete" id="{{course['crn']}}">X</button>
 				{{course.subject}} {{course.course_number}} section {{course.section}}
 			</div>
 		{% endfor %}
