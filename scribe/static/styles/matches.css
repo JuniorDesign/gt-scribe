@@ -1,3 +1,32 @@
 .courses tr{
 	cursor: pointer;
 }
+
+/*.doubleCol{
+	/*padding: 0px;*/
+/*}*/
+
+.doubleCol:nth-child(odd){
+	padding-left: 0px; /*this keeps the gaps between the items*/
+}
+.doubleCol:nth-child(even){
+	padding-right: 0px; /*this keeps the gaps between the items*/
+}
+
+#matches{
+	background-color: #eeeeee;
+	overflow: scroll;
+
+}
+
+#unmatched{
+	background-color: #eeeeee;
+	overflow: scroll;
+}
+
+span{
+	
+	height: 400px;	
+	display: block;
+	padding: 10px;
+}

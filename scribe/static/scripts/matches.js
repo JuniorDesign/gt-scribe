@@ -1,10 +1,10 @@
-//jQuery(document).ready(function($) {
-    $(".course").click(function() {
-    	var url = "notes/"+$(this).attr('id');
-        window.location = url;
-    });
-//});
+//turns the whole row of the table clickable
+$(".course").click(function() {
+    var url = "notes/"+$(this).attr('id');
+    window.location = url;
+});
 
+//deletes a class out of the unmatched courses list
 $(".delete").click(function() {
     var crnToDelete = $(this).attr('id');
     console.log("I've clicked: "+ $(this).attr('id'));
