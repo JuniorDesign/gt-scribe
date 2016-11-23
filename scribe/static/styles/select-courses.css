@@ -121,3 +121,17 @@
 	padding: 20px;
 	margin-bottom: 5px;
 }
+
+.matchButton{
+	background-color: rgba(2, 61, 123, 0.95);
+	float: right;
+	display: block;
+}
+
+a.matchButton{
+	color: white;
+}
+
+.matchButton:hover{
+	background-color: rgb(2, 53, 104);
+}
