@@ -26,3 +26,33 @@ span{
 	padding: 0px; /*this keeps the gaps between the items*/
 }
 
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;*/
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel-heading > .dropdown .dropdown-toggle {
+  color: inherit;
+}
+.panel-default {
+  /*border-color: #ddd;*/
+  
+  border-top-style: dotted;
+  border-right-style: solid;
+  border-bottom-style: dotted;
+  border-left-style: solid;
+  border-color: #B5B6B8;
+  border-radius: 8px;
+}
+.panel-default > .panel-heading {
+  color: #fff;
+  background-color: #252518;
+  border-color: #ddd;
+}
+.panel-default > .panel-heading > .panel-body {
+  border-top-color: #ddd;
+}
+.panel-body {
+  color: #2A281E;
+}

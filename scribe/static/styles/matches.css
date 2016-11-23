@@ -30,3 +30,7 @@ span{
 	display: block;
 	padding: 10px;
 }
+
+.table-hover.courses tbody tr:hover td {
+  background-color: background-color: rgb(2, 53, 104);
+}
