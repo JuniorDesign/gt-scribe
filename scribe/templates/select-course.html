@@ -62,7 +62,7 @@
                             <table class="table table-striped table-bordered ">
                                 <tbody>
                                     {% for course in unmatchedCourses %}
-                                        <tr><td>
+                                        <tr class="unmatchedCourse" crn="{{course.course_id}}"><td>
                                             <button class="btn btn-danger btn-sm delete" id="{{course.course_id}}">X</button> {{course.subject}} {{course.course_number}} Section {{course.section}}
                                         </td></tr>
                                     {% endfor %}
