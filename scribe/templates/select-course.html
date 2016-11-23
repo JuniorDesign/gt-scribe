@@ -2,7 +2,7 @@
 {% block title %}Select Course{% endblock %}
 {% block head %}
     {{ super() }}
-    <!--css goes here-->
+    <link href="/static/styles/matches.css" rel="stylesheet">
 {% endblock %}
 
 {% block bodyHeader%}
@@ -11,38 +11,66 @@
 
 {% block content %}
     <main>
-        Welcome, {{firstName}}! You have matches for the following class(es).<br />
-        Please select which course you'd like to 
-        {% if userType=="REQUESTER" %}
-            download
-        {% else %}
-            upload
-        {% endif %}
-        notes for.
+        
+        <div id="matches">
+            <h2>Matched Courses</h2> <br />
+            {% if matchedCourses|length < 1%}
+                No matches yet. 
+                {% if userType=="TAKER" %} 
+                    Have you volunteered for all your courses? 
+                {% endif %}
+            {% else %}
+                You have matches for the following classes.<br />
+                Please select which course you'd like to 
+                {% if userType=="REQUESTER" %}
+                    download
+                {% else %}
+                    upload
+                {% endif %}
+                notes for.<br /><br />
+
+                <table class="table table-striped table-bordered table-hover courses">
+                    <tbody>
+                        {% for course in matchedCourses %}
+                            <tr class="course" id="{{course.course_id}}"><td>
+                                {{course.subject}} {{course.course_number}} Section {{course.section}}
+                            </td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            {% endif %}
+        </div>
         
         <br />
         <br />
-        {% if matchedCourses|length < 1%}
-            Looks like you don't have any matches yet!
-        {% else %}
-            {% for course in matchedCourses %}
-                <a href="notes/{{course.course_id}}" role="button" class="btn btn-warning"><b>{{course.subject}} {{course.course_number}} Section {{course.section}}</b></a>   
-            {% endfor %}
-        {% endif %}
-        <br />
-        <br />
-        Here are the courses you've volunteered for but don't have a match with yet:<br />
-        {% if unmatchedCourses|length < 1%}
-            There's nothing here! Either all your courses have been matched, or you haven't volunteered for any courses.
-        {% else %}
-            {% for course in unmatchedCourses %}
-                {{course.subject}} {{course.course_number}} <br />
-            {% endfor %}
-        {% endif %}
+        <div id="unmatched">
+            <h2>Unmatched Courses</h2><br />
+            {% if unmatchedCourses|length < 1%}
+                {% if matchedCourses|length < 1%}
+                    {% if userType=="TAKER" %} 
+                        You haven't volunteered for any courses yet.
+                    {% else %}
+                        You haven't requested notes from any courses yet.
+                    {% endif %}
+                {% else %}
+                    All your courses have been matched!
+                {% endif %}
+            {% else %}
+                <table class="table table-striped table-bordered table-hover">
+                    <tbody>
+                        {% for course in unmatchedCourses %}
+                            <tr><td>[x] {{course.subject}} {{course.course_number}} Section {{course.section}}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            {% endif %}
+        </div>
         <br />
         Forgot to volunteer for one of your other classes? <a href="enrollment">Register for more courses by clicking here.</a>
 
 	</main>
 
-<!--scripts go here-->
+<script src="/static/scripts/matches.js"></script>
 {% endblock %}
