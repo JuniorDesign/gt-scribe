@@ -2,8 +2,8 @@
 {% block title %}Admin{% endblock %}
 
 {% block head %}
- {{ super() }}
- <link href="/static/styles/admin.css" rel="stylesheet">
+    {{ super() }}
+    <link href="/static/styles/admin.css" rel="stylesheet">
 {% endblock %}
 
 {% block bodyHeader %}
@@ -16,28 +16,29 @@
 <body>
 
 <div class="container">
+    {% include "partials/admin-links.html" %}
 
 <div class="panel panel-default">
-  <div class="panel-heading">
-    Feedback For GT-Scribe
-  </div>
-  
-  <div class="panel-body">
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover" style="width:100%">
-        <tr>
-          <th>Username</th>
-          <th>Message</th>
-        </tr>
-      {% for user in users %}
-        <tr>
-          <td><div>{{user["username"]}}</div></td>
-          <td><div>{{user["feedback_text"]}}</div></td>
-        </tr>
-      {% endfor %}
-      </table>
+    <div class="panel-heading">
+        Feedback For GT-Scribe
     </div>
-  </div>
+    
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" style="width:100%">
+                <tr>
+                    <th>Username</th>
+                    <th>Message</th>
+                </tr>
+            {% for user in users %}
+                <tr>
+                    <td><div>{{user["username"]}}</div></td>
+                    <td><div>{{user["feedback_text"]}}</div></td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
 
 </div>

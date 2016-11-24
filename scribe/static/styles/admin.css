@@ -1,3 +1,4 @@
+/*-----------admin-view.html nav blocks--------*/
 span{
 	vertical-align: middle;
 	display: inline-block;
@@ -26,6 +27,7 @@ span{
 	padding: 0px; /*this keeps the gaps between the items*/
 }
 
+/*----------Tables for the admin pages----------*/
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;*/
@@ -55,4 +57,22 @@ span{
 }
 .panel-body {
   color: #2A281E;
+}
+
+/*--------------admin pages links (top of each page)---------------------*/
+#adminLinks{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 350px; /*we need a set width to center it; this width is roughly the size of all 3 buttons*/
+	margin-bottom: 10px;
+}
+
+#adminLinks a{
+	background-color: rgba(2, 61, 123, 0.95);
+	color: white;
+}
+
+#adminLinks a:hover{
+	background-color: rgb(2, 53, 104);
 }
