@@ -13,6 +13,7 @@
   border-bottom: .05rem solid #e5e5e5;
   text-align: center;
   padding: 40px 20px 40px 20px;
+  margin-bottom: 0px;
 }
 
 .jumbotron h1 {
@@ -52,7 +53,10 @@
 
 /* Supporting marketing content */
 .options {
-  margin: 2rem 0;
+  margin:0;
+  padding-top: 1rem;
+  background-color: rgba(2, 61, 123, 0.95);
+  color: white;
 }
 .options p + h4 {
   margin-top: 1.5rem;

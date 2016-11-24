@@ -2,10 +2,6 @@
 	cursor: pointer;
 }
 
-/*.doubleCol{
-	/*padding: 0px;*/
-/*}*/
-
 .doubleCol:nth-child(odd){
 	padding-left: 0px; /*this keeps the gaps between the items*/
 }
@@ -31,6 +27,8 @@ span{
 	padding: 10px;
 }
 
-.table-hover.courses tbody tr:hover td {
-  background-color: background-color: rgb(2, 53, 104);
+/*Want to make the matched table w the blue link colors, but doesn't seem to work*/
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: rgb(2, 53, 104);
 }
