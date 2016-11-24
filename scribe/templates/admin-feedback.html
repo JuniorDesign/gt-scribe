@@ -15,29 +15,32 @@
 
     {% include "partials/admin-links.html" %}
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Feedback For GT-Scribe
-    </div>
-    
-    <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover" style="width:100%">
-                <tr>
-                    <th>Username</th>
-                    <th>Message</th>
-                </tr>
-            {% for user in users %}
-                <tr>
-                    <td><div>{{user["username"]}}</div></td>
-                    <td><div>{{user["feedback_text"]}}</div></td>
-                </tr>
-            {% endfor %}
-            </table>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Feedback for GT Scribe
+        </div>
+        
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td><div>{{user["username"]}}</div></td>
+                            <td><div>{{user["feedback_text"]}}</div></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
 
 </main>
 {% endblock %}

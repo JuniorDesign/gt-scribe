@@ -7,38 +7,42 @@
 {% endblock %}
 
 {% block bodyHeader %}
-    {{super()}}
+		{{super()}}
 {% endblock %}
 
 {% block content %}
 <main>
 
-  
-{% include "partials/admin-links.html" %}
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Current Matches
-  </div>
-  
-  <div class="panel-body">
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover" style="width:100%">
-        <tr>
-          <th>Notetaker Name</th>
-          <th>Noterequester Name</th>
-          <th>Course</th>
-        </tr>
-      {% for match in matches_list %}
-        <tr>
-          <td><div>{{match[0]["first_name"]}}</div></td>
-          <td><div>{{match[1]["first_name"]}}</div></td>
-          <td><div>{{match[2]["subject"]}} {{match[2]["course_number"]}} {{match[2]["section"]}}</div></td>
-        </tr>
-      {% endfor %}
-      </table>
-    </div>
-  </div>
-</div>
+	
+	{% include "partials/admin-links.html" %}
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Existing Matches
+		</div>
+		
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered table-hover" style="width:100%">
+					<thead>
+						<tr>
+							<th>Notetaker Name</th>
+							<th>Note-Requester Name</th>
+							<th>Course</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for match in matches_list %}
+							<tr>
+								<td><div>{{match[0]["username"]}}</div></td>
+								<td><div>{{match[1]["username"]}}</div></td>
+								<td><div>{{match[2]["subject"]}} {{match[2]["course_number"]}} section {{match[2]["section"]}}</div></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
 </main>
 {% endblock %}
