@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Admin{% endblock %}
+{% block title %}Admin Student Approval{% endblock %}
 
 {% block head %}
  {{ super() }}
@@ -11,7 +11,7 @@
 <main>
 
 	{% include "partials/admin-links.html" %}
-	
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Success! {{user.first_name}} {{user.last_name}} has been successfully approved!
