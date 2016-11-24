@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Admin{% endblock %}
+{% block title %}Admin Student View{% endblock %}
 
 {% block head %}
     {{ super() }}
@@ -13,10 +13,15 @@
 {% block content %}
 <main>
 
-<body>
-
     {% include "partials/admin-links.html" %}
-<div class="panel panel-default">
+    {% include "partials/approved-noterequesters.html" %}
+    <br />
+    {% include "partials/unapproved-noterequesters.html" %}
+    <br />
+    {% include "partials/approved-notetakers.html" %}
+    <br />
+    {% include "partials/unapproved-notetakers.html" %}
+<!--div class="panel panel-default">
     <div class="panel-heading">
         Approved Notetakers
     </div>
@@ -136,9 +141,8 @@
         </div>
     </div>
 
-</div>
+</div-->
 
-</body>
 
 </main>
 {% endblock %}
