@@ -6,27 +6,29 @@ var currSection = undefined;
 function populateCourseNumbers(courseNumbers){
     var newList = "";
     for(var i=0; i<courseNumbers.length; i++){
-        newList += "<div class='number' id='"+courseNumbers[i]+"'>"+courseNumbers[i]+"</div>";
+        newList+="<tr class='number' id='"+courseNumbers[i]+"'><td>"+courseNumbers[i]+"</td></tr>";
+        /*newList += "<div class='number' id='"+courseNumbers[i]+"'>"+courseNumbers[i]+"</div>";*/
     }
-    $(".courseNumber .scroll").html(newList);
+    $(".courseNumber .scroll table").html(newList);
 }
 
 function populateCourseSections(courseSections){
     var newList = "";
     for(var i=0; i<courseSections.length; i++){
-        newList += "<div class='section' id='"+courseSections[i]+"'>"+courseSections[i]+"</div>";
+        newList+="<tr class='section' id='"+courseSections[i]+"'><td>"+courseSections[i]+"</td></tr>";
+        /*newList += "<div class='section' id='"+courseSections[i]+"'>"+courseSections[i]+"</div>";*/
     }
-    $(".courseSection .scroll").html(newList);
+    $(".courseSection .scroll table").html(newList);
 }
 
 function clearCourseNumbers(){
     currNumber = undefined;
-    $(".courseNumbers .scroll").empty();
+    $(".courseNumbers .scroll table").empty();
 }
 
 function clearCourseSections(){
     currSection = undefined;
-    $(".courseSection .scroll").empty();
+    $(".courseSection .scroll table").empty();
 }
 
 function displayCurrCourse(){

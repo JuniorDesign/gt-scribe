@@ -70,10 +70,14 @@
 							<div class="step">Course Subject</div>
 						</div>
 						<div class="scroll">
-							{% for subject in subjects %}
-							<!--loop.index0 starts at index 0, loop.index starts at 1-->
+							<table class="table"> <!--table-striped table-hover table-condensed"-->
+								{% for subject in subjects %}
+									<tr class="subject" id="{{subjects[loop.index0]}}"><td>{{subjects[loop.index0]}}</td></td>
+								{% endfor %}
+							<!--{% for subject in subjects %}
 							    <div class="subject" id="{{subjects[loop.index0]}}">{{subjects[loop.index0]}}</div>
-							{% endfor %}
+							{% endfor %}-->
+							</table>
 						</div>
                     </div>
                 </div>
@@ -85,6 +89,8 @@
 							<div class="step">Course Number</div>
 						</div>
 						<div class="scroll">
+							<table class="table"> <!--table-striped table-hover table-condensed"-->
+							</table>
 						</div>
 						
                     </div>
@@ -97,6 +103,8 @@
 							<div class="step">Course Section</div>
 						</div>
 						<div class="scroll">
+							<table class="table"> <!--table-striped table-hover table-condensed"-->
+							</table>
 						</div>
 						
                     </div>
