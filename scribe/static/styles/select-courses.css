@@ -3,12 +3,6 @@
 	text-align: center;
 }
 
-/* Select courses */
-#selectClass {
-	/*width: 80%;*/
-	/*margin: auto;*/
-}
-
 .block:nth-child(odd){
 	padding: 0px;
 }
@@ -21,6 +15,7 @@
 	text-align: center;
 }
 
+/*use this to anchor the 123 circles*/
 .titleBlock .step{
 	z-index: 999;
 	position: relative;
@@ -41,19 +36,13 @@
 	margin-top: -20px; /*the more negative this number, the higher up the circle will go*/
 }
 
+/*the grey area with all the lists*/
 .scroll {
 	height: 300px;
 	overflow: scroll;
 	display: block;
 	background-color: #eeeeee; /*rgb(169, 170, 174); /* the grey color */
-}
-
-.courseBlock {
-	float: left;
-	/*display: block;*/
-	/*width: 30%;*/
-	/*height: 100%;*/
-	text-align: center;
+	padding: 3px 0;
 }
 
 .subject, .number, .section, .enrolledCourse{
@@ -61,6 +50,7 @@
 	padding-top: 5px;
 }
 
+/*"I want to take notes for...*/
 .selectedCourseBlock {
 	height: 75px;
 	padding-top: 20px;
@@ -82,34 +72,14 @@
 	background: #EEB211;
 }
 
-.mySchedule {
-	margin: auto;
-	/*min-height: 200px;*/
-	/*background-color: rgb(169, 170, 174);*/
-	display: block;
-	clear:both;
-}
-
+/*scroll box for my schedule is smaller than the course listings*/
 .mySchedule .scroll{
-	width: 100%;
 	height: 200px;
-	display: block;
-	background-color: #eeeeee;/*rgb(169, 170, 174);*/
-	overflow: scroll;
 }
 
-/*#selectClass ol {
-	list-style-type: none;
-}*/
-
-.scroll {
-	padding: 3px 0;
-}
-
+/*courses in "my schedule"*/
 .enrolledCourse {
 	display: block;
-	/*width: 100%;
-	padding: 20px;*/
 	margin-bottom: 5px;
 }
 
@@ -117,6 +87,8 @@
 	background-color: rgba(2, 61, 123, 0.95);
 	float: right;
 	display: block;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 a.matchButton{
