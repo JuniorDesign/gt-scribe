@@ -64,43 +64,45 @@
 <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-4 courseSubject block">
-                    <div id="matches"><!--span-->
+                    <div id="matches">
                         <div class="titleBlock">
 							<h1>1</h1>
 							<div class="step">Course Subject</div>
-								<div class="scroll">
-									{% for subject in subjects %}
-									<!--loop.index0 starts at index 0, loop.index starts at 1-->
-									    <div class="subject" id="{{subjects[loop.index0]}}">{{subjects[loop.index0]}}</div>
-									{% endfor %}
-								</div>
 						</div>
-                    <!--/span--></div>
+						<div class="scroll">
+							{% for subject in subjects %}
+							<!--loop.index0 starts at index 0, loop.index starts at 1-->
+							    <div class="subject" id="{{subjects[loop.index0]}}">{{subjects[loop.index0]}}</div>
+							{% endfor %}
+						</div>
+                    </div>
                 </div>
 
                 <div class="col-sm-4 courseNumber block">
-                    <div id="unmatched"><!--span-->
+                    <div id="unmatched">
                         <div class="titleBlock">
 							<h1>2</h1>
 							<div class="step">Course Number</div>
-							<div class="scroll">
-							</div>
 						</div>
-                    <!--/span--></div>
+						<div class="scroll">
+						</div>
+						
+                    </div>
                 </div>
 
                 <div class="col-sm-4 courseSection block">
-                    <div id="unmatched"><!--span-->
+                    <div id="unmatched">
                         <div class="titleBlock">
 							<h1>3</h1>
 							<div class="step">Course Section</div>
-							<div class="scroll">
-							</div>
 						</div>
-                    <!--/span--></div>
+						<div class="scroll">
+						</div>
+						
+                    </div>
                 </div>
 
-                <div class="col-sm-12 selectedCourseBlock block" style="padding: 0px">
+                <div class="col-sm-12 block selectedCourseBlock" style="padding-left: 0px; padding-right: 0px">
                 	<div class="currCourse">
 						<h3>
 							I want to {% if userType == "REQUESTER" %} receive{% else %} take{% endif %} notes for 

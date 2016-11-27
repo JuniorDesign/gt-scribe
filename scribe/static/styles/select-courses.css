@@ -17,16 +17,16 @@
 	display: block;
 	color: rgb(238, 178, 17); /*georgia tech yellow*/
 	background-color: black;
-	/*padding: 12px;*/
+	padding: 12px;
 	text-align: center;
 }
 
 .titleBlock .step{
-	/*padding: 12px;*/
 	z-index: 999;
 	position: relative;
 }
 
+/*the 123 circles*/
 .titleBlock h1{
 	display: block;
 	color: black;
@@ -38,11 +38,10 @@
 	border-radius: 50%;
 	position: absolute;
 	margin-left: 5px;
-	margin-top: -8px;
+	margin-top: -20px; /*the more negative this number, the higher up the circle will go*/
 }
 
 .scroll {
-	/*width: 100%;*/
 	height: 300px;
 	overflow: scroll;
 	display: block;
@@ -57,18 +56,10 @@
 	text-align: center;
 }
 
-.courseSubject, .courseNumber {
-	/*margin-right: 3%;*/
+.subject, .number, .section, .enrolledCourse{
+	padding-left: 10px;
+	padding-top: 5px;
 }
-
-/*.selectedCourseBlock {
-	height: 60px;
-	display:block;
-	margin: auto;
-	padding: 5px;
-	clear: both;
-	vertical-align: text-bottom;
-}*/
 
 .selectedCourseBlock {
 	height: 75px;
@@ -92,7 +83,6 @@
 }
 
 .mySchedule {
-	/*width: 55%;*/
 	margin: auto;
 	/*min-height: 200px;*/
 	/*background-color: rgb(169, 170, 174);*/
@@ -113,7 +103,7 @@
 }*/
 
 .scroll {
-	/*padding: 3px 0;*/
+	padding: 3px 0;
 }
 
 .enrolledCourse {
