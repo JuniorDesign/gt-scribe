@@ -1,3 +1,11 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+main {
+  margin-bottom: 15%;
+}
+
 footer {
   border-top: .05rem solid #e5e5e5;
   padding-left: 1rem;
@@ -7,6 +15,10 @@ footer {
   background-color: rgb(238, 178, 17);
   color: #000;
   clear: both;
+  position: absolute;
+  bottom: 0;
+  height: 110px;
+  width: 87%;
 }
 
 #scribeFooter {
