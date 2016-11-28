@@ -27,8 +27,13 @@ span{
 	padding: 10px;
 }
 
-/*Want to make the matched table w the blue link colors, but doesn't seem to work*/
-.table-striped>tbody>tr:nth-child(odd)>td, 
-.table-striped>tbody>tr:nth-child(odd)>th {
+/*makes table rows blue*/
+.table-striped.courses>tbody>tr>td, 
+.table-striped.courses>tbody>tr>th {
+    background-color: rgba(2, 61, 123, 0.95);
+    color: white;
+}
+.table-striped.courses>tbody>tr>td:hover, 
+.table-striped.courses>tbody>tr>th:hover {
     background-color: rgb(2, 53, 104);
 }

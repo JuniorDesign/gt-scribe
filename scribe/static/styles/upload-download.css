@@ -9,3 +9,12 @@
 th{
 	text-align: center;
 }
+
+#contactButton{
+	background-color: rgba(2, 61, 123, 0.95);
+	color: white;
+}
+
+#contactButton:hover{
+	background-color: rgb(2, 53, 104);
+}
