@@ -18,3 +18,21 @@ th, td {
 #contactButton:hover{
 	background-color: rgb(2, 53, 104);
 }
+
+.col{
+	
+}
+
+.col:nth-child(odd){
+	padding-left: 0px;
+}
+.col:nth-child(even){
+	padding-right: 0px;
+}
+
+span{
+	background-color: #eeeeee;
+	display: block;
+	padding: 10px;
+	height: 400px;
+}

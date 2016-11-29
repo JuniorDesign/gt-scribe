@@ -7,7 +7,6 @@ function populateCourseNumbers(courseNumbers){
     var newList = "";
     for(var i=0; i<courseNumbers.length; i++){
         newList+="<tr class='number' id='"+courseNumbers[i]+"'><td>"+courseNumbers[i]+"</td></tr>";
-        /*newList += "<div class='number' id='"+courseNumbers[i]+"'>"+courseNumbers[i]+"</div>";*/
     }
     $(".courseNumber .scroll table").html(newList);
 }
@@ -16,7 +15,6 @@ function populateCourseSections(courseSections){
     var newList = "";
     for(var i=0; i<courseSections.length; i++){
         newList+="<tr class='section' id='"+courseSections[i]+"'><td>"+courseSections[i]+"</td></tr>";
-        /*newList += "<div class='section' id='"+courseSections[i]+"'>"+courseSections[i]+"</div>";*/
     }
     $(".courseSection .scroll table").html(newList);
 }

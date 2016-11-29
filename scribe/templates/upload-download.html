@@ -23,7 +23,7 @@
         <h2>{{course.subject}} {{course.course_number}} section {{course.section}} Note Repository</h2>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col"><span>
                     {% if userType == "TAKER" %}
                     <form class="form-group" enctype="multipart/form-data" id="uploadNotes">
                         <legend>Upload Notes</legend>
@@ -34,8 +34,8 @@
                     Have a problem with notes for this class?<br />
                     <a href="{{ url_for('feedback') }}"><button role="button" class="btn btn-style" id="contactButton">Give Feedback</button></a>
                     {% endif %}
-                </div>
-                <div class="col-md-8">
+                </span></div>
+                <div class="col-md-8 col"><span>
                     <h2>Note History</h2>
                     {% if files|length < 1 %}
                         Looks like there's no files yet!
@@ -63,7 +63,7 @@
                     </table>
                     {% endif %}
                 </div>
-            </div>
+            </span></div>
         </div>
     </main>
 
