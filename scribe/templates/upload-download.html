@@ -25,11 +25,13 @@
             <div class="row">
                 <div class="col-md-4 col"><span>
                     {% if userType == "TAKER" %}
+                    <div class="upload">
                     <form class="form-group" enctype="multipart/form-data" id="uploadNotes">
-                        <legend>Upload Notes</legend>
+                        <legend><h2>Upload Notes</h2></legend>
                         <input class="file-upload" data-icon="false" type="file">
-                        <button type="submit" class="btn upload-btn">Upload</button>
+                        <button type="submit" class="btn upload-btn upload-download">Upload</button>
                     </form>
+                    </div>
                     {% else %}
                     Have a problem with notes for this class?<br />
                     <a href="{{ url_for('feedback') }}"><button role="button" class="btn btn-style" id="contactButton">Give Feedback</button></a>
@@ -40,7 +42,7 @@
                     {% if files|length < 1 %}
                         Looks like there's no files yet!
                     {% else %}
-                    <table id="noteHistory" class="table table-hover">
+                    <table id="noteHistory" class="table">
                         <thead>
                             <tr>
                                 <th>File Name</th>
@@ -53,7 +55,7 @@
                                 {% if userType == "TAKER" %}
                                 <button class="btn btn-danger btn-sm">X</button> 
                                 {% endif %}
-                                <a href="{{file.course_id}}/{{file.file_id}}" role="button" class="btn btn-warning" download>{{file.file_name}}</a>
+                                <a href="{{file.course_id}}/{{file.file_id}}" role="button" class="btn upload-download" download>{{file.file_name}}</a>
                             </td>
                             <td>
                                 {{file.timestamp}}
