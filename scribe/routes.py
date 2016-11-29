@@ -276,7 +276,7 @@ def get_feedback():
         return render_template('admin-feedback.html', users=feedback, infoList=infoList, username = username, userType = user.type)
     return redirect(url_for('index'))
 
-@app.route('/admin/approve/<username>')
+@app.route('/admin/<username>')
 def approve(username):
     username = username
     userRepository = UserRepository()

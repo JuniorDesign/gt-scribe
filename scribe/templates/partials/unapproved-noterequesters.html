@@ -34,7 +34,7 @@
                             <td>{{user["username"]}}</td>
                             <td>{{user["first_name"]}}</td>
                             <td>{{user["last_name"]}}</td>
-                            <td><a href= "approve/{{user['username']}}" role="button" class="btn btn-primary" id="approve_noterequesters">Approve</a></td>
+                            <td><a href= "{{user['username']}}" role="button" class="btn btn-primary" id="approve_noterequesters">Approve</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
