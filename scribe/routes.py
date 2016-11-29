@@ -299,13 +299,12 @@ def feedback():
             else:
                 msg = Message(form.subject.data, sender='gburdell369@gmail.com', recipients=['gburdell369@gmail.com'])
                 msg.body = """
-                From: Name: %s %s <%s>
+                From: %s %s <%s>
                 %s
                 """ % (form.first_name.data, form.last_name.data, form.email.data, form.message.data)
                 mail.send(msg)
                 #making a post to the table
                 feedbackRepository = FeedbackRepository()
-                #username = session['username']
                 feedback_text = form.message.data
                 subject = form.subject.data
                 feedbackRepository.add_or_update(username, subject, feedback_text)
