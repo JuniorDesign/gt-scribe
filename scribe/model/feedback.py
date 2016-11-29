@@ -8,8 +8,10 @@ class Feedback(BaseModel):
     __tablename__ = "feedback"
     feedback_id = db.Column(db.Integer, primary_key=True, nullable=False)
     username = db.Column(db.String(50), nullable=False)
+    subject = db.Column(db.String(256), nullable=True)
     feedback_text = db.Column(db.String(256), nullable=False)
 
-    def __init__(self, username, feedback_text):
+    def __init__(self, username, subject, feedback_text):
         self.username = username
+        self.subject = subject
         self.feedback_text = feedback_text

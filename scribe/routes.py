@@ -267,7 +267,13 @@ def get_feedback():
         user = userRepository.find(username)
         feedbackRepository = FeedbackRepository()
         feedback = feedbackRepository.get_feedback()
-        return render_template('admin-feedback.html', users=feedback, username = username, userType = user.type)
+        infoList = []
+        for row in feedback:
+            rowUsername = row.username
+            rowUser = userRepository.find(rowUsername)
+            info = (rowUser.first_name, rowUser.last_name, rowUser.email)
+            infoList.append(info)
+        return render_template('admin-feedback.html', users=feedback, infoList=infoList, username = username, userType = user.type)
     return redirect(url_for('index'))
 
 @app.route('/admin/approve/<username>')
@@ -301,7 +307,8 @@ def feedback():
                 feedbackRepository = FeedbackRepository()
                 username = session['username']
                 feedback_text = form.message.data
-                feedbackRepository.add_or_update(username, feedback_text)
+                subject = form.subject.data
+                feedbackRepository.add_or_update(username, subject, feedback_text)
                 feedbackRepository.save_changes()
 
                 return render_template('feedback.html', success=True, username = username, firstName = user.first_name, lastName = user.last_name, userType = user.type)

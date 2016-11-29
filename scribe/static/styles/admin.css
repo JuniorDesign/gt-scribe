@@ -40,15 +40,16 @@ span{
 .panel-default {
   /*border-color: #ddd;*/
   
-  border-top-style: dotted;
-  border-right-style: solid;
-  border-bottom-style: dotted;
-  border-left-style: solid;
-  border-color: #B5B6B8;
-  border-radius: 8px;
+  border-top-style: solid;
+  border-top-color: #0F0D01;
+  /*border-right-style: solid;*/
+  /*border-bottom-style: dotted;*/
+  /*border-left-style: solid;*/
+  /*border-color: #B5B6B8;*/
+  /*border-radius: 8px;*/
 }
 .panel-default > .panel-heading {
-  color: #fff;
+  color: #F6D304; /*#fff;*/
   background-color: #252518;
   border-color: #ddd;
 }
