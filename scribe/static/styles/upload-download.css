@@ -6,6 +6,13 @@
 	width: 100%;
 }
 
+.upload{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
 th, td {
 	text-align: center;
 }
@@ -17,4 +24,29 @@ th, td {
 
 #contactButton:hover{
 	background-color: rgb(2, 53, 104);
+}
+
+.col:nth-child(odd){
+	padding-left: 0px;
+}
+.col:nth-child(even){
+	padding-right: 0px;
+}
+
+span{
+	background-color: #eeeeee;
+	display: block;
+	padding: 10px;
+	height: 400px;
+}
+
+a.upload-download{
+	background-color: rgb(238, 178, 17);
+	opacity: 0.8;
+	color: black;
+}
+
+a.upload-download:hover{
+	background-color: #EEB211;
+	opacity: 1.0;
 }

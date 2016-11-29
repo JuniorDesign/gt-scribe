@@ -29,15 +29,23 @@ header h3 {
 }
 
 .header-logout button {
-  background: #EEB211;
   float: right;
   margin: 15px 0 0 10px;
   opacity: 0.8;
 }
 
+.logoutButton{
+  background: #EEB211;
+}
+
+
 .black {
   background-color: #000 !important;
   color: #FFF;
+}
+
+.feedbackButton{
+  background-color: rgba(2, 61, 123, 0.95);
 }
 
 .btn-style:hover {
