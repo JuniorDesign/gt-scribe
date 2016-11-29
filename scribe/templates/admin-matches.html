@@ -23,6 +23,18 @@
 		<div class="panel-body">
 			<div class="table-responsive">
 				<table class="table table-striped table-bordered table-hover" style="width:100%">
+				{% if matches_list|length == 0 %} 
+                    <thead>
+                    <tr>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>No matches yet!</td>
+                        </tr>
+                </tbody>
+                {% else %}
 					<thead>
 						<tr>
 							<th>Notetaker Name</th>
@@ -39,6 +51,7 @@
 							</tr>
 						{% endfor %}
 					</tbody>
+					{% endif %}
 				</table>
 			</div>
 		</div>
