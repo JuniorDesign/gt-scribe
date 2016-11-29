@@ -17,7 +17,11 @@
             <p>Thank you for your message. We'll get back to you shortly.</p>
         {% else %}
 
-        {% for message in form.name.errors %}
+        {% for message in form.first_name.errors %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+
+        {% for message in form.last_name.errors %}
             <div class="flash">{{ message }}</div>
         {% endfor %}
 
@@ -36,8 +40,11 @@
         <form action="{{ url_for('feedback') }}" method=post>
             {{ form.hidden_tag() }}
 
-            {{ form.name.label }}
-            {{ form.name }}
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+
+            {{ form.last_name.label }}
+            {{ form.last_name }}
      
             {{ form.email.label }}
             {{ form.email }}

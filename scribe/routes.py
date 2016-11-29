@@ -291,7 +291,7 @@ def feedback():
         username = session['username']
         userRepository = UserRepository()
         user = userRepository.find(username)
-        form = FeedbackForm()
+        form = FeedbackForm(obj=user)
         if request.method == 'POST':
             if form.validate() == False:
                 #flash('All fields are required')
@@ -299,13 +299,13 @@ def feedback():
             else:
                 msg = Message(form.subject.data, sender='gburdell369@gmail.com', recipients=['gburdell369@gmail.com'])
                 msg.body = """
-                From: %s <%s>
+                From: Name: %s %s <%s>
                 %s
-                """ % (form.name.data, form.email.data, form.message.data)
+                """ % (form.first_name.data, form.last_name.data, form.email.data, form.message.data)
                 mail.send(msg)
                 #making a post to the table
                 feedbackRepository = FeedbackRepository()
-                username = session['username']
+                #username = session['username']
                 feedback_text = form.message.data
                 subject = form.subject.data
                 feedbackRepository.add_or_update(username, subject, feedback_text)
@@ -313,6 +313,8 @@ def feedback():
 
                 return render_template('feedback.html', success=True, username = username, firstName = user.first_name, lastName = user.last_name, userType = user.type)
         elif request.method == 'GET':
+            form.populate_obj(user)
+            db.session.commit()
             return render_template('feedback.html', form=form, username = username, firstName = user.first_name, lastName = user.last_name, userType = user.type)
     return redirect(url_for('index'))
 
