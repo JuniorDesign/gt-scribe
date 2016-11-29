@@ -37,17 +37,17 @@
                 {% else %}
 					<thead>
 						<tr>
-							<th>Notetaker Name</th>
-							<th>Note-Requester Name</th>
+							<th>Notetaker</th>
+							<th>Note-Requester</th>
 							<th>Course</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for match in matches_list %}
 							<tr>
-								<td>{{match[0]["username"]}}</td>
-								<td>{{match[1]["username"]}}</td>
-								<td>{{match[2]["subject"]}} {{match[2]["course_number"]}} section {{match[2]["section"]}}</td>
+								<td>{{match[0]["username"] + " (" + match[0]["first_name"] + " " + match[0]["last_name"] + ")" }}</td>
+								<td>{{match[1]["username"] + " (" + match[1]["first_name"] + " " + match[1]["last_name"] + ")" }}</td>
+								<td>{{match[2]["subject"]}} {{match[2]["course_number"]}} Section {{match[2]["section"]}}</td>
 							</tr>
 						{% endfor %}
 					</tbody>
