@@ -40,13 +40,21 @@ span{
 	height: 400px;
 }
 
-a.upload-download{
+.upload-download{
 	background-color: rgb(238, 178, 17);
 	opacity: 0.8;
+}
+
+.upload-download:hover{
+	opacity: 1.0;
+}
+
+a.upload-download{
+	background-color: rgb(238, 178, 17);
 	color: black;
 }
 
 a.upload-download:hover{
 	background-color: #EEB211;
-	opacity: 1.0;
+	
 }
