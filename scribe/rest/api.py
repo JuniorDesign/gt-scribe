@@ -63,7 +63,7 @@ class UserRegistration(Resource):
         userRepository.add_or_update(newUser)
         userRepository.save_changes()
         print("user has been added to the db!")
-
+        session['username'] = username
         return {"message": "Post to database was successful. New user registered."}
 
 	#def put(self):

@@ -43,8 +43,12 @@ $("#registerUserForm").submit(function(){
           console.log("Connection successful!");
           if(data.message != undefined){
                console.log(data.message);
+               //todo you might not need this********
+               currUsername = data.username
           }
-          window.location.href = "register/success";
+          // window.location.href = "register/success";
+          window.location.href = "/";
+
           //and redirect to another page here
 
      }).fail(function(data){ //error messages come in as a diff format than success messages
