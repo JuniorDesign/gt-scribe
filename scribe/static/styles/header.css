@@ -1,134 +1,130 @@
 /* Space out content a bit */
 body {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 header {
-  border-bottom: .05rem solid #e5e5e5;
-  padding-bottom: 1rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
+    border-bottom: .05rem solid #e5e5e5;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
 }
 
 /* Make the masthead heading the same height as the navigation */
 header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 3rem;
 }
 
 .header-logo #logo {
-  height: 50px;
-  width: 250px;
+    height: 50px;
+    width: 250px;
 }
 
 .header-greeting {
-  text-align: center;
-  padding-top: 10px;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .header-logout button {
-  float: right;
-  margin: 15px 0 0 10px;
-  opacity: 0.8;
+    float: right;
+    margin: 15px 0 0 10px;
+    opacity: 0.8;
 }
 
 .logoutButton{
-  background: #EEB211;
+    background: #EEB211;
 }
 
 
 .black {
-  background-color: #000 !important;
-  color: #FFF;
-}
-
-.feedbackButton{
-  background-color: rgba(2, 61, 123, 0.95);
+    background-color: #000 !important;
+    color: #FFF;
 }
 
 .btn-style:hover {
-  opacity: 1.0;
+    opacity: 1.0;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 48em) {
-  header {
-	padding-right: 0;
-	padding-left: 0;
-  }
+    header {
+    padding-right: 0;
+    padding-left: 0;
+    }
 
-  /* Space out the masthead */
-  header {
-	margin-bottom: 2rem;
-  }
+    /* Space out the masthead */
+    header {
+    margin-bottom: 2rem;
+    }
 }
 
 /* Contact form */
 form label {
-  font-size: 1.2em;
-  font-weight: bold;
-  display: block;
-  padding: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+    padding: 10px 0;
 }
 
 form input#first_name,
 form input#last_name,
 form input#email,
 form input#subject {
-  width: 400px;
-  background-color: #fafafa;
-  -webkit-border-radius: 3px;
-	 -moz-border-radius: 3px;
-		  border-radius: 3px;
-  border: 1px solid #cccccc;
-  padding: 5px;
-  font-size: 1.1em;
+    width: 400px;
+    background-color: #fafafa;
+    -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+            border-radius: 3px;
+    border: 1px solid #cccccc;
+    padding: 5px;
+    font-size: 1.1em;
 }
  
 form textarea#message {
-  width: 500px;
-  height: 100px;
-  background-color: #fafafa;
-  -webkit-border-radius: 3px;
-	 -moz-border-radius: 3px;
-		  border-radius: 3px;
-  border: 1px solid #cccccc;
-  margin-bottom: 10px;
-  padding: 5px;
-  font-size: 1.1em;
+    width: 500px;
+    height: 100px;
+    background-color: #fafafa;
+    -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+            border-radius: 3px;
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 1.1em;
 }
  
 form input#submit {
-  display: block;
-  -webkit-border-radius: 3px; 
-	 -moz-border-radius: 3px;
-		  border-radius: 3px;
-  border:1px solid #d8d8d8;
-  padding: 10px; 
-  font-weight:bold; 
-  text-align: center; 
-  color: #000000; 
-  background-color: #f4f4f4;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e5e5e5));
-  background-image: -webkit-linear-gradient(top, #f4f4f4, #e5e5e5);
-  background-image: -moz-linear-gradient(top, #f4f4f4, #e5e5e5);
-  background-image: -ms-linear-gradient(top, #f4f4f4, #e5e5e5);
-  background-image: -o-linear-gradient(top, #f4f4f4, #e5e5e5);
-  background-image: linear-gradient(top, #f4f4f4, #e5e5e5);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f4f4f4, endColorstr=#e5e5e5);
+    display: block;
+    -webkit-border-radius: 3px; 
+     -moz-border-radius: 3px;
+            border-radius: 3px;
+    border:1px solid #d8d8d8;
+    padding: 10px; 
+    font-weight:bold; 
+    text-align: center; 
+    color: #000000; 
+    background-color: #f4f4f4;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #e5e5e5));
+    background-image: -webkit-linear-gradient(top, #f4f4f4, #e5e5e5);
+    background-image: -moz-linear-gradient(top, #f4f4f4, #e5e5e5);
+    background-image: -ms-linear-gradient(top, #f4f4f4, #e5e5e5);
+    background-image: -o-linear-gradient(top, #f4f4f4, #e5e5e5);
+    background-image: linear-gradient(top, #f4f4f4, #e5e5e5);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f4f4f4, endColorstr=#e5e5e5);
 }
  
 form input#submit:hover{
-  cursor: pointer;
-  border:1px solid #c1c1c1; 
-  background-color: #dbdbdb;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dbdbdb), color-stop(100%, #cccccc));
-  background-image: -webkit-linear-gradient(top, #dbdbdb, #cccccc);
-  background-image: -moz-linear-gradient(top, #dbdbdb, #cccccc);
-  background-image: -ms-linear-gradient(top, #dbdbdb, #cccccc);
-  background-image: -o-linear-gradient(top, #dbdbdb, #cccccc);
-  background-image: linear-gradient(top, #dbdbdb, #cccccc);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#dbdbdb, endColorstr=#cccccc);
+    cursor: pointer;
+    border:1px solid #c1c1c1; 
+    background-color: #dbdbdb;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dbdbdb), color-stop(100%, #cccccc));
+    background-image: -webkit-linear-gradient(top, #dbdbdb, #cccccc);
+    background-image: -moz-linear-gradient(top, #dbdbdb, #cccccc);
+    background-image: -ms-linear-gradient(top, #dbdbdb, #cccccc);
+    background-image: -o-linear-gradient(top, #dbdbdb, #cccccc);
+    background-image: linear-gradient(top, #dbdbdb, #cccccc);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#dbdbdb, endColorstr=#cccccc);
 }
 
 /* Message flashing */
@@ -143,8 +139,14 @@ form input#submit:hover{
     margin-left: 5px;
 }
 
+/*Contact/feedback button style*/
 #contactButton{
     float:right;
+    background-color: rgba(2, 61, 123, 0.95);
+    color: white;
+}
 
+#contactButton:hover{
+    background-color: rgb(2, 53, 104);
 }
 
