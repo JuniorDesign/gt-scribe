@@ -5,14 +5,13 @@ Application written for Fall 2016 Junior Design part 2.
 
 Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
-**This application requires Python3 to run locally. You cannot use Python 2.**
 
 ## Release notes:
 
 - New software features for this release
 - Bug fixes made since the last release
 
-** Known bugs and defects ** 
+**Known bugs and defects** 
 
 - Routes within the application are not secure to specific users. If a student is logged in, he can navigate to any student views within the app, regardless of his enrolled courses.
 - Students who have not been approved by administrators can still be matched and receive notes from/take notes for other students.
@@ -23,14 +22,14 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
 ## Installation Guide:
 
-** Pre-requisits **
+**Pre-requisits**
 
 GT Scribe is a web application, and can therefore be run on any computer or mobile device with an Internet browser. This application was developed using the most recent versions of Mozilla Firefox (47.0+) and Google Chrome (53.0+). We strongly recommend using one of these two browsers to access the application. The application runs locally, but does use the cloud for note storage, and therefore requires an Internet connection. Aside from this, any specific hardware configuration of your machine or mobile device should not be necessary.
 
 This application is launched via Python3. To begin the installation process, you must first [install Python3](https://www.python.org/downloads/). 
 
 ------
-** Dependent Libraries **
+**Dependent Libraries**
 
 Before launching the application, you must install all of the application's dependent libraries. We recommend using the tool pip3 to download these libraries, as it came with the Python3 installation. Install these libraries by opening your machine's command line terminal and typing these commands, followed by the Enter key after each line. Each line installs one package.
 
@@ -42,7 +41,7 @@ Before launching the application, you must install all of the application's depe
 6. `pip3 install flask-mail`
 
 ------
-** Download and Build Instructions **
+**Download and Build Instructions**
 
 1. Download the project and navigate to the top level folder.
 2. Create the database before running this for the first time. Do this with: `python3 manage.py create_db`, `python3 manage.py populate_courses`, `python3 manage.py populate_users`. If there are any errors in this process, drop the db and then restart this step, `python3 manage.py drop_db`.
@@ -63,7 +62,7 @@ This application is launched via the command line. Therefore, all users are enco
 - If an obvious error occurs within the application, and appear on-screen somewhat similar to [this](http://flask.pocoo.org/docs/0.11/_images/debugger.png), please contact an administrator.
 
 ----------
-** Readme guidelines that can be deleted**
+**Readme guidelines that can be deleted**
 
 - Download instructions: how will the customer and users get access to the project?
 - Build instructions (if needed): if you are providing the raw source code rather than a binary build, how will the customer and users create the required executable application
