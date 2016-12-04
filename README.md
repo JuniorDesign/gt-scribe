@@ -1,6 +1,6 @@
 # GT Scribe, the Notetaker Registration and Matching App
 
-![GT Scribe Logo](http://i68.tinypic.com/6o1pgg.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Team 94 Logo](http://i68.tinypic.com/10gbsw0.png)
+![GT Scribe Logo](http://i68.tinypic.com/6o1pgg.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Team 94 Logo](http://i68.tinypic.com/10gbsw0.png)
 
 
 ### Inspired by and created with guidance from the Office of Georgia Tech Disability Services
@@ -22,7 +22,7 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 - App is not confirmed WCAG 2.0 compliant.
 - App is not fully responsive.
 - App is not on the cloud and can only be run locally.
-- you should also include here any functionality you promised the customer but which is missing in the release
+- **In order to allow student access, the application must be migrated to the cloud.**
 
 ## Installation Guide:
 
