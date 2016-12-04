@@ -47,12 +47,13 @@ Before launching the application, you must install all of the application's depe
 ------
 **Download and Build Instructions**
 
-1. Download the project and navigate to the top level folder.
-2. Create the database before running this for the first time. Do this with: `python3 manage.py create_db`, `python3 manage.py populate_courses`, `python3 manage.py populate_users`. If there are any errors in this process, drop the db and then restart this step, `python3 manage.py drop_db`.
-3. Run `python3 serve.py`
-4. If it prompts you about accepting any incoming connections, be sure to allow it.
-5. In your Internet browser, navigate to `localhost:5000` to see the rendered index page.
-8. For working with the database, we recommend you download DB Browser for SQLite, which can be found [here](http://sqlitebrowser.org/). In the SQLite Browser, open the database (`temp.db`, inside the `data` folder) to view and directly edit its contents. Be sure to select "Write Changes" to save changes. If the script does not work, try manually making the `data` folder first, then running the script
+1. Find the Clone or Download button at the top of this Github page; click the button and select Download ZIP. ![Image of Download Button](http://i65.tinypic.com/z1x0m.png)
+2. Unzip the file. Open the command line terminal and navigate to the top level of the newly unzipped file. (Same level where `manage.py` is.)
+3. Create the database before running this for the first time. On the command line, type each these commands followed by the Enter key `python3 manage.py create_db`, `python3 manage.py populate_courses`, `python3 manage.py populate_users`. If there are any errors in this process, drop the database and then restart this step, `python3 manage.py drop_db`.
+4. Start the server by typing this command `python3 serve.py`.
+5. If prompted, allow any requests for incoming connections.
+6. In your Internet browser, navigate to `localhost:5000` to see the rendered index page.
+7. For working with the database, we recommend you download DB Browser for SQLite, which can be found [here](http://sqlitebrowser.org/). In the SQLite Browser, open the database (`temp.db`, inside the `data` folder) to view and directly edit its contents. Be sure to select "Write Changes" to save changes. If the script does not work, try manually making the `data` folder first, then running the script
 
 -------
 **Troubleshooting**
