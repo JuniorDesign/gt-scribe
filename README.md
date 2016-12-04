@@ -1,6 +1,6 @@
 # GT Scribe, the Notetaker Registration and Matching App
 
-![GT Scribe Logo](http://i68.tinypic.com/6o1pgg.png)  ![Team 94 Logo](http://i68.tinypic.com/10gbsw0.png)
+![GT Scribe Logo](http://i68.tinypic.com/6o1pgg.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Team 94 Logo](http://i68.tinypic.com/10gbsw0.png)
 
 
 ### Inspired by and created with guidance from the Office of Georgia Tech Disability Services
