@@ -5,7 +5,9 @@
 
 ### Inspired by and created with guidance from the Office of Georgia Tech Disability Services
 
-Application written for Fall 2016 Junior Design part 2.
+Application written for Georgia Tech Fall 2016 Junior Design part 2.
+
+Team #94 - Give Us a <BR />
 
 Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
