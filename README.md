@@ -7,7 +7,7 @@
 
 Application written for Georgia Tech Fall 2016 Junior Design part 2.
 
-Team #94 - Give Us a <BR />
+Team #94 - Give Us a  &lt;BR / &gt;
 
 Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
