@@ -1,4 +1,8 @@
 # GT Scribe, the Notetaker Registration and Matching App
+
+![GT Scribe Logo](http://i68.tinypic.com/6o1pgg.png)
+
+
 ### Inspired by and created with guidance from the Office of Georgia Tech Disability Services
 
 Application written for Fall 2016 Junior Design part 2.
