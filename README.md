@@ -3,7 +3,7 @@
 ![GT Scribe Logo](http://i68.tinypic.com/6o1pgg.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Team 94 Logo](http://i68.tinypic.com/10gbsw0.png)
 
 
-### Inspired by and created with guidance from the Office of Georgia Tech Disability Services
+### Inspired by and created with guidance from the Georgia Tech Office of Disability Services
 
 Application written for Georgia Tech Fall 2016 Junior Design part 2.
 
@@ -14,15 +14,36 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
 ## Release notes:
 
-- New software features for this release
-- Bug fixes made since the last release
+**New software features for this release**
+
+- Version 1.0
+- Application MVP<br />
+Features include:<br />
+- Student registration
+- Account login/logout
+- Course enrollment
+- First come first serve, automatic notetaker-note-requester matching
+- Note upload/download by course
+- Student-provided feedback
+- Administrator account approval
+- Views of all students in the system
+- Views of all notetaker-note-requester matches in the system
+- View of all feedback provided
+- Complete underlying architecture and API for future developers
+
+
+**Bug fixes made since the last release**
+
+- First launch of the application! 
+- See "Known bugs and defects" for existing deficiencies
+
 
 **Known bugs and defects** 
 
 - Routes within the application are not secure to specific users. If a student is logged in, he can navigate to any student views within the app, regardless of his enrolled courses.
 - Students who have not been approved by administrators can still be matched and receive notes from/take notes for other students.
 - App is not confirmed WCAG 2.0 compliant.
-- App is not fully responsive.
+- App is not fully responsive for mobile devices and tablets.
 - App is not on the cloud and can only be run locally.
 - **In order to allow student access, the application must be migrated to the cloud.**
 
@@ -67,12 +88,3 @@ This application is launched via the command line. Therefore, all users are enco
 - Account passwords are case sensitive, and caution should be taken to ensure you have typed your password correctly when registering/logging in.
 - Web applications sometimes experience difficulties with caching information. If information you have input into the application does not seem to be showing up, try clearing your cache. [Clear your cache on Firefox](https://support.mozilla.org/en-US/kb/how-clear-firefox-cache); [Clear your cache on Chrome](https://support.google.com/accounts/answer/32050?hl=en)
 - If an obvious error occurs within the application, and appear on-screen somewhat similar to [this](http://flask.pocoo.org/docs/0.11/_images/debugger.png), please contact an administrator.
-
-----------
-**Readme guidelines that can be deleted**
-
-- Download instructions: how will the customer and users get access to the project?
-- Build instructions (if needed): if you are providing the raw source code rather than a binary build, how will the customer and users create the required executable application
-- Installation of actual application: what steps have to be taken after the software is built, what directories are required for installation
-- Run instructions: what does the user/customer actually have to do to get the software to execute
-- Troubleshooting: what are common errors that occur during installation and what is the corrective action
