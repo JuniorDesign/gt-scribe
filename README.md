@@ -46,6 +46,7 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 - App is not confirmed WCAG 2.0 compliant.
 - App is not fully responsive for mobile devices and tablets.
 - App is not on the cloud and can only be run locally.
+- Admin match view listings should be done unique to course without duplicates.
 - **In order to allow student access, the application must be migrated to the cloud.**
 
 ## Installation Guide:
