@@ -18,7 +18,8 @@ Authors: Sara Cagle, Hosna Chaudhry, Sneh Munshi, Jessica Rosenfield, Brad Ware
 
 - Version 1.0
 - Application MVP<br />
-Features include:<br />
+
+**Features include:**<br />
 - Student registration
 - Account login/logout
 - Course enrollment
@@ -86,5 +87,5 @@ This application is launched via the command line. Therefore, all users are enco
 - If there is an error using pip3 to install any dependent libraries, your user account likely does not have administrator privileges on your machine. When this happens, try typing the word `sudo` at the beginning of each command, like so: `sudo pip3 install flask`. You may be asked to type in your password in order to complete the task--follow the onscreen directions; it is safe to type in your password. Hit Enter once you are done with each command, even if no typed characters appear on screen.
 - If there are no courses on the course enrollment page, you probably forgot to populate the database the first time you installed the application. Please refer to Step 2 of the Download and Build Instructions.
 - Account passwords are case sensitive, and caution should be taken to ensure you have typed your password correctly when registering/logging in.
-- Web applications sometimes experience difficulties with caching information. If information you have input into the application does not seem to be showing up, try clearing your cache. [Clear your cache on Firefox](https://support.mozilla.org/en-US/kb/how-clear-firefox-cache); [Clear your cache on Chrome](https://support.google.com/accounts/answer/32050?hl=en)
+- Web applications sometimes experience difficulties with caching information. If information you have input into the application does not seem to be showing up, try clearing your cache: [Clear your cache on Firefox](https://support.mozilla.org/en-US/kb/how-clear-firefox-cache); [Clear your cache on Chrome](https://support.google.com/accounts/answer/32050?hl=en).
 - If an obvious error occurs within the application, and appear on-screen somewhat similar to [this](http://flask.pocoo.org/docs/0.11/_images/debugger.png), please contact an administrator.
